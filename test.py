@@ -1,4 +1,3 @@
-# 补全函数 parsed_url
 def parsed_url(url):
     '''
     url 可能的值如下
@@ -27,28 +26,40 @@ def parsed_url(url):
         protocol = "http"
 
     if url[:].find(":") == -1:  # g.cn
-        host = url[:]
         if protocol == "https":
             port = 443
         else:
             port = 80
-        path = "/"
+        if url.find("/") == -1:
+            host = url[:]
+            path = "/"
+        else:
+            url_end = url[:].find("/")
+            host = url[:url_end]
+            path = url[url_end:]
+
     else:  # g.cn:300
         host_end = url.find(":")
         host = url[:host_end]
         url = url[host_end + 1:]
-        if url[:].find("/") == -1:   # g.cn:3000
+        if url[:].find("/") == -1:  # g.cn:3000
             port = int(url[:])
             path = "/"
         else:  # g.cn:3000/abc
             port_end = url[:].find("/")
             port = int(url[:port_end])
-            path = url[port_end + 1:]
+            path = url[port_end:]
 
     return (protocol, host, port, path)
+
+def tt():
+    a = "2"
+    b = "3"
+    return (a, b)
 def main():
-    url = "g.cn:2000/abc/dfd"
-    print(parsed_url(url))
+    b = tt()
+    print (b, type(b))
+    #print(header_from_dict(headers))
 
 
 if __name__ == "__main__":

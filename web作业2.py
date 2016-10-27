@@ -34,28 +34,35 @@ def parsed_url(url):
         protocol = "http"
         url = url[7:]
     else:  # 没有标明protocol时
-        protocle = "http"
+        protocol = "http"
 
     if url[:].find(":") == -1:  # g.cn
-        host = url[:]
         if protocol == "https":
             port = 443
         else:
             port = 80
-        path = "/"
+        if url.find("/") == -1:
+            host = url[:]
+            path = "/"
+        else:
+            url_end = url[:].find("/")
+            host = url[:url_end]
+            path = url[url_end:]
+
     else:  # g.cn:300
         host_end = url.find(":")
         host = url[:host_end]
         url = url[host_end + 1:]
-        if url[:].find("/") == -1:   # g.cn:3000
+        if url[:].find("/") == -1:  # g.cn:3000
             port = int(url[:])
             path = "/"
         else:  # g.cn:3000/abc
             port_end = url[:].find("/")
             port = int(url[:port_end])
-            path = url[port_end + 1:]
+            path = url[port_end:]
 
     return (protocol, host, port, path)
+
 
 
 # 2
@@ -63,7 +70,13 @@ def parsed_url(url):
 def test_parsed_url(url):
     '''
     '''
-    pass
+    url = "https://jeck.com/ja/jdf?dfd"
+    expected = [
+                ('https', 'jeck.com', 443, '/jd' ),
+                ('http', 'abc', 400, '/test'),
+                ("https", "jeck.com", 443, "/ja/jdf?dfd"),
+               ]
+    assert parsed_url(url) in expected
 
 
 # 3
@@ -77,14 +90,14 @@ def path_with_query(path, query):
     详情请看下方测试函数
     '''
     string = ""
-    for k, v in dic.items():
+    for k, v in query.items():
         if type(v) is int:
             v = str(v)
         if len(string) == 0:
             string = string + (k + "=" + v + "&")
         else:
-            string = string +(k + "=" + v )
-    print("/?" + string)
+            string = string + (k + "=" + v)
+    return ("/?" + string)
 
 
 def test_path_with_query():
@@ -116,13 +129,24 @@ def header_from_dict(headers):
     返回如下 str
     'Content-Type: text/html\r\nContent-Length: 127\r\n'
     '''
-    pass
-
+    string = ""
+    for k, v in headers.items():
+        string = string + str(k) +";"+ str(v) + r"/r/n"
+    return string
 
 # 5
 #
 # 为作业 4 写测试
-
+def test_header_from_dict():
+    headers ={
+                'test001':'aabb',
+                'test002':'cccc',
+             }
+    expected = [
+        'test001:aabb\r\ntest002:cccc\r\n',
+        'test002:cccc\r\ntest001:aabb\r\n',
+    ]
+    assert header_from_dict(headers) in expected
 
 # 6
 def args_from_url(url):
@@ -139,10 +163,8 @@ def args_from_url(url):
     '''
     url_bg = url.find("?") + 1
     url = url[url_bg:]
-    url = url.splite("&")
+    url = url.split("&")
     fdic = {}
     for elem in url:
-        fdic = dic((elem.split("=")),)
+        fdic = dict(dict((elem.split("="),)), **fdic)    #对每一个元素elem做diction转换 然后和原来的字典fdic拼接成一个字典
     return fdic
-
-
