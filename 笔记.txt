@@ -1,0 +1,64 @@
+web6作业：http各个头代表的意义
+    协议头的字段是以明文的字符串格式传输的，以冒号分割的键名/值对，最后以回车（CR）和换行（LF）符序列结尾。协议头部分的结束时以一个空白的字段来标识的，结果是会传输两个连续的回车换行符对
+    Accetp：能接受的回应内容类型（content-types）如Accept：text/plain
+    Accept-Charset：能够接受的字符集 如Accep-Charset:utf-8
+    Accept-Language：能够接受的回应内容的自然语言列表。 如Accept-Language：en-Us
+    Accept-Datetime：能够接受的按照时间来表示的版本 如Accept-Datetime:Thu, 31 May 2007 20:35:00 GMT
+    Authorization: 用于超文本传输协议的认证的认证信息 如Authorization：BasicQWdfj
+    cache-control：用来制定在这次的请求/回复链中的所有缓存机制 都必须 遵守的指令 如Cache-Contol:no-cache
+    connection： 浏览器想要优先使用的连接类型 如Connection：keep-alive
+    cookie：之前由服务器通过Set-Cookie发送的一个超文本传输协议Cookie 如：Cookie：$Version；Skin=new
+    Content_Length:以八位字节表示的请求体的长度 如Content-Length:348
+    Content-MD5：请求体的内容的二进制MD5散列值，以Base64编码的结果  Content-MD5：Qhdfdfdf234
+    Content-Type: 请求体的多媒体类型（用于POST和PUT请求中）Content-Type：application/x-www-form-urlencoded
+    Date： 发送该消息的日期和时间 如Date：Tue，15 Nov 1994 08:12:31 GMT
+    Expect: 表明客户端要求服务器做出特定的行为   如Expect：100-continue
+    From： 发起此请求的用户的邮件地址 如From：user@example.com
+    Host：服务器的域名（用于虚拟主机）以及服务器所监听的传输控制协议端口号，如果请求的端口号是对应得服务的标准端口，则端口号可被省略，自超文本传输协议版本1.1（http/1.1）开始便是必需字段 如Host：en.wikipedia.org:80 Host：en.wikipedia.org
+    If-Match：仅当客户端提供的实体与服务器上对应得实体相匹配时，才进行对应得操作。主要作用时，用作像PUT这样的方法中，仅当从用户上次更新某个资源以来，改资源未修改的情况下，才更新该资源。如 If-Match:“43434dfasdrfdf43”
+    If-Modified-Since：允许在对应得内容未被修改的情况下返回304未修改（304 Not Modified） 如：If-Modified-since：Sat，29，Oct 1994 19:43:31 GMT
+    IF-None-Match：允许在对应得内容未被修改的情况下返回304未修改（304 Not Modified）参考超文本传输协议的实体标记 如 If-None-Match:"73043dfdff3"
+    If-Range:如果该实体未被修改过，则向我发送所缺额哪一个或多个部分；否则，发送整个新实体 如 IF-Rang:“70070dfadfa3434”
+    If-Unmodified-Since：仅当该实体自某个特定时间以来未被修改的情况下，才发送回应 如If-Unmodified-Since:Sat, 29 Oct 1994 19:43:31 GMT
+    Max-Forwards： 限制该消息可被代理及网关转发的次数 如 Max-Forwards:10
+    Origin：发起一个针对跨来源资源共享 的请求（要求服务器在回应中加入一个‘方位控制允许来源’ （‘Access-Control-Allow-Origi’）字段）如：Origin：http://www.example-social-network.com
+    Pragma：与具体的实现相关，这些字段可能在请求/回应链中的任何时候产生多种效果 如 Pragmatic：no-cache
+    Proxy-Authorization:用了向代理进行人证的信息  如：Proxy-Authorization：BasicQwer34fdff
+    Range：仅请求某个实体的一部分。字节偏移以0开始。参考字节服务 如：Range：byte=500-99
+    Refer而[sic]：表示浏览器所访问的前一个页面，正是那个页面上的某个链接将浏览器带到了当前请求的这个页面。（“引导者”（“referrer”）这个单词，在RFC中被拼错了，因此在大部分的软件实现中也拼错了，以至于错误的拼法成为了标准的用法） 如：Referer：http://en.wikipedia.org/wiki/Main_page
+    TE：浏览器预期接受的传输编码方式，可使用回应协议头Transfer-Encoding字段中的那些值，另外还有一个值可用，“trailers”（与“分 块”传输方式相关），用来表明浏览器希望在最后一个尺寸为0的块之后还接收到一些额外的字段。 如：TE:trailers,deflate
+    User-Agent:浏览器的身份标识 如：User-Agent:Mozilla/5.0(X11;Linux X86_64; rv：12.0) Gecko/20100101 Firefox/21.0
+    upgrade:要求服务器升级到另一个协议 如：Upgrade：HTTP/2.0,SHTTP/1.3, IRC/6.9,RTA/X11
+    Via：向服务器告知，这个请求是由哪些代理发出 如：Via：1.0 fred，1.0 example.com(Apache/1.1)
+    Warning:一个一般性的警告，告知，在实体内容中可能存在错误 如：Warning：199 Miscellaneous warning
+
+各魔法方法
+
+web4:
+行末尾  \代表是连接多行字符串
+使用with可以保证程序中断的时候正确关闭
+http头：connectiong：close  表示服务器给客户端发送信息之后就断开，
+html 中不管有多少个空格只显示一个空格。
+html的form 中一定要有一个button（按钮）
+如果请求用get 会在url中直接显示用户的请求信息。
+如果请求用post 他的请求内容放在body里面，在URL中不会显示。
+一般来说都用post
+form是用来给服务器传递数据的 tag  form 中action属性是path  method属性是http方法（get post）
+
+
+web5:
+
+
+web6:
+
+web6作业：http各个头代表的意义
+
+Set-Cokkie的内容很复杂，a=b的形式（变量跟值类似）
+
+第一次发送cookie给浏览器 后面浏览器访问时会带上cookie 服务器从cookie就可以识别哪一个用户。
+
+session 把信息存在服务器，？？？？
+
+代码在论坛上贴上后？？？（豪华储瓜间上面）
+
+ORM：object relation mapping

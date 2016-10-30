@@ -172,7 +172,7 @@ def movie_analyse(result):
     movie_inf = {}
     movie_inf_sub = {}
     while True:
-        if movie.rfind('<div class="item">') == -1:  # 每分析完一部就截掉改部分信息。
+        if movie.rfind('<div class="item">') == -1:  # 从后往前分析每一部电影，每分析完一部就截掉改部分信息。
             break
         else:
             movie_begin = movie.rfind('class="item">')  # 第一个class="item">标签
