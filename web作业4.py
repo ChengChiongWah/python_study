@@ -22,7 +22,7 @@ username=gua&password=123
         <title>web作业4</title>
     </head>
     <body>
-         <form action="The Path of URL" method="post">
+         <form action="/login" method="post">
             <input type="text" name="name" />
             <input type="password" name="password" />
             <input type="Submit" value="Submit" />

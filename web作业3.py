@@ -68,6 +68,7 @@ def get(url):
         response += r
         if len(r) < buffer_size:
             break
+    s.close()
     return response.decode(encoding)
 
 
@@ -163,13 +164,14 @@ def movie_spy(url):
         if len(r) < buffer_size:
             break
     result = response.decode("utf-8")
+    s.close()
     return result
 
 
 def movie_analyse(result):
     movie = result
-    movie_rank = 0
-    movie_inf = {}
+    movie_rank = 26   #排名
+    movie_inf = {}   #以字典存储电影信息，Key是电影的排名，value是一个字典movie_inf_sub
     movie_inf_sub = {}
     while True:
         if movie.rfind('<div class="item">') == -1:  # 从后往前分析每一部电影，每分析完一部就截掉改部分信息。
@@ -212,7 +214,7 @@ def movie_analyse(result):
                 movie_eyes_begin = movie_temp.find('class="inq">')
                 movie_eyes_end = movie_temp.find('</span>')
                 movie_eyes = movie_temp[movie_eyes_begin + 12:movie_eyes_end]
-        movie_rank += 1
+        movie_rank -= 1
         movie_inf_sub["电影名："] = title_inf
         movie_inf_sub["得分："] = movie_star
         movie_inf_sub["评价数："] = movie_judgement
@@ -336,6 +338,7 @@ def movie_spy(url):
         if len(r) < buffer_size:
             break
     result = response.decode("utf-8")
+    s.close()
     return result
 
 

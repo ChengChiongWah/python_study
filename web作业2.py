@@ -131,7 +131,7 @@ def header_from_dict(headers):
     '''
     string = ""
     for k, v in headers.items():
-        string = string + str(k) +";"+ str(v) + r"/r/n"
+        string = string + str(k) +";"+ str(v) + r"\r\n"
     return string
 
 # 5
