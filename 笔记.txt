@@ -62,3 +62,7 @@ session 把信息存在服务器，？？？？
 代码在论坛上贴上后？？？（豪华储瓜间上面）
 
 ORM：object relation mapping
+
+web7:
+setattr 
+root.xpath('//div[@class="item"]')
