@@ -32,7 +32,12 @@ web6作业：http各个头代表的意义
     Via：向服务器告知，这个请求是由哪些代理发出 如：Via：1.0 fred，1.0 example.com(Apache/1.1)
     Warning:一个一般性的警告，告知，在实体内容中可能存在错误 如：Warning：199 Miscellaneous warning
 
+要知道一个类有哪些属性，有两种方法。最简单的是使用dir（）内建函数，另外是通过访问类的字典属性__dict__,这是所有类都具备的特殊属性之一。
+dir（Myclass）   Myclass.__dict__
+
 各魔法方法
+
+
 
 web4:
 行末尾  \代表是连接多行字符串
