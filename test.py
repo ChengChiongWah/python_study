@@ -1,35 +1,26 @@
-# encoding: utf-8
+class Screen(object):
 
-def header_from_dict(headers):
-    '''
-    headers 是一个字典
-    范例如下
-    对于
-    {
-    	'Content-Type': 'text/html',
-        'Content-Length': 127,
-    }
-    返回如下 str
-    'Content-Type: text/html\r\nContent-Length: 127\r\n'
-    '''
-    string = ""
-    for k, v in headers.items():
-        string = string + str(k) +";"+ str(v) + r"/r/n"
-    return string
-def main():
-    headers =    {
-    	'Content-Type': 'text/html',
-        'Content-Length': 127,
-    }
-    print(header_from_dict(headers))
+    @property
+    def width(self):
+        return self.__width
 
-# print(movie(url))
-#   print(type(movie(url)))
-#   status_code, headers, body = get(url)
-#    print(status_code, headers, body)
+    @width.setter
+    def width(self, width):
+        self.__width = width
 
-if __name__ == '__main__':
-    main()
+    @property
+    def height(self):
+        return self.__height
 
+    @height.setter
+    def height(self, height):
+        self.__height = height
 
+    @property
+    def resolution(self):
+        return self.width*self.height
 
+s = Screen()
+s.width = 1024
+s.height = 768
+print(s.resolution)

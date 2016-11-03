@@ -35,6 +35,39 @@ web6作业：http各个头代表的意义
 要知道一个类有哪些属性，有两种方法。最简单的是使用dir（）内建函数，另外是通过访问类的字典属性__dict__,这是所有类都具备的特殊属性之一。
 dir（Myclass）   Myclass.__dict__
 
+多重继承中，如果类需要调用已经调用类的上一层类的方法，可以用如下的方法来调用：
+P2.bar(gc)
+
+新式类也有一个__mro__属性，告诉你查照的顺序：GC.__mro__
+
+经典类使用深度优先算法。因为新式类继承自object，新的菱形继承结构出现，问题也就接着而来了。所以必须新建一个MRO
+
+hasattr() getattr() setattr() delattr()
+*attr()系列函数可以在各种对象下工作，不限于类和实例，
+hasattr()目的是为了决定一个对象是否有一个特定的属性，一般用于访问某属性前先做一下检查，
+getattr()取得对象的属性，试图读取一个不存在的属性时，引发AttributeError异常，除非那个可选的默认参数。
+setattr()赋值给对象的属性，要么加入一个新的属性，要么取代一个也存在的属性。
+delattr()从一个对象中删除属性。
+
+super()的主要用途是来查找父类的属性。比如：super(MyClass, self).__init__(),如果没有执行这样的查找，你可能不需要使用super（）。
+
+如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线__，表示私有变量，只有内部访问，外部不能访问。
+
+@property
+把一个getter方法变成属性（加上@property），此时本身又创建另一个装饰器@score.setter，负责把setter方法变成属性赋值
+class Student（object）：
+  @property
+  def birth（self）：
+    return self._birth
+
+  @birth.setter                   #birth是可读属性
+  def birth（self，value):
+    self._birth = value
+
+  @property
+  def age（self）：               #age就是一个只读属性
+    return 2015 - self._birth
+
 各魔法方法
 
 
