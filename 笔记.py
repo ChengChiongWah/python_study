@@ -165,6 +165,87 @@ class AccessCounter(object):
         if name == "value":
             super(AccessCounter, self).__setattr('counter', self.counter + 1)
             super(AccessCounter，self).__delattr(name)
+
+容器背后的魔法饭饭
+__len__(self):
+返回对容器中某一项使用self[key]的方式进行读取操作的行为。这也是可变和不变容器类行都要实现的一个方法，他应该在键的类型
+错误式产生TypeError异常，同时在没有与键值相匹配的内容时产生KeyError异常
+__setitem__(self, key)
+定义对容器中某一项使用self[key]的方法进行赋值操作时的行为。他是可变容器类型必须实现的一个方法，同样应该在合适的时候产生
+KeyError和TypeError异常
+__iter__(self, key)
+它应该返回当前容器的一个迭代器。迭代器以一连串内容的形式返回，最常用的是使用iteration（）函数调用，以及在类
+似for x in container：的循环中被调用
+__reversed__(self):
+定义了对容器使用reverse的（）内建函数的行为，他应该返回一个反转的序列
+__contains__(self, item)
+定义了使用in 和 not in 进行成员测试时类的行为。
+__missing__(self, key)
+在字典的子类中使用，他定义了当试图访问一个字典中不存在的键时的行为
+列子：
+class FunCtionalList(object):
+    '''一个列表的封装类，实现了一些额外的函数式方法,例如head, tail, init, last, drop,和take'''
+    def __init__(self, values=None):
+        if values is None:
+            self.value = []
+        else:
+            self.values = values
+
+    def __len__(self):
+        return len(self.values)
+
+    def __getitem__(self, key):
+        return self.values[key]   #如果键的类型或值不合法，列表会返回异常
+
+    def __setitem__(self, key, value):
+        self.values[key] = value
+
+    def __delitem__(self, key):
+        del self.values[key]
+
+    def __iter__(self):
+        return iter(self.values)
+
+    def __reversed__(self):
+        return reversed(self.values)
+
+    def append(self, value):
+        self.values.append(value)
+
+    def head(self):
+        return self.values[0]
+
+    def tail(self):
+        return self.values[1:]  #取得除第一个元素外的所有元素
+
+    def init(self):
+        return self.values[:-1]  #取得除最后一个元素外的所有元素
+
+    def last(self):
+        return self.values[:-1]  #取得最后一个元素
+
+    def drop(self, n):
+        return self.values[n:]  #取得除前n个元素外的所有元素
+
+    def take(self, n):
+        return self.values[:n]  #取得前那个元素
+
+__call__(self, [args...])
+允许类的一个实例像函数那样被调用，本质是这代表了x() 和x.__call__()是相同的，在某些需要经常改变状态的类
+的实例中特别有用，"调用"这个实例来改变他的状态，是一种更加符合自觉优雅的方法
+例：
+class Entity(object):
+    '''表示一个实体的类，调用他的实例可以更新实体的位置'''
+    def __init__(self, size, x, y)
+        self.x, self.y = x, y
+        self.size = size
+
+    def __call__(self, x, y):
+        self.x, self.y = x, y   #改变实体的位置
+
+
+
+
 '''
 
 '''
