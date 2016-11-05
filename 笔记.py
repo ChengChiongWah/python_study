@@ -147,7 +147,7 @@ def __setattr__(self, name, value)
 
 
 class AccessCounter(object):
-    '''一个包含了一个值并且实现了访问计数器的类每次值的变化都会导致计数器自增''''
+    """一个包含了一个值并且实现了访问计数器的类每次值的变化都会导致计数器自增"""
 
     def __init__(self, val):
         super(AcessCounter, self).__setattr__('counter', 0)
@@ -203,8 +203,60 @@ session 把信息存在服务器，？？？？
 代码在论坛上贴上后？？？（豪华储瓜间上面）
 ORM：object relation mapping
 '''
+
 '''
 web7:
 setattr
 root.xpath('//div[@class="item"]')
 '''
+
+'''
+web9:
+摘要算法是一种能产生特殊格式的算法，给定任意长度的数据生成定长的密文摘要结果是不可逆的，不能被还原为原数据
+摘要算法不是压缩不是加密，正是生成签名。
+import hashlib
+pwd='gua'.encode('ascii')
+m = hashlib.md5(pwd)   #md5
+print (m.hexdigest())
+
+s = hashlib.sha1(pwd) #sha1
+prin他（m.hexdigest())
+
+用MD5或者sha1保护用户的密码 用户的密码存在数据库中，有可能会被黑客盗取（拖库）
+
+用salt防止黑客对密码进行碰撞，假如用户使用简单密码，破解者可以用提前生成的简单密码摘要表（彩虹表）来破解原文
+所以我们会存储一个额外的信息，扰乱用户的简单密码
+用函数可以生成一个带盐的密文
+加盐的目的是极大增加被破解的难度
+def salted_password(self, password， salt）：
+    def md5hex(ascii_str):
+        return hashlib.md5(ascii_str.encode('ascii')).hexdigest()
+    hash1 = md5hex(password)
+    hash2 = md5hex(hash1 + salt)
+    return hash2
+
+持久化session
+什么是持久化 把一个东西存在硬盘中，不会因为掉电而丢失
+
+作业：edit update  新增添加评论
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
