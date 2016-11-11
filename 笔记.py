@@ -431,7 +431,65 @@ Linux版本选择
 作业：base64 装个Linux
 '''
 
+'''
+web11
 
+mkdir     创建目录
+    -p 可以一次连环创建目录
+    mkdir -p /a/b/c
+rmdir     删除一个空目录
+rm    删除文件或目录（很危险）
+    -f 强制删除一个目录
+    -r 删除目录
+mv     移动文件或文件改名
+    可以用mv xx /tmp的方式将文件放到临时文件夹（/tmp是操作系统提供的临时文件夹，
+    重启后会删除里面的所有文件）
+cat    显示文件内容
+tac    反向显示文件内容
+nl     显示文件内容，并显示行号
+more   显示分屏分批看文件
+les    比more更高级，可以前后退看文件
+head   可以显示文件前面10行
+tail   可以显示文件后10行
+       head tail 有一个n参数，表示显示n行
+touch  touch a.gua  如果a.gua存在，就更新修改时间
+        如果不存在就创建a.gua文件
+sudo   用管理员账户执行程序
+        比如安装程序或修改一些系统配置都需要管理员权限
+su      切换用户
+
+chown   改变文件所属用户
+        chown  gua c.gua
+        chown  gua：gua  c.gua
+chmod   改变文件权限
+文件权限        文件类型   用户  用户组  文件大小     修改日期     文件名
+drwxrwxr-x       1         gua   gua      4096    11/09 20:28    b.gua
+
+
+
+'''
+'''
+web12
+
+<<SQL 必知必会>>
+<<MySQL 必知必会>>
+规范SQL语句书写，比如：
+INSERT INTO
+    'USER'('id', 'username', 'password', 'email')
+VALUES
+    (NULL, NULL, NULl, NULL)
+主键是方便能索引到表中的数据
+创建约束 PRIMARY KEY,  AUTONICREMENT, NOT NULL, UNIQUE
+外键是别人的主键
+sql_insert= '''
+    INSERT INTO
+        'users' ('username', 'password', 'email')
+    VALUES
+        (?, ?, ?);
+    '''
+    conn.execute(sql_insert, (username, password, email))#注意里面的是tuple。
+
+'''
 
 
 
