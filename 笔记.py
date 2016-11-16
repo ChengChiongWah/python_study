@@ -491,6 +491,25 @@ sql_insert= '''
 
 '''
 
+'''
+web13
+ACCEPT-Encoding:gzip, deflate, sdch   #浏览器跟服务器说我支持的那些压缩格式
+Accept-Language:en_US,en,q=0.8  #支持的语言
+{#。。。。#}是jijia的注释
+Conten-Type：告诉服务器body里的内容是什么type。
+
+规定整个整个http头编码是ascii编码  body的编码随便（如果header里的Content-Type:text/html;charset=gbk指定就用指定的）
+
+html5里面可以省略引号
+
+app.config['SQlalCHEMY_DATABASE']='sqlite:///todo.DB'
+
+sqlite save的时候
+db.session.add（self）
+db.session.commit（）
+
+作业：
+'''
 
 
 
