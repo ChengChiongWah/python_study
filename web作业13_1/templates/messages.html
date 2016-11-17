@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Messages</title>
+</head>
+<body>
+    <form action={{url_for('messages.add')}} method="post">
+        <input type="text" name="message_content"/>
+        <input type="submit" value="提交" />
+    </form>
+    {% for lists in message_lists %}
+        <p>{{lists.id, lists.messages, lists.create_time}}</p>
+    {% endfor %}
+    </form>
+    <p>{{message_lists}}</p>
+</body>
+</html>
