@@ -545,6 +545,90 @@ db.session.commit（）
 
 '''
 
+'''
+web14
+服务器上面可以可以设置多个cookie
+set-cookie:mark=foo
+set-cookie:name=gua
+上面的字段不能一起设置：set-cookie：mark=foo&name=gua
+
+flask自定义错误页面：
+@app.errorhandler(404)
+def error404(e):
+    return render_template('404.html')
+
+@app.route('/error/<int:code>')
+def error_code(code):
+    import flask
+    flask.abort(code)
+
+数据库关联
+class User（db.Model, ModelHelper）:
+    __tablename__ = 'user'
+    id = db.Column(db.Integer,primary_key=True)
+    ...
+    username=db.relationship('Todo',backref='user', lazy='dynamic')
+
+class Todo(db.Model, ModelHelper):
+    __talbename__ = 'tods'
+    id = db.Column(db.Integer, primary_key=True)
+    ...
+
+Linux
+file
+     用来显示文件的类型（格式）不是百分之百正确
+
+uname
+    显示操作系统的名字，
+    uname -r
+    uname -A
+
+which
+     显示路径
+     which pwd 显示pwd的路径
+
+where
+    whereis ls
+    显示更全面的信息
+
+whoami
+    显示当前登录的用户
+
+find
+    find . -name 'a.txt'   在当前目录下找a.txt文件
+
+奇怪的符号
+    ~  表示家目录 ~会直接到当前用户的家目录
+    >  重定向覆盖模式
+    >> 重定向追加模式
+    tee： cat c.gua|tee f.gua   既能在终端看到也能在f.gua这个文件看到
+    |:管道 一个命令的输出是另外一个命令的输入
+    grep: 在指定的文件查找gua  grep 'gua' f.gua   又如：cat f.gua | grep 'gua'
+    .. 把输出结果替换掉
+    & 让程序在后台运行，如firefox & 缺点是关掉终端后开着的程序也会关掉，
+    () 让程序在独立子进程（shell）中运行 不会因shell关闭而关掉 (firefox &）
+    history
+    jobs 看到后台运行的程序
+    fg  fg 加任务编号 把后台运行的程序放到前台来，如：fg 1
+
+快捷键
+    Ctrl-C 把正在运行的程序挂起放到后台
+    Ctrl-Z 终端程序运行
+    Ctrl-D 输入文件终止符
+    Ctrl-t 交换光标前面的两个字符
+    Ctrl-w 删除一个单词
+    Ctrl-u 一次删除一行
+    Ctrl-k 从光标删除到行尾
+    Ctrl-d 删除后一个字符
+    Ctrl-h 删除前一个字符
+    Ctrl-f forward 往前就是右箭头
+    Ctrl-b backward 往后就是左箭头
+    Ctrl-p pres 往上 就是上箭头
+    Ctrl-n next 往下 就是下箭头
+
+
+
+'''
 
 
 

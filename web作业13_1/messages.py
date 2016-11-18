@@ -62,8 +62,6 @@ def edit(message_id):
     return render_template('messages_edit.html')
 
 
-
-
 @messages.route('/delete/<int:message_id>', methods=['POST'])
 def delete(message_id):
     id = int(message_id)
