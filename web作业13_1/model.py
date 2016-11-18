@@ -16,7 +16,10 @@ class message(db.Model):
     message_content = db.Column(db.Text)
     create_time = db.Column(db.String)
 
-    def __init__(self):
+    def __repr__(self):
+        return u'{} {}'.format(self.id, self.message_content)
+
+    def __init__(self, form):
         self.message_content = form.get('message_content')
         self.create_time = time.strftime('%Y-%m-%d %H:%M:%S')
 

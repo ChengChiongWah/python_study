@@ -10,9 +10,8 @@
         <input type="submit" value="提交" />
     </form>
     {% for lists in message_lists %}
-        <p>{{lists.id, lists.messages, lists.create_time}}</p>
+        <p>{{lists.id}} {{lists.message_content}}  {{lists.create_time}}<a href={{url_for('messages.edit', message_id=lists.id)}}>修改|</a><a href={{url_for('messages.delete', message_id=lists.id)}}> 删除</a></p>
     {% endfor %}
     </form>
-    <p>{{message_lists}}</p>
 </body>
 </html>
