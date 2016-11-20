@@ -8,6 +8,7 @@ app.secret_key = 'very easy guest'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
 
+
 db = SQLAlchemy(app)
 
 class User(object):
@@ -17,8 +18,14 @@ class User(object):
     password = db.Column(db.String)
     register_time = db.Column(db.String)
 
-    def __init__(self):
+    def __init__(self, form):
+        self.name = form.get('username', '')
+        self.password = form.get('password', '')
         self.register_time = time.strftime('%Y-%m-%d %H:%M:%S')
+
+    def add(self):
+        pass
+
 
 
     def __repr__(self):
