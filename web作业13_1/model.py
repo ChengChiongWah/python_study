@@ -27,6 +27,10 @@ class message(db.Model):
         db.session.add(self)
         db.session.commit()
 
+    def update(self, form):
+        self.message_content = form.get('message_content')
+        db.session.commit()
+
     def delete(self):
         db.session.delete(self)
         db.session.commit()

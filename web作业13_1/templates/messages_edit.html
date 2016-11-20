@@ -5,9 +5,10 @@
     <title>Messages_edit</title>
 </head>
 <body>
-    <form action={{url_for('messages.add')}} method="get">
+    <form action={{url_for('messages.index')}} method="post">
         <input type="text" name="message_content"/>
         <input type="submit" value="修改" />
     </form>
+    <!--<p>test heheheh</p>-->
 </body>
 </html>

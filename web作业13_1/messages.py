@@ -40,7 +40,7 @@ from model import message
 messages = Blueprint('messages', __name__)
 
 
-@messages.route('/', methods=['GET'])
+@messages.route('/', methods=[ 'GET'])
 def index():
     message_lists = message.query.all()
     return render_template('messages.html', message_lists=message_lists)
@@ -57,15 +57,15 @@ def add():
 @messages.route('/edit/<int:message_id>', methods=['POST'])
 def edit(message_id):
     form = request.form
-    m = message(form)
-    message.save(m)
+    id = int(message_id)
+    m = message.query.get(id)
+    m.update(form)
     return render_template('messages_edit.html')
 
 
-@messages.route('/delete/<int:message_id>', methods=['POST'])
+@messages.route('/delete/<int:message_id>')
 def delete(message_id):
     id = int(message_id)
-    message.delete(message.id)
+    m = message.query.get(id)
+    message.delete(m)
     return redirect(url_for('messages.index'))
-
-
