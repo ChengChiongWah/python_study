@@ -641,11 +641,83 @@ find
     Ctrl-p pres 往上 就是上箭头
     Ctrl-n next 往下 就是下箭头
 
-
-
 '''
 
+'''
+web15
+服务器的配置
+widows下用bitvise来登录并上传文件到服务器（二合一）
+mac下直接终端登录服务器 用filezillaa把代码上传到服务器上去
 
+gunicorn 运行服务器程序  会用一个监控程序监控gunicorn来运行，如果gunicron挂了
+         用监控程序重新启动
+
+         安装gunicorn pip install gunicorn
+
+         使用gunicorn启动程序  gunicorn -b 0.0.0.0:8000 main:app
+         (-b 是用来绑定地址 main 是main.py  app是main中的flask实例
+
+         使用gunicorn可以增加工作进程，充分利用多核 使用--workders 参数 4是进程数
+         gunicorn --workders 4 main：app -b 0.0.0.0:8000
+
+nginx使用（包括Apache 是和nginx一样流行的服务）
+         1.nginx 市场占有率高 开发投入大 安全性高 bug 修复快
+         2.nginx可以配置静态文件读取，增加网站效率
+         3.
+         常用命令
+             sudo service nginx restart
+             restart有时候没有效果 这时候要先stop 再start或者重启服务器再试试
+             sudo services nginx stop
+             sudo services nginx start
+             sudo services nginx {start|stop|restart|reload|config}
+
+          nginx 反向代理
+              1.正向代理  多个client请求服务器时中间有个代理帮助向服务器请求和返回信息
+              2.反向代理 配置我们的网站的时候
+
+              删掉默认网站配置
+              sudo rm /etc/nginx/site_enable/default
+
+              开头是行注释，注意行尾的尾号
+
+              server{
+                  listen 80;
+                  location / {
+                      proxy_pass http：//localhost:8000;
+                          }
+                   location /msg {
+                       proxy_pass http://localhost:8001;
+                           }
+                    }
+
+                我们应该把脚本放到我们自己的家目录下的bin目录里
+
+                权限问题  有些是
+                路径问题
+
+                通用wsgi.py文件(用来解决 无论你是main 还是
+                #!/usr/bin/env python3
+
+                import sys
+                from os.path improt abspath
+                from os.path import driname
+
+                sys.path.insert(0, abspath(dirname(__file__)))
+
+                import app
+                application = app.configured_app()
+
+服务器管理
+    http服务器 （nginx  apache）
+
+    web服务器（gunicorn）
+
+    守护进程（监控程序）
+        systemd   supervisor
+
+    推荐gunicorn + nginx + systemd 流行软件的是supervisor
+
+'''
 
 
 
