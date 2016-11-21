@@ -5,7 +5,8 @@
     <title>Messages_edit</title>
 </head>
 <body>
-    <form action={{url_for('messages.index')}} method="post">
+    <form action={{url_for('messages.update')}} method="post">
+        <input type=hidden name="message_id" value={{message_id}} />
         <input type="text" name="message_content"/>
         <input type="submit" value="修改" />
     </form>

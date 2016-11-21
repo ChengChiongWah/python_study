@@ -54,14 +54,18 @@ def add():
     return redirect(url_for('messages.index'))
 
 
-@messages.route('/edit/<int:message_id>', methods=['POST'])
+@messages.route('/edit/<int:message_id>', methods=['GET'])
 def edit(message_id):
+    return render_template('messages_edit.html', message_id=message_id)
+
+@messages.route('/update', methods=['POST'])
+def update():
     form = request.form
+    message_id = form.get('message_id')
     id = int(message_id)
     m = message.query.get(id)
     m.update(form)
-    return render_template('messages_edit.html')
-
+    return redirect(url_for('messages.index'))
 
 @messages.route('/delete/<int:message_id>')
 def delete(message_id):
