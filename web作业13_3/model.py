@@ -28,3 +28,10 @@ class User(db.Model):
 if __name__ == '__main__':
     db.drop_all()
     db.create_all()
+    i = 1
+    while i < 51:
+        user = User()
+        user.add(i)
+        i += 1
+    user = User.query.filter_by(id=1).first()
+    print(user.id, user.name)

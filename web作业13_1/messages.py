@@ -34,7 +34,6 @@ def log(*args, **kwargs):
         print(dt, *args, file=f, **kwargs)
 
 
-
 from model import message
 
 messages = Blueprint('messages', __name__)

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+    {% for item in pageitems %}
+        <a>{{item.id}}{{item.name}}{{item.createtime}}</a>
+        <br>
+    {% endfor %}
+    {% if pagination.has_prev %}
+        <a href ={{url_for('admin.users', page =page-1)}}>上一页</a>
+    {% else %}
+        <h>上一页</h>
+    {% endif %}
+    <a href={{url_for('admin.users', page=1)}}>1</a>
+    <a href={{url_for('admin.users', page=2)}}>2</a>
+    <a href={{url_for('admin.users', page=3)}}>3</a>
+    <a href={{url_for('admin.users', page=4)}}>4</a>
+    <a href={{url_for('admin.users', page=5)}}>5</a>
+    {% if pagination.has_next %}
+        <a href={{url_for('admin.users', page=page+1)}}>下一页</a>
+    {% else %}
+        <h>下一页</h>
+    {% endif %}
+</body>
+</html>

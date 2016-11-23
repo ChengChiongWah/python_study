@@ -719,7 +719,19 @@ nginx使用（包括Apache 是和nginx一样流行的服务）
 
 '''
 
+'''
+flask 中要抓取request中的某一个字段的字
+from flask import request
+argument = request.args.get('***')  #注意有args
+'''
 
+'''
+url_for() 能生成动态地址，将动态部分作为关键字参数传入，如url_for('user', name='john', _external=True)
+的返回结果是http://localhost:5000/user/john
+
+传入url_for()的关键字参数不仅限于动态路由的参数，函数能将任意额外的参数添加到查询字符串
+如：url_for('index', page=2）的返回结果是：http://localhost:5000/user?page=2
+'''
 
 
 
