@@ -2,11 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e67680a1-9c9d-447c-a14d-e5f129b14794" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业13_3/sqlite.db" afterPath="$PROJECT_DIR$/web作业13_3/sqlite.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业13_1/messages.py" afterPath="$PROJECT_DIR$/web作业13_1/messages.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业13_3/main.py" afterPath="$PROJECT_DIR$/web作业13_3/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业13_3/model.py" afterPath="$PROJECT_DIR$/web作业13_3/model.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/笔记.py" afterPath="$PROJECT_DIR$/笔记.py" />
     </list>
     <ignored path="Python_Study.iws" />
@@ -54,7 +49,7 @@
       <file leaf-file-name="admin.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web作业13_3/admin.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
+            <state relative-caret-position="323">
               <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -66,28 +61,18 @@
       <file leaf-file-name="user.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web作业13_3/templates/user.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
+            <state relative-caret-position="76">
               <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="笔记.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="笔记.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/笔记.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="277">
-              <caret line="688" column="56" selection-start-line="688" selection-start-column="56" selection-end-line="688" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="web15.py" pinned="false" current-in-tab="true">
-        <entry file="file://D:/ChengChiongWah/Python/视频/web15.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1132">
-              <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+            <state relative-caret-position="502">
+              <caret line="748" column="22" selection-start-line="748" selection-start-column="22" selection-end-line="748" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -96,8 +81,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web作业13_2/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+            <state relative-caret-position="247">
+              <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -107,8 +92,10 @@
         <entry file="file://$PROJECT_DIR$/web作业13_2/routes_user.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="190">
-              <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-              <folding />
+              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding>
+                <marker date="1479901472061" expanded="false" signature="0:87" ph="import ..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -152,18 +139,18 @@
         <option value="$PROJECT_DIR$/web作业13_3/model.py" />
         <option value="$PROJECT_DIR$/web作业13_3/user.html" />
         <option value="$PROJECT_DIR$/web作业13_1/messages.py" />
-        <option value="$PROJECT_DIR$/笔记.py" />
         <option value="$PROJECT_DIR$/web作业13_3/templates/user.html" />
         <option value="$PROJECT_DIR$/web作业13_3/admin.py" />
         <option value="$PROJECT_DIR$/web作业13_3/logs.txt" />
+        <option value="$PROJECT_DIR$/笔记.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1456" />
-    <option name="height" value="834" />
+    <option name="x" value="721" />
+    <option name="y" value="31" />
+    <option name="width" value="1376" />
+    <option name="height" value="702" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -190,7 +177,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -239,7 +226,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -451,10 +438,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1456" height="834" extended-state="6" />
+    <frame x="721" y="31" width="1376" height="702" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13194445" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.13153961" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -592,13 +579,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../14/todo.py" />
     <entry file="file://$PROJECT_DIR$/../14/user.py" />
-    <entry file="file://$PROJECT_DIR$/web作业13_2/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/web作业13_2/templates/login.html" />
     <entry file="file://$PROJECT_DIR$/web作业13_1/templates/messages.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
@@ -651,34 +632,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../111/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../111/gua.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-285">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../111/hash.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../111/routes/routes_user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-912">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../111/utils.py" />
+    <entry file="file://$PROJECT_DIR$/../111/gua.py" />
+    <entry file="file://$PROJECT_DIR$/../111/hash.py" />
+    <entry file="file://$PROJECT_DIR$/../111/routes/routes_user.py" />
     <entry file="file://$PROJECT_DIR$/web作业13_3/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="95">
@@ -691,7 +648,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web作业13_3/templates/user.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
+        <state relative-caret-position="76">
           <caret line="4" column="23" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
           <folding />
         </state>
@@ -699,7 +656,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web作业13_3/admin.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
+        <state relative-caret-position="323">
           <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
@@ -711,38 +668,32 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web作业13_2/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="247">
+          <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://D:/ChengChiongWah/Python/视频/web15.py" />
     <entry file="file://$PROJECT_DIR$/web作业13_2/routes_user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="15" column="51" selection-start-line="15" selection-start-column="51" selection-end-line="15" selection-end-column="51" />
-          <folding />
+          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding>
+            <marker date="1479901472061" expanded="false" signature="0:87" ph="import ..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/笔记.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="277">
-          <caret line="688" column="56" selection-start-line="688" selection-start-column="56" selection-end-line="688" selection-end-column="56" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://D:/ChengChiongWah/Python/视频/web15.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1132">
-          <caret line="125" column="0" selection-start-line="125" selection-start-column="0" selection-end-line="125" selection-end-column="0" />
+        <state relative-caret-position="502">
+          <caret line="748" column="22" selection-start-line="748" selection-start-column="22" selection-end-line="748" selection-end-column="22" />
           <folding />
         </state>
       </provider>

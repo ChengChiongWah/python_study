@@ -733,7 +733,24 @@ url_for() 能生成动态地址，将动态部分作为关键字参数传入，�
 如：url_for('index', page=2）的返回结果是：http://localhost:5000/user?page=2
 '''
 
+'''
+git的使用
+安装github离线版 然后在上面操作
 
+抓包
+    抓包程序fiddler  可以把电脑上面接受/发送的http请求全部抓包下来
+    https 浏览器和服务器加密通信，只有浏览器和服务器可以查看到，可以用中间人这种方式来窃听
+    这个软件最有用的地方在于用于前端 后端的开发 即查看前后端的交换数据，明确出现的问题是前端还是后端的问题
+    浏览器的抓包软件（chrome Firefox等）只能查看当前页面的http信息
+    其次抓包软件不仅仅可以抓包网页的信息 也可以看其他的比如移动设备的信息
+
+安装mysql-server  apt install mysql-server（注意第一次安装的时候会要求设置root密码）
+登录mysql mysql -u root --password=cclab
+          create table
+
+
+
+'''
 
 
 
