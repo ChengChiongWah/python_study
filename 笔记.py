@@ -804,5 +804,52 @@ html知识
 <dd></dd>用来创建列表的下层项目
 '''
 
+'''
+web18
+普通爬虫
+安装requests包
+把页面下载下来：page=request.get(url)（一定要先把网页下载保存下来）
+把网页分解成树状结构root = html.fromstring(page.content)
+//代表从根开始找：movie_divs=root.xpath('//div[@class="item"]')
+range(0, 250, 25) 从1开始到250间隔为25
+
+网站是否知道你已经登录：用cookie 爬虫的时候request带上cookie就可以模拟登录了
+如果有动态页面（比如JS），他也是走http协议，在浏览器调试下操作查看有哪些变化
+
+数据库的自动迁移
+flask-migrate flask-script
+
+SQLAlchemy的关联问题
+class Comment(db.Model):
+.....
+comments = db.relationship('comment',
+                           backref='user',
+                           foreign_keys='comment_)
+多对多关系
+lazy参数 指定加载关系数据的方式
+         select用到了才加载，默认值
+         dynamic 动态加载
+         immediate 立即加载
+         noload 永不加载
+         还有用不到的两个值joined 和subquery，现在不关心
+
+JSON API
+RESEfull
+API不提供页面
+RESETfull  是一个博士提出来的API设计规范
+           URL是以资源的形式组合  创建 POST /user/
+           读取 GET /users
+                GET /user/1
+           更新 PUT /user/1
+           删除 DELETE /user/1
+gua的形式  GET /user/all
+           GET /user/1
+           GET /user/delete/1
+           POST /user/update/1
+           POST /user/add
+           POST /user/delete
+           ['1', '2', '3',
+
+'''
 
 
