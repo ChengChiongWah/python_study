@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e67680a1-9c9d-447c-a14d-e5f129b14794" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web作业17/templates/comments.html" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/templates/user_register.html" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业13_1/sqlite.db" afterPath="$PROJECT_DIR$/web作业13_1/sqlite.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/sqlite.db" afterPath="$PROJECT_DIR$/web作业17/sqlite.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/main.py" afterPath="$PROJECT_DIR$/web作业17/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/model.py" afterPath="$PROJECT_DIR$/web作业17/model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/templates/index.html" afterPath="$PROJECT_DIR$/web作业17/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/user.py" afterPath="$PROJECT_DIR$/web作业17/user.py" />
-    </list>
+    <list default="true" id="e67680a1-9c9d-447c-a14d-e5f129b14794" name="Default" comment="" />
     <ignored path="Python_Study.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,13 +20,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="weibo.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="weibo.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../视频/web14/weibo.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-497">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#0#33#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Desktop/python_study/web作业17/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="user.py" pinned="false" current-in-tab="true">
+        <entry file="file://$USER_HOME$/Desktop/python_study/web作业17/user.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-60">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#27#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -466,8 +480,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://D:/python/FileRecv/web9上课板书/utils.py" />
-    <entry file="file://D:/python/FileRecv/web9上课板书/routes/__init__.py" />
     <entry file="file://D:/python/FileRecv/web9上课板书/routes/routes_user.py" />
     <entry file="file://D:/python/FileRecv/web9上课板书/models.py" />
     <entry file="file://D:/python/FileRecv/web9上课板书/gua.py" />
@@ -673,7 +685,7 @@
         <state relative-caret-position="171">
           <caret line="9" column="53" selection-start-line="9" selection-start-column="53" selection-end-line="9" selection-end-column="53" />
           <folding>
-            <element signature="n#style#0;n#dd#1;n#dl#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#dd#1;n#dl#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -704,7 +716,7 @@
         <state relative-caret-position="380">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#23#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -722,7 +734,7 @@
         <state relative-caret-position="-114">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -732,7 +744,7 @@
         <state relative-caret-position="-326">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#0#33#0" expanded="true" />
+            <element signature="e#0#33#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -750,7 +762,7 @@
         <state relative-caret-position="461">
           <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
           <folding>
-            <element signature="e#0#27#0" expanded="true" />
+            <element signature="e#0#27#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -760,7 +772,7 @@
         <state relative-caret-position="456">
           <caret line="39" column="31" selection-start-line="39" selection-start-column="31" selection-end-line="39" selection-end-column="31" />
           <folding>
-            <element signature="e#0#12#0" expanded="true" />
+            <element signature="e#0#12#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -771,6 +783,26 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#33#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/python_study/web作业17/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/python_study/web作业17/user.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-60">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#27#0" expanded="true" />
           </folding>
         </state>
       </provider>
