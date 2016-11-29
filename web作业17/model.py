@@ -34,22 +34,35 @@ class Weibo(db.Model):
     contents = db.Column(db.Text)
     create_time = db.Column(db.String)
 
-    def __inti__(self, form):
+    def __init__(self, form):
         self.contents = form.get('weibo_contents')
         self.create_time = formate_time
+
+    def add(self):
+        db.session.add(self)
+        db.session.commit()
 
 class Comments(db.Model):
     __tablename__ = 'comments'
     id = db.Column(db.Integer, primary_key=True)
     contents = db.Column(db.Text)
     create_time = db.Column(db.String)
-    comments_author = db.Column(db.String)
+    # comments_author = db.Column(db.String)
+    weibo_id = db.Column(db.Integer)
 
     def __init__(self, form):
         self.contents = form.get('comments_contents')
         self.create_time = formate_time
 
+    def add(self, weibo_id):
+        self.weibo_di = weibo_id
+        db.session.add(self)
+        db.session.commit()
+
 
 if __name__ == '__main__':
     db.drop_all()
     db.create_all()
+    # weibos = Weibo.query.limit(10).all()
+    # for weibo in weibos:
+    #     print(weibo.id, weibo.contents)

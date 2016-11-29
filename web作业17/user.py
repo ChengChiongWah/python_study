@@ -4,6 +4,8 @@ from flask import redirect
 from flask import request
 from flask import url_for
 from model import User
+from model import Weibo
+from model import Comments
 
 
 user = Blueprint('user', __name__)
@@ -19,8 +21,36 @@ def register():
 
 @user.route('/login', methods=['POST'])
 def login():
-    if request.form('username') and request.form('password'):
-        username = request.form('username')
-        password_register = request.form('password')
-        user = User.query.filter_by(username=username)
+    if request.form.get('username'):
+        username = request.form.get('username')
+        password_register = request.form.get('password')
+        user = User.query.filter_by(username=username).first()
         if password_register == user.password:
+            login_status = True
+        else:
+            login_status = False
+    weibos = Weibo.query.limit(20).all()
+    comments = Comments.query.limit(20).all()
+    return render_template('index.html', login_status=login_status, username=username,
+                             weibos=weibos, comments=comments)
+
+@user.route('/weibo', methods=['POST'])
+def weibo():
+    form = request.form
+    weibo = Weibo(form)
+    weibo.add()
+    return redirect(url_for('index'))
+
+
+@user.route('/comments/', methods=['GET'])
+def comments():
+    return render_template('comments.html')
+
+
+@user.route('/comments/', methods=['POST'])
+def comments_add():
+    form = request.form
+    comment = Comments(form)
+    weibo_id = request.args.get('weibo_id')
+    comment.add(int(weibo_id))
+    return redirect(url_for('index'))

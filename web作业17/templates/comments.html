@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User_comments</title>
+</head>
+<body>
+    <form action={{url_for('user.comments_add')}} method="post">
+            <dl>
+                <dd><textarea name="comments_contents" row=10 cols=68></textarea>
+                <dd style="text-align:center"><input type=submit value="评论">
+            </dl>
+    </form>
+</body>
+</html>
