@@ -3,6 +3,7 @@ from flask import render_template
 from flask import redirect
 from flask import request
 from flask import url_for
+from flask import session
 from model import User
 from model import Weibo
 from model import Comments
@@ -26,9 +27,7 @@ def login():
         password_register = request.form.get('password')
         user = User.query.filter_by(username=username).first()
         if password_register == user.password:
-            login_status = True
-        else:
-            login_status = False
+            session['user_id'] = user.id
     weibos = Weibo.query.limit(20).all()
     comments = Comments.query.limit(20).all()
     return render_template('index.html', login_status=login_status, username=username,

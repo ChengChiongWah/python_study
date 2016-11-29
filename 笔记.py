@@ -326,6 +326,7 @@ web6:
 web6作业：http各个头代表的意义
 Set - Cokkie的内容很复杂，a = b的形式（变量跟值类似）
 第一次发送cookie给浏览器 后面浏览器访问时会带上cookie服务器从cookie就可以识别哪一个用户。
+session是什么 就是cookie里面存的东西你不可读而已，仅此而已
 session 把信息存在服务器，？？？？
 代码在论坛上贴上后？？？（豪华储瓜间上面）
 ORM：object relation mapping

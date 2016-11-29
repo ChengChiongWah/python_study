@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-from user import user
+from user import User
 from model import Weibo
 from model import Comments
 

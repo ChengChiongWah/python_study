@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import session
 from flask_sqlalchemy import SQLAlchemy
 import time
 
@@ -26,6 +27,12 @@ class User(db.Model):
     def add(self):
         db.session.add(self)
         db.session.commit()
+
+    def valid_login(self):  #用session判断是否登录成功
+        if session.get('user_id'):
+            return True
+        else:
+            return False
 
 
 class Weibo(db.Model):
