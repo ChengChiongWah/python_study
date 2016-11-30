@@ -19,6 +19,7 @@ class User(db.Model):
     password = db.Column(db.String)
     register_time = db.Column(db.String)
 
+
     def __init__(self, form):
         self.username = form.get('username_register')
         self.password = form.get('password_register')
@@ -28,11 +29,11 @@ class User(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def valid_login(self):  #用session判断是否登录成功
-        if session.get('user_id'):
+    def valid_login(self):
+        if session.get['user_id'] == self.id:
             return True
         else:
-            return False
+            return Flase
 
 
 class Weibo(db.Model):

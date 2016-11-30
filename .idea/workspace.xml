@@ -2,10 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e67680a1-9c9d-447c-a14d-e5f129b14794" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/main.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/model.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/sqlite.db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/templates/comments.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/templates/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/user.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/web作业17/weibo.py" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/main.py" afterPath="$PROJECT_DIR$/web作业17/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/model.py" afterPath="$PROJECT_DIR$/web作业17/model.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web作业17/user.py" afterPath="$PROJECT_DIR$/web作业17/user.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/笔记.py" afterPath="$PROJECT_DIR$/笔记.py" />
     </list>
     <ignored path="Python_Study.iws" />
@@ -26,71 +30,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="笔记.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="笔记.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/笔记.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="328" column="36" selection-start-line="328" selection-start-column="36" selection-end-line="328" selection-end-column="36" />
+            <state relative-caret-position="445">
+              <caret line="884" column="11" selection-start-line="884" selection-start-column="11" selection-end-line="884" selection-end-column="11" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web作业17/main.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="user.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web作业17/user.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-              <folding>
-                <element signature="e#0#27#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web作业17/templates/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="646">
-              <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-              <folding>
-                <element signature="n#style#0;n#dd#1;n#dl#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#dt#0;n#dl#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#dl#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="e#1421#1427#0" expanded="true" />
-                <element signature="e#1427#1433#0" expanded="true" />
-                <element signature="e#1433#1439#0" expanded="true" />
-                <element signature="e#1457#1463#0" expanded="true" />
-                <element signature="e#1463#1469#0" expanded="true" />
-                <element signature="e#1469#1475#0" expanded="true" />
-                <element signature="e#1496#1502#0" expanded="true" />
-                <element signature="e#1502#1508#0" expanded="true" />
-                <element signature="e#1508#1514#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="model.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/web作业17/model.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -141,16 +86,15 @@
         <option value="$PROJECT_DIR$/web作业17/templates/user_register.html" />
         <option value="$PROJECT_DIR$/web作业17/templates/comments.html" />
         <option value="$PROJECT_DIR$/web作业17/templates/index.html" />
-        <option value="$PROJECT_DIR$/笔记.py" />
         <option value="$PROJECT_DIR$/web作业17/model.py" />
         <option value="$PROJECT_DIR$/web作业17/user.py" />
         <option value="$PROJECT_DIR$/web作业17/main.py" />
+        <option value="$PROJECT_DIR$/笔记.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-80" />
-    <option name="y" value="16" />
+    <option name="x" value="667" />
     <option name="width" value="1376" />
     <option name="height" value="702" />
   </component>
@@ -179,6 +123,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -211,27 +156,8 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web作业17" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
     </panes>
   </component>
@@ -501,10 +427,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-80" y="16" width="1376" height="702" extended-state="0" />
+    <frame x="667" y="0" width="1376" height="702" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16442451" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12107623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -648,9 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="57">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -721,7 +644,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="283">
           <caret line="23" column="59" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="60" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -743,21 +665,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web作业17/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="54" column="30" selection-start-line="54" selection-start-column="30" selection-end-line="54" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/web作业17/user.py" />
     <entry file="file://$PROJECT_DIR$/../视频/web14/main.py" />
     <entry file="file://$PROJECT_DIR$/../视频/web14/weibo.py" />
     <entry file="file://$PROJECT_DIR$/web作业17/weibo.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -765,7 +679,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -773,9 +686,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="164">
           <caret line="19" column="18" selection-start-line="19" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -783,9 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-457">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -793,9 +700,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
           <caret line="56" column="39" selection-start-line="56" selection-start-column="39" selection-end-line="56" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#33#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -803,9 +707,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="988">
           <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -813,27 +714,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-413">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#12#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/笔记.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="328" column="36" selection-start-line="328" selection-start-column="36" selection-end-line="328" selection-end-column="36" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web作业17/model.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
+        <state relative-caret-position="532">
           <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -841,40 +729,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="34" column="33" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-          <folding>
-            <element signature="n#style#0;n#dd#1;n#dl#0;n#form#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#dt#0;n#dl#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#dl#2;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#1421#1427#0" expanded="true" />
-            <element signature="e#1427#1433#0" expanded="true" />
-            <element signature="e#1433#1439#0" expanded="true" />
-            <element signature="e#1457#1463#0" expanded="true" />
-            <element signature="e#1463#1469#0" expanded="true" />
-            <element signature="e#1469#1475#0" expanded="true" />
-            <element signature="e#1496#1502#0" expanded="true" />
-            <element signature="e#1502#1508#0" expanded="true" />
-            <element signature="e#1508#1514#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/web作业17/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
+        <state relative-caret-position="0">
           <caret line="8" column="3" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web作业17/user.py">
+    <entry file="file://$PROJECT_DIR$/web作业17/user.py" />
+    <entry file="file://$PROJECT_DIR$/笔记.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="30" column="40" selection-start-line="30" selection-start-column="40" selection-end-line="30" selection-end-column="40" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="445">
+          <caret line="884" column="11" selection-start-line="884" selection-start-column="11" selection-end-line="884" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>

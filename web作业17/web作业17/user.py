@@ -12,6 +12,14 @@ from model import Comments
 user = Blueprint('user', __name__)
 
 
+@user.route('/index', methods=['GET'])
+def index():
+    username = request.args.get('username')
+    weibos = Weibo.query.limit(20).all()
+    for weibo_id in weibos.id:
+    comments = Comments.query.filter_by(weibo_id ).all()
+    return render_template('login/weibo.html', weibos=weibos, comments=comments, username=username)
+
 
 @user.route('/register', methods=['POST'])
 def register():
@@ -19,6 +27,7 @@ def register():
     user = User(form)
     user.add()
     return redirect(url_for('index'))
+
 
 @user.route('/login', methods=['POST'])
 def login():
@@ -28,22 +37,20 @@ def login():
         user = User.query.filter_by(username=username).first()
         if password_register == user.password:
             session['user_id'] = user.id
-    weibos = Weibo.query.limit(20).all()
-    comments = Comments.query.limit(20).all()
-    return render_template('index.html', login_status=login_status, username=username,
-                             weibos=weibos, comments=comments)
+    return redirect(url_for('user.index', username=username))
+
 
 @user.route('/weibo', methods=['POST'])
 def weibo():
     form = request.form
     weibo = Weibo(form)
     weibo.add()
-    return redirect(url_for('index'))
+    return redirect(url_for('user.index'))
 
 
 @user.route('/comments/', methods=['GET'])
 def comments():
-    return render_template('comments.html')
+    return render_template('login/comments.html')
 
 
 @user.route('/comments/', methods=['POST'])
@@ -52,4 +59,4 @@ def comments_add():
     comment = Comments(form)
     weibo_id = request.args.get('weibo_id')
     comment.add(int(weibo_id))
-    return redirect(url_for('index'))
+    return redirect(url_for('user.index'))

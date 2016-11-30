@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weibo</title>
+</head>
+<body>
+    <dl style="text-align:center">
+        {{username}}<h>:已登录</h>
+        <form action={{url_for('user.weibo')}} method="post">
+            <dd><textarea name="weibo_contents" row=10 cols=68></textarea>
+            <dd ><input type=submit value="发送">
+        </form>
+        {% for weibo in weibos %}
+            <dt>{{weibo.id}}&nbsp;&nbsp;&nbsp;{{weibo.contents}}&nbsp;&nbsp;&nbsp;{{weibo.create_time}}<a href={{url_for('user.comments', weibo_id=weibo.id)}}>评论</a>
+                <dd>{% for comment in comments %}
+                        {% if comment.weibo_id = weibo.id %}
+                            {{comment.contents}}&nbsp;&nbsp;{{comment.create_time}}
+                        {% endif %}
+                    {% endfor %}
+                </dd>
+        {% endfor %}
+    </dl>
+</body>
+</html>

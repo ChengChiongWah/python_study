@@ -1,6 +1,6 @@
 from flask import Flask
 from flask import render_template
-from user import User
+from user import user
 from model import Weibo
 from model import Comments
 
@@ -10,6 +10,7 @@ from model import Comments
 
 
 app = Flask(__name__)
+app.secret_key = 'just check once'
 app.register_blueprint(user, url_prefix='/user')
 
 

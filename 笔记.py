@@ -853,4 +853,41 @@ gua的形式  GET /user/all
 
 '''
 
+'''
+web19
+软件的结构
+config.py文件
+secret_key = 'secret'
+__db__path = 'db.sqlite'
+db_uri = 'sqlite:///
 
+wsgi.py文件
+#! /usr/bin/env python3
+import sys
+from os.path import abspath
+from os.path import dirname
+import app
+sys.path.insert(0, abspath(dirname(__file__)))
+application = app.configured_app()
+
+app.py文件
+static文件夹
+routes文件夹
+models文件夹
+
+网络安全
+防范攻击：加上xfrs
+
+写简历，投简历和面试
+    写简历 就是要吹 （不是撒谎）
+    投简历 海投 不要带任何感情（51job 智联招聘 boss直聘 拉钩有点坑）
+        100 起步  200 不嫌多 300 400最好
+        重复投
+    面试
+        什么都能答应
+        只许我拒人 不可人拒我（等他给了offer不去就是，尽量不要被人拒，人家拒绝你影响心情）
+
+
+
+
+'''
