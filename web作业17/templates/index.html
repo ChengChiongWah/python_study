@@ -17,8 +17,13 @@
             <input type="submit" value="注册">
         </form>
         {% for weibo in weibos %}
-            <dt>{{weibo.id}}&nbsp;&nbsp;&nbsp;{{weibo.contents}}&nbsp;&nbsp;&nbsp;{{weibo.create_time}}&nbsp;&nbsp;&nbsp;<h>评论</h>
-                <dd>222222222</dd>
+            <dt>{{weibo.id}}&nbsp;&nbsp;&nbsp;{{weibo.contents}}&nbsp;&nbsp;&nbsp;{{weibo.create_time}}<a href={{url_for('user.comments', weibo_id=weibo.id)}}>评论</a>
+                {% if weibo.load_comment() %}
+                    <dd>{% for comment in weibo.load_comment() %}
+                            {{comment.contents}}&nbsp;&nbsp;&nbsp;{{comment.create_time}}<br>
+                        {% endfor %}
+                    </dd>
+                {% endif %}
         {% endfor %}
     </dl>
 </body>

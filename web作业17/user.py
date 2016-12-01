@@ -16,9 +16,7 @@ user = Blueprint('user', __name__)
 def index():
     username = request.args.get('username')
     weibos = Weibo.query.limit(20).all()
-    for weibo_id in weibos.id:
-    comments = Comments.query.filter_by(weibo_id ).all()
-    return render_template('login/weibo.html', weibos=weibos, comments=comments, username=username)
+    return render_template('login/weibo.html', weibos=weibos, username=username)
 
 
 @user.route('/register', methods=['POST'])
@@ -45,18 +43,22 @@ def weibo():
     form = request.form
     weibo = Weibo(form)
     weibo.add()
-    return redirect(url_for('user.index'))
+    username = request.args.get('username')
+    return redirect(url_for('user.index', username=username))
 
 
-@user.route('/comments/', methods=['GET'])
+@user.route('/comments', methods=['GET'])
 def comments():
-    return render_template('login/comments.html')
+    weibo_id = request.args.get('weibo_id')
+    username = request.args.get('username')
+    return render_template('login/comments.html', weibo_id=int(weibo_id), username=username)
 
 
-@user.route('/comments/', methods=['POST'])
+@user.route('/comments/add', methods=['POST'])
 def comments_add():
     form = request.form
     comment = Comments(form)
     weibo_id = request.args.get('weibo_id')
+    username = request.args.get('username')
     comment.add(int(weibo_id))
-    return redirect(url_for('user.index'))
+    return redirect(url_for('user.index', username=username))

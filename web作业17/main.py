@@ -17,8 +17,7 @@ app.register_blueprint(user, url_prefix='/user')
 @app.route('/')
 def index():
     weibos = Weibo.query.limit(20).all()
-    comments = Comments.query.limit(20).all()
-    return render_template('index.html', weibos=weibos, comments=comments)
+    return render_template('index.html', weibos=weibos)
 
 
 if __name__ == '__main__':

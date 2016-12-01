@@ -10,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
 
 db = SQLAlchemy(app)
 
-formate_time = time.strftime('%Y-%m-%d %H:%M:%S')
+formate_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
 class User(db.Model):
     __tablename__ = 'user'
@@ -23,7 +23,7 @@ class User(db.Model):
     def __init__(self, form):
         self.username = form.get('username_register')
         self.password = form.get('password_register')
-        self.register_time = formate_time
+        self.register_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
     def add(self):
         db.session.add(self)
@@ -44,11 +44,16 @@ class Weibo(db.Model):
 
     def __init__(self, form):
         self.contents = form.get('weibo_contents')
-        self.create_time = formate_time
+        self.create_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
     def add(self):
         db.session.add(self)
         db.session.commit()
+
+    def load_comment(self):
+        self.comments = Comments.query.filter_by(weibo_id=self.id).all()
+        return self.comments
+
 
 class Comments(db.Model):
     __tablename__ = 'comments'
@@ -59,11 +64,11 @@ class Comments(db.Model):
     weibo_id = db.Column(db.Integer)
 
     def __init__(self, form):
-        self.contents = form.get('comments_contents')
-        self.create_time = formate_time
+        self.contents = form.get('comments_contents', '')
+        self.create_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
     def add(self, weibo_id):
-        self.weibo_di = weibo_id
+        self.weibo_id = weibo_id
         db.session.add(self)
         db.session.commit()
 
