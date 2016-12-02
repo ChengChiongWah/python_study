@@ -4,6 +4,7 @@ from flask import redirect
 from flask import request
 from flask import url_for
 from flask import session
+from flask import current_app
 from model import User
 from model import Weibo
 from model import Comments
@@ -12,7 +13,16 @@ from model import Comments
 user = Blueprint('user', __name__)
 
 
+def login_required(fn):
+    def wapper():
+        if current_app._get_current_object().get('username') is not None:
+            fn()
+        else:
+            return redirect(url_for('main.index'))
+    return wapper()
+
 @user.route('/index', methods=['GET'])
+@login_required
 def index():
     username = request.args.get('username')
     weibos = Weibo.query.limit(20).all()

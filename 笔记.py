@@ -887,7 +887,56 @@ models文件夹
         什么都能答应
         只许我拒人 不可人拒我（等他给了offer不去就是，尽量不要被人拒，人家拒绝你影响心情）
 
+'''
 
+'''
+web20
+装饰器
+def current_uer():#判断是否登录
+    if session.get('username')
 
+def require_login(f):
+    @wrap
+    def function(*args, **kwargs):
+        if current_uer() is None:
+            return redirect(url_for('main.login'))
+        ele:
+            f(*args, **kwargs)
+    return function
+
+jinja2中过滤器 自定义过滤器
+过滤器是在jinja2模板中以\符号使用的函数
+{{name\lower}} 相当于lower（name）
+{{name\trim\upper\reverse}}相当于reverse（upper（trim（name）））
+
+自定义过滤器
+@app.template_filter()
+def capsule（s）：
+    return s.uppercase()
+
+如果你想统计整个网站的访问IP，
+可以在app.py文件
+def log_user_infp():
+    from flask import request
+    print(‘log user infro’, request.method)
+app.before_request(log_uer_info) #在app上面加上整个则整个的，相比于针对的蓝图
+
+模板继承
+{% block title %}..{% endblock %} #有这个block的会可以被替换掉
+{% extends 'base.html' %}  #继承自某个模板，必需放到第一行
+在block里面加上super（）会保留父模板的内容，如：
+{% block title %}
+    {{super（）}}
+{% endblock %}
+
+上传文件,可以用古老的form，也可以用ajax（不用刷新页面）
+<form action='/upload' method='post' enctype=mu>
+    <input type='file' ...>
+    <..
+</form>
+
+python面试大全
+SQL必知必会
+MYSQL 必知必会
 
 '''
