@@ -6,7 +6,7 @@
 </head>
 <body>
     <dl style="text-align:center">
-        {{username}}<h>:已登录</h>
+        <h>登录用户：</h>{{username}}&nbsp;&nbsp;&nbsp;<a href={{url_for('user.logout')}}>退出登录</a>
         <form action={{url_for('user.weibo', username=username)}} method="post">
             <dd><textarea name="weibo_contents" row=10 cols=68></textarea>
             <dd ><input type=submit value="发送">
