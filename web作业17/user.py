@@ -4,6 +4,7 @@ from flask import redirect
 from flask import request
 from flask import url_for
 from flask import session
+from functools import wraps
 from model import User
 from model import Weibo
 from model import Comments
@@ -12,11 +13,30 @@ from model import Comments
 user = Blueprint('user', __name__)
 
 
+def current_user():
+    user_id = session.get('user_id', '')
+    u = User.query.filter_by(id=user_id).first()
+    return u
+
+
+def login_require(f):
+    @wraps(f)
+    def functions(*args, **kwargs):
+        if current_user() is None:
+            return redirect(url_for('index'))
+        else:
+            return f(*args, **kwargs)
+    return functions
+
+
 @user.route('/index', methods=['GET'])
 def index():
-    username = request.args.get('username')
-    weibos = Weibo.query.limit(20).all()
-    return render_template('login/weibo.html', weibos=weibos, username=username)
+    if request.cookies:
+        username = request.args.get('username')
+        weibos = Weibo.query.limit(20).all()
+        return render_template('login/weibo.html', weibos=weibos, username=username)
+    else:
+        return redirect(url_for('index'))
 
 
 @user.route('/register', methods=['POST'])
@@ -38,16 +58,28 @@ def login():
     return redirect(url_for('user.index', username=username))
 
 
+
+@user.route('/weibo/logout', methods=['GET'])
+def logout():
+    session.pop('user_id', None)
+    return redirect(url_for('index'))
+
 @user.route('/weibo', methods=['POST'])
+@login_require
 def weibo():
-    form = request.form
-    weibo = Weibo(form)
-    weibo.add()
-    username = request.args.get('username')
+    if request.form.get('weibo_contents'):
+        form = request.form
+        weibo = Weibo(form)
+        weibo.add()
+        username = request.args.get('username')
+    else:
+        username = request.args.get('username')
+        flash('Please input weibo contents')
     return redirect(url_for('user.index', username=username))
 
 
 @user.route('/comments', methods=['GET'])
+@login_require
 def comments():
     weibo_id = request.args.get('weibo_id')
     username = request.args.get('username')
@@ -56,9 +88,17 @@ def comments():
 
 @user.route('/comments/add', methods=['POST'])
 def comments_add():
-    form = request.form
-    comment = Comments(form)
-    weibo_id = request.args.get('weibo_id')
-    username = request.args.get('username')
-    comment.add(int(weibo_id))
-    return redirect(url_for('user.index', username=username))
+    if request.cookies:
+        if request.form.get('comments_contents'):
+            form = request.form
+            comment = Comments(form)
+            weibo_id = request.args.get('weibo_id')
+            username = request.args.get('username')
+            comment.add(int(weibo_id))
+        else:
+            username = request.args.get('username')
+        return redirect(url_for('user.index', username=username))
+    else:
+        return redirect(url_for('index'))
+
+

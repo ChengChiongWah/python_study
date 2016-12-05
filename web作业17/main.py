@@ -20,5 +20,14 @@ def index():
     return render_template('index.html', weibos=weibos)
 
 
+def login_require(fn):
+    def auth_login():
+        app.app_context().push()
+        if current_app.session['username'] is not None:
+            fn
+        else:
+            return redirect(url_for('index'))
+    return auth_login
+
 if __name__ == '__main__':
     app.run()
