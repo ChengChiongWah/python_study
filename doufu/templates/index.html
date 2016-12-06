@@ -1,3 +1,4 @@
+{% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,16 +34,16 @@
     <div class="container">
         <div class="header">
             <ul class="nav nav-pills pull-right" role="tablist">
-                <li role="presentation" class="active"><a href="#">Home</a></li>
+                <li role="presentation" class="active"><a href={{url_for("main.index")}}>Home</a></li>
                 <li role="presentation"><a href="#">About</a></li>
                 <li role="presentation"><a href={{url_for('main.login_view')}}>Login</a></li>
             </ul>
-            <h3 class="text-muted">Project name</h3>
+            <h3 class="text-muted">豆腐的美味世界</h3>
         </div>
 
         <div class="container marketing">
             <!-- START THE FEATURETTES -->
-
+            {% block container %}
             <div class="row featurette">
                 <div class="col-md-3">
                     <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
@@ -141,6 +142,7 @@
                 </div>
             </div>
 
+            {% endblock %}
             <!-- /END THE FEATURETTES -->
 
 

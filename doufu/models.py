@@ -8,26 +8,31 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
 db = SQLAlchemy(app)
 
-# formate_time = time.strftime('%Y-%m-%d %h:%M:%S', time.localtime(int(time.time())))
-# formate_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
-# time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
-
-class Doufu(db.Model):
-    __tablename__ = 'doufu'
+class Recipe(db.Model):
+    __tablename__ = 'recipe'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text) #名称
+    name = db.Column(db.Text, unique=True) #名称
     introduce = db.Column(db.Text) #简介
     material = db.Column(db.Text) #用料
-    methods = db.Column(db.Text) #做法
     pictures = db.Column(db.String) #保留图片路径
+    author = db.Column(db.Text) #菜谱的发布者
     create_time = db.Column(db.String)
+
+
+class Steps(db.Model):
+    __tablename__ = 'steps'
+    id = db.Column(db.Integer, primary_key=True)
+    step_number = db.Column(db.Integer, unique=True)
+    technique = db.Column(db.Integer) #方法
+    tips = db.Column(db.Text)
+    recipe_number = db.Column(db.Integer) #对应的菜谱ID
 
 
 class User(db.Model):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text)
+    name = db.Column(db.Text, unique=True)
     password = db.Column(db.Text)
     create_time = db.Column(db.String)
 
@@ -39,7 +44,6 @@ class User(db.Model):
     def add(self):
         db.session.add(self)
         db.session.commit()
-
 
 
 if __name__ == '__main__':

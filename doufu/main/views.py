@@ -30,11 +30,11 @@ def register_add():
 def login_view():
     return render_template('login.html')
 
-@main.route('/login', methods=['GET'])
+@main.route('/login', methods=['post'])
 def login():
-    form = request.form()
-    username = form.get('username', '')
-    password = form.get('password', '')
+    form = request.form
+    username = form.get('username')
+    password = form.get('password')
     if username:
         user = User.query.filter_by(name=username).first()
         if password == user.password:
