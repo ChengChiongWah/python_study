@@ -29,12 +29,6 @@ class User(db.Model):
         db.session.add(self)
         db.session.commit()
 
-    def valid_login(self):
-        if session.get['user_id'] == self.id:
-            return True
-        else:
-            return Flase
-
 
 class Weibo(db.Model):
     __tablename__ = 'weibo'

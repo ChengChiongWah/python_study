@@ -904,4 +904,176 @@ aaa()
 '''
 functools.wraps()函数：调用进过装饰的函数，相当于调用一个新函数，那查看函数参数，注释甚至函数名时，
 就只能看到装饰器的相关信息，被包装函数的信息被丢掉了，而wraps则可以帮你转移这些信息。
+=======
+
+'''
+web20
+装饰器
+def current_uer():#判断是否登录
+    if session.get('username')
+
+def require_login(f):
+    @wrap
+    def function(*args, **kwargs):
+        if current_uer() is None:
+            return redirect(url_for('main.login'))
+        ele:
+            f(*args, **kwargs)
+    return function
+
+jinja2中过滤器 自定义过滤器
+过滤器是在jinja2模板中以\符号使用的函数
+{{name\lower}} 相当于lower（name）
+{{name\trim\upper\reverse}}相当于reverse（upper（trim（name）））
+
+自定义过滤器
+@app.template_filter()
+def capsule（s）：
+    return s.uppercase()
+
+如果你想统计整个网站的访问IP，
+可以在app.py文件
+def log_user_infp():
+    from flask import request
+    print(‘log user infro’, request.method)
+app.before_request(log_uer_info) #在app上面加上整个则整个的，相比于针对的蓝图
+
+模板继承
+{% block title %}..{% endblock %} #有这个block的会可以被替换掉
+{% extends 'base.html' %}  #继承自某个模板，必需放到第一行
+在block里面加上super（）会保留父模板的内容，如：
+{% block title %}
+    {{super（）}}
+{% endblock %}
+
+上传文件,可以用古老的form，也可以用ajax（不用刷新页面）
+<form action='/upload' method='post' enctype=mu>
+    <input type='file' ...>
+    <..
+</form>
+
+python面试大全
+SQL必知必会
+MYSQL 必知必会
+
+'''
+
+'''
+我们定义函数的格式说这样的：
+def function(***):
+
+如果要调用函数，可以使用这样的方式：
+function（***）
+
+而：aaa = function 表示的是将函数赋值给aaa
+这样可以通过aaa调用function
+aaa()
+'''
+
+'''
+functools.wraps()函数：调用进过装饰的函数，相当于调用一个新函数，那查看函数参数，注释甚至函数名时，
+就只能看到装饰器的相关信息，被包装函数的信息被丢掉了，而wraps则可以帮你转移这些信息。
+'''
+
+'''
+web21
+数据结构和算法分析
+#算法的时间复杂度
+大O记法， 是描述算法复杂度的符号
+O（1）    常数复杂度，最快的算法  取数组第一个元素，取第n个元素也是O（1）
+          字典 数组和集合的存取都是O（1）
+O（lgN）  lg是以2为底的对数，假设有一个有序数组，以2分法查找，n是数组长度，如果1000 因为2的10次是1024，故最多10次
+O（n）    线性复杂度   假设有一个数组，以遍历的方式在其中查找元素，如果n有1000个 则最大要1000次
+O（nlgn）  求两个数组交集，其中一个是有序数组， A数组每一个元素都要在B数组中进行查找操作，每次查找如果使用二分法则复杂度是lgN
+O（n^2)   平方复杂度   求两个数组的交集
+
+有序数组一定是N  无序数组lgN
+
+#数据结构
+name='gua'  #string 类型
+height=1.69 #float类型
+age=18      #int类型
+
+#list（即数组）
+scores=[90, 88, 80, 100]
+
+#dict(字典)
+student={
+    'name':'gua',
+    'score':'59',
+}
+
+#类是高级字典，本质还是字典
+class Student（）：
+    def __init__(self):
+        self,name=''
+        self.score=-1
+
+#针对常用的操作，发明了一套常用的数据结构
+#四大数据结构
+1.数组   2. 链表   3,字典   4,搜素数（我们只用，不写，甚至只是隐含在用， 你并不知道你用的是数）
+1.数组  连续的一块内存，如果要删除一个元素，后面的所有人就要往前补一个空，
+        插入，先在后面新增一个空间，在移动元素，读取元素的时间是O（1），删除 插入的时间是O（n）
+2.链表  手拉手的盒子，一个盒子只能访问左右手的盒子
+        以下标的方式读取元素的时间是O（n）
+        插入 删除是O（0）
+        class Node（）：
+            def __init__(self):
+                self.e = 0
+                self.next = None
+
+        n1 = Node(100)
+        n2 = Node(222)
+        n3 = Node(333)
+        n1.next = n2
+        n2.next = n3
+
+        n = n1
+        while n is not None:
+            print(n.e)
+            n = n.next
+
+        def append(node, element):
+            '''我们往node的末尾插入一个元素node 是一个Node实例， element是任意类型的元素'''
+            n = node
+            while n.next is not None:
+                n = n.next
+            new_node = Node(element)
+            n.next = new_node
+
+        def log_list(node):
+            n = node
+            s = ''
+            while n is noe None:
+                s += (str(n) + '>')
+                n = n.next
+            print(s)
+
+        class LinkedList():
+            def __init__(self):
+                self.head = Node()
+3.字典
+        把字符串转为数字作为下标存储到数字中，
+        字符串转化为数字的算法是O（1）
+        所以字典的存取操作都是O（1）
+        除非对数据有顺序要求，否则字典永远是最佳选择
+        字符串转化为数字的算法
+            1.确定数据规模，这样可以确定容器数组的大小 size
+            2.把字符当作 N 进制数字得到结果
+                'gua' 被视为 g*100 + u*10 + a*1 得到结果 n
+                n % size作为字符串在数组中的下标 通常size会选一个素数
+    字典实现
+    def hash(s):  #字典也别名哈希表
+        n = 1
+        f = 1
+        for i in s:
+            ascii = ord(i)
+            n += ascii*f
+            f *=10
+        return n
+4.树  二叉搜索树 左边的树要比右边的小或大 尽量保持左右两边的高度不超过1（即二叉平衡搜索树）
+      比较有名的树--红黑树（因为他难）
+
+5.图
+
 '''
