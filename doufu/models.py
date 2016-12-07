@@ -1,4 +1,5 @@
 from flask import Flask
+from flask import session
 from flask_sqlalchemy import SQLAlchemy
 import time
 
@@ -9,7 +10,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
 db = SQLAlchemy(app)
 
 
-class Recipe(db.Model):
+class Recipe(db.Model): #菜谱
     __tablename__ = 'recipe'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, unique=True) #名称

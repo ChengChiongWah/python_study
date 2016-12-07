@@ -4,9 +4,27 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import session
+from functools import wraps
 from models import User
 
 main = Blueprint('main', __name__)
+
+
+def current_user():
+    username = session.get('username', '')
+    u = User.query.filter_by(name=username).first()
+    return u
+
+
+def login_require(f):
+    @wraps(f)
+    def functions(*args, **kwargs):
+        if current_user() is None:
+            return redirect(url_for('main.index'))
+        else:
+            f(*args, **kwargs)
+    return functions
+
 
 @main.route('/', methods=['GET'])
 def index():
@@ -35,8 +53,8 @@ def login():
     form = request.form
     username = form.get('username')
     password = form.get('password')
-    if username:
-        user = User.query.filter_by(name=username).first()
+    user = User.query.filter_by(name=username).first()
+    if user:
         if password == user.password:
             session[user.id] = user.id
             return redirect(url_for('main.index'))

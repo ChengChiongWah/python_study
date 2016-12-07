@@ -1,7 +1,5 @@
-{% extends "base.html" %}
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,9 +26,7 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-
 <body>
-
     <div class="container">
         <div class="header">
             <ul class="nav nav-pills pull-right" role="tablist">
@@ -43,7 +39,6 @@
 
         <div class="container marketing">
             <!-- START THE FEATURETTES -->
-            {% block container %}
             <div class="row featurette">
                 <div class="col-md-3">
                     <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
@@ -142,7 +137,6 @@
                 </div>
             </div>
 
-            {% endblock %}
             <!-- /END THE FEATURETTES -->
 
 
@@ -157,16 +151,14 @@
     </div>
     <!-- /container -->
 
-                    <!-- 标签卡切换的javascript代码 -->
-                    <script src='static/js/jquery.min.js'></script>
-                    <script src='static/js/transition.js'></script>
-                    <script src='static/js/tab.js'></script>
-                     <script src='static/js/collapse.js'></script>
-
+    <!-- 标签卡切换的javascript代码 -->
+    <script src='static/js/jquery.min.js'></script>
+    <script src='static/js/transition.js'></script>
+    <script src='static/js/tab.js'></script>
+     <script src='static/js/collapse.js'></script>
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src='static/js/ie10-viewport-bug-workaround.js'></script>
     <script src='static/js/docs.min.js'></script>
 </body>
-
 </html>
