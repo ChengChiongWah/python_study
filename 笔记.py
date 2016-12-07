@@ -975,7 +975,7 @@ functools.wraps()函数：调用进过装饰的函数，相当于调用一个新
 就只能看到装饰器的相关信息，被包装函数的信息被丢掉了，而wraps则可以帮你转移这些信息。
 '''
 
-'''
+"""
 web21
 数据结构和算法分析
 #算法的时间复杂度
@@ -1075,5 +1075,95 @@ class Student（）：
       比较有名的树--红黑树（因为他难）
 
 5.图
+"""
 
+'''
+web22
+操作系统
+    进程  每个程序的基本单位是进程，每开一个程序就开一个进程，DOS时代是单进程，多进程技术是指：CPU运行很快，操作系统把
+      分配给各个进程，我们操作者没有觉察到他们的差异
+        线程 如果进程比作是马路，线程是马路的各个车道，一条马路把车道，那个线程要使用资源就对资源加锁，使用完后解锁
+        多线程死锁
+        Python GIL（Global Interpreter Lock 全局解释器锁）问题  用gevent规避这个问题
+    内存管理   自动内存管理（GC 垃圾回收）
+    驱动程序（管理硬件）
+    文件系统
+        快速格式化，一般格式化是很花时间，快速格式化则把索引信息删掉，而存储的数据还没有删除（会在后面重新覆盖写入）
+多线程代码：
+account = {
+    'cpkr':100
+}
+
+def quqm(n):
+    '''
+     1.1.取出存款数字
+     1.2.减去 n
+     1.3.存回去
+    '''
+    account['cpkr'] -= n
+
+def cpqm(n):
+    '''
+    2.1 取出存款数
+    2.2 加上n
+    2.3 存回去
+    '''
+    account['cpkr'] += n
+
+ 以上如果按照 11 21 12 13 23的顺序执行会出问题，可以用加锁的方式，比如对def quqm（）可以做如下修改
+def quqm(n):
+    if not account['lock']:
+        account['lock'] = True
+        account['cpkr'] -= n
+        account['lock'] = False
+
+print(account['cpkr'])
+quqm(20)
+print(account['cpkr'])
+cpqm(30)
+print(account['cpkr'])
+
+死锁问题  有两把锁，用同时两把锁才能用，你手里有一把锁，等另一把锁，而另外的一把锁也在等你
+
+内存管理 自动内存管理（GC 垃圾回收）  python碰到下面的例子会出现循环引用
+    class A()
+        foo = None
+    a = A()
+    b = A()
+    a.foo = b
+    b.foo = a
+
+协程 yield 生成器 迭代器 静态方法 类方法 实例方法 *args  **kwargs 匿名函数
+[1, 2, 3, 4,...99]
+for i in range(100):
+    print(i) #他会一次全部把数组读完
+
+def Range(n):
+    i = 0
+    while i < n:
+        i += 1
+        yield i
+简写如下：[i for i in range(100)]
+用圆括号代表生成器(实现协程) (i for i in range(100))
+
+静态方法
+         @staticmethod修饰的方法 只能用类.方法()的方式调用 实际上相当于一个普通函数，放到类里只是为了看上去整齐一点
+类方法
+         @classmethod修饰的方法 可用类.方法() 和实例.方法()来调用，
+实例方法
+       普通方法 只能被实例.方法()调用
+*args  **kwargs 多参数和关键字参数
+匿名函数
+       lambda函数  add = lambda a, b: a + b 相当于：def add(a, b): return a + b
+        匿名函数中只能有一个语句 如果代码复杂，在python中就不应该使用匿名函数
+列表推导
+        [i for i in range(10)]  相当于 l = [] for i in range(10): l.append(i)
+        更复杂的列子如下：l = [i for i in range(10) if i%2 == 0]
+            相当于： l = []
+                     for i in range(10):
+                         if i%2 == 0:
+                             l.append（i)
+字典推导
+        mac = {'a':1, 'b':2,'c':3}
+        dicts = { k:v for v, v in mac.items()}
 '''

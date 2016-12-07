@@ -10,13 +10,15 @@
     {% block body %}
         {{ super() }}
 
-        <form action="recipe.recipe_add" method="post">
-            <input name="name" type="text" placeholder="菜谱名称"><br>
-            <input name="introduce" type="text" placeholder="简介"><br>
-            <input name="material" type="text" placeholder="用料">
-            <input name="pictures" type="text" placeholder="封面">
-            <input type="submit" value="确认提交">
-        </form>
+        <div class="container">
+            <form action="recipe.recipe_add" method="post">
+                <input name="name" type="text" placeholder="菜谱名称"><br>
+                <input name="introduce" type="text" placeholder="简介"><br>
+                <input name="material" type="text" placeholder="用料"><br>
+                <input name="pictures" type="text" placeholder="封面"><br>
+                <input type="submit" value="确认提交">
+            </form>
+        </div>
     {% endblock %}
 
     {% block footer %}
