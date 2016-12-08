@@ -5,7 +5,7 @@ from flask import redirect
 from flask import url_for
 from flask import session
 from functools import wraps
-from models import User
+from models import User, Recipe, Material, Steps
 
 main = Blueprint('main', __name__)
 

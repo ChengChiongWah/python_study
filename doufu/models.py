@@ -9,16 +9,36 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
 db = SQLAlchemy(app)
 
+def formatetime(): #给出时间格式
+    return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
 class Recipe(db.Model): #菜谱
     __tablename__ = 'recipe'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, unique=True) #名称
     introduce = db.Column(db.Text) #简介
-    material = db.Column(db.Text) #用料
     pictures = db.Column(db.String) #保留图片路径
     author = db.Column(db.Text) #菜谱的发布者
     create_time = db.Column(db.String)
+
+
+    def __init__(self, form, path):
+        self.name = form.get('name')
+        self.introduce = form.get('introduce')
+        self.pictures = path
+        self.create_time = formatetime()
+
+    def add(self):
+        db.session.add(self)
+        db.session.commit()
+
+
+class Material(db.Model): #用料
+    __tablename__ = 'material'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.Text, unique=True)
+    amount = db.Column(db.Integer) #数量
+    recipe_id = db.Column(db.Integer)
 
 
 class Steps(db.Model):
@@ -26,7 +46,7 @@ class Steps(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     step_number = db.Column(db.Integer, unique=True)
     technique = db.Column(db.Integer) #方法
-    tips = db.Column(db.Text)
+    tips = db.Column(db.Text) #小贴士
     recipe_number = db.Column(db.Integer) #对应的菜谱ID
 
 

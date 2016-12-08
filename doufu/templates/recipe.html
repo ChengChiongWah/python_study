@@ -11,12 +11,22 @@
         {{ super() }}
 
         <div class="container">
-            <form action="recipe.recipe_add" method="post">
-                <input name="name" type="text" placeholder="菜谱名称"><br>
-                <input name="introduce" type="text" placeholder="简介"><br>
-                <input name="material" type="text" placeholder="用料"><br>
-                <input name="pictures" type="text" placeholder="封面"><br>
-                <input type="submit" value="确认提交">
+            <form enctype="multipart/form-data" action={{url_for("recipe.recipe_add")}} method="post">
+                <div class="col-md-6">
+                    <input name="name" type="text" class="form-control" placeholder="菜谱名称">
+                </div>
+                <br><br>
+                <div class="col-md-6">
+                    <input name="pictures" type="file" class="form-control" placeholder="封面">
+                </div>
+                <br><br>
+                <div class="col-md-10">
+                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" row=10 cols=68></textarea>
+                </div>
+                <br><br>
+                <div class="col-md-6">
+                    <input type="submit" value="提交菜谱">
+                </div>
             </form>
         </div>
     {% endblock %}
