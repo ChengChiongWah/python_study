@@ -1167,3 +1167,23 @@ def Range(n):
         mac = {'a':1, 'b':2,'c':3}
         dicts = { k:v for v, v in mac.items()}
 '''
+'''\
+
+'''
+web23
+聊天室
+使用gunicorn启动
+gunicorn --worker-class=gevent -t 2 redischat:app
+#开启debug输出
+gunicorn --log-level debug --access-logfile gunicorn.log
+守护进程：监听你的程序 如果你的程序挂了，他会帮你重新启动 supervisor
+    cd /etc/supervisor
+    vi conf.d  #修改配置程序
+      [program:chat]
+      command=/user/local/bin/gunicorn wsgi --bin 0.0.0.0:8000 --pid /temp/chat.pid(把pid存放到/temp/chat.pid)
+      dictroy=/root/chat.py
+      autorestart=True
+
+用nginx而不是gunicorn转发的权重一个理由：nginx支持https而gunicorn不支持
+
+'''
