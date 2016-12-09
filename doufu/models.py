@@ -36,9 +36,18 @@ class Recipe(db.Model): #菜谱
 class Material(db.Model): #用料
     __tablename__ = 'material'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, unique=True)
+    name = db.Column(db.Text)
     amount = db.Column(db.Integer) #数量
-    recipe_id = db.Column(db.Integer)
+    recipe_name = db.Column(db.Text) #对应菜谱名
+
+    def __init__(self, material_name, amount, recipe_name):
+        self.name = material_name
+        self.amount = amount
+        self.recipe_name = recipe_name
+
+    def add(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class Steps(db.Model):
@@ -47,7 +56,7 @@ class Steps(db.Model):
     step_number = db.Column(db.Integer, unique=True)
     technique = db.Column(db.Integer) #方法
     tips = db.Column(db.Text) #小贴士
-    recipe_number = db.Column(db.Integer) #对应的菜谱ID
+    recipe_name = db.Column(db.Text) #对应的菜谱名
 
 
 class User(db.Model):
