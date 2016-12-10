@@ -18,14 +18,16 @@ class Recipe(db.Model): #菜谱
     name = db.Column(db.Text, unique=True) #名称
     introduce = db.Column(db.Text) #简介
     pictures = db.Column(db.String) #保留图片路径
+    tips = db.Column(db.Text) #小贴士
     author = db.Column(db.Text) #菜谱的发布者
     create_time = db.Column(db.String)
 
 
-    def __init__(self, form, path):
+    def __init__(self, form, path, tips):
         self.name = form.get('name')
         self.introduce = form.get('introduce')
         self.pictures = path
+        self.tips = tips
         self.create_time = formatetime()
 
     def add(self):
@@ -54,9 +56,19 @@ class Steps(db.Model):
     __tablename__ = 'steps'
     id = db.Column(db.Integer, primary_key=True)
     step_number = db.Column(db.Integer, unique=True)
-    technique = db.Column(db.Integer) #方法
-    tips = db.Column(db.Text) #小贴士
+    technique = db.Column(db.Integer) #步骤方法
+    pictures = db.Column(db.String) #步骤图
     recipe_name = db.Column(db.Text) #对应的菜谱名
+
+    def __init__(self, step_number, technique, pictuees, recipe_name):
+        self.step_number = step_number
+        self.technique = technique
+        self.pictures = pictuees
+        self.recipe_name = recipe_name
+
+    def add(self):
+        db.session.add(self)
+        db.session.commit()
 
 
 class User(db.Model):
