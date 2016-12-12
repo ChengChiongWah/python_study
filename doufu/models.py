@@ -20,6 +20,8 @@ class Recipe(db.Model): #菜谱
     pictures = db.Column(db.String) #保留图片路径
     tips = db.Column(db.Text) #小贴士
     author = db.Column(db.Text) #菜谱的发布者
+    materials = db.relationship('Material', backref='recipe', lazy='dynamic')
+    setps = db.relationship('Step', backref='recipe', lazy='dynamic')
     create_time = db.Column(db.String)
 
 
@@ -40,7 +42,7 @@ class Material(db.Model): #用料
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     amount = db.Column(db.Integer) #数量
-    recipe_name = db.Column(db.Text) #对应菜谱名
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
 
     def __init__(self, material_name, amount, recipe_name):
         self.name = material_name
@@ -52,13 +54,13 @@ class Material(db.Model): #用料
         db.session.commit()
 
 
-class Steps(db.Model):
+class Step(db.Model):
     __tablename__ = 'steps'
     id = db.Column(db.Integer, primary_key=True)
     step_number = db.Column(db.Integer, unique=True)
     technique = db.Column(db.Integer) #步骤方法
     pictures = db.Column(db.String) #步骤图
-    recipe_name = db.Column(db.Text) #对应的菜谱名
+    recipe_id = db.Column(db.Text, db.ForeignKey('recipe.id')) #对应的菜谱名
 
     def __init__(self, step_number, technique, pictuees, recipe_name):
         self.step_number = step_number
@@ -87,9 +89,13 @@ class User(db.Model):
         db.session.add(self)
         db.session.commit()
 
+def test():
+    recipe = Recipe.query.with_entities(Recipe.name).all()
+    for i in recipe:
+        print (i)
 
 if __name__ == '__main__':
     db.drop_all()
     db.create_all()
-
+    test()
 

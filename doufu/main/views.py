@@ -5,7 +5,7 @@ from flask import redirect
 from flask import url_for
 from flask import session
 from functools import wraps
-from models import User, Recipe, Material, Steps
+from models import User, Recipe, Material, Step
 
 main = Blueprint('main', __name__)
 
@@ -28,6 +28,8 @@ def login_require(f):
 
 @main.route('/', methods=['GET'])
 def index():
+    # res = Recipe.query(Recipe.name).all()
+    # return res
     return render_template('index.html')
 
 

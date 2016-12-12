@@ -3,7 +3,7 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import request
-from models import Recipe, Material, Steps
+from models import Recipe, Material, Step
 
 
 recipe = Blueprint('recipe', __name__)
@@ -36,7 +36,7 @@ def steps_add(form, recipename):
         if technique:
             picture_path = upload(f)
             recipename = recipename
-            steps = Steps(i, technique, picture_path, recipename)
+            steps = Step(i, technique, picture_path, recipename)
             steps.add()
 
 @recipe.route('/', methods=['GET'])
