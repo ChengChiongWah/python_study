@@ -13,15 +13,15 @@ def formatetime(): #给出时间格式
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
 class Recipe(db.Model): #菜谱
-    __tablename__ = 'recipe'
+    __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, unique=True) #名称
     introduce = db.Column(db.Text) #简介
     pictures = db.Column(db.String) #保留图片路径
     tips = db.Column(db.Text) #小贴士
     author = db.Column(db.Text) #菜谱的发布者
-    materials = db.relationship('Material', backref='recipe', lazy='dynamic')
-    setps = db.relationship('Step', backref='recipe', lazy='dynamic')
+    materials = db.relationship('Material', backref='recipe', foreign_keys='Material.recipe_id', lazy='dynamic')
+    setps = db.relationship('Step', backref='recipe', foreign_keys='Step.recipe_id', lazy='dynamic')
     create_time = db.Column(db.String)
 
 
@@ -38,16 +38,17 @@ class Recipe(db.Model): #菜谱
 
 
 class Material(db.Model): #用料
-    __tablename__ = 'material'
+    __tablename__ = 'materials'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text)
     amount = db.Column(db.Integer) #数量
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipe.id'))
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'))
 
-    def __init__(self, material_name, amount, recipe_name):
+    def __init__(self, material_name, amount, recipe_id):
         self.name = material_name
         self.amount = amount
-        self.recipe_name = recipe_name
+        self.recipe_id = recipe_id
+
 
     def add(self):
         db.session.add(self)
@@ -60,13 +61,14 @@ class Step(db.Model):
     step_number = db.Column(db.Integer, unique=True)
     technique = db.Column(db.Integer) #步骤方法
     pictures = db.Column(db.String) #步骤图
-    recipe_id = db.Column(db.Text, db.ForeignKey('recipe.id')) #对应的菜谱名
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) #对应的菜谱名
 
-    def __init__(self, step_number, technique, pictuees, recipe_name):
+    def __init__(self, step_number, technique, pictuees, recipe_id):
         self.step_number = step_number
         self.technique = technique
         self.pictures = pictuees
-        self.recipe_name = recipe_name
+        self.recipe_id = recipe_id
+
 
     def add(self):
         db.session.add(self)
@@ -90,9 +92,11 @@ class User(db.Model):
         db.session.commit()
 
 def test():
-    recipe = Recipe.query.with_entities(Recipe.name).all()
-    for i in recipe:
-        print (i)
+    r = Recipe.query.limit(10).all()
+    for m in range(0, len(r)):
+        print(r[m].name)
+        for i in r[m].materials.all():
+            print (''*10, i.name, i.amount)
 
 if __name__ == '__main__':
     db.drop_all()

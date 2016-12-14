@@ -17,7 +17,7 @@ def upload(f):
         return path
 
 
-def material_add(form, recipe_name):
+def material_add(form, recipe_id):
     dic = {}
     for i in range(1, 11): #暂定用十种材料
         material_name = form.get('material'+str(i))
@@ -25,18 +25,17 @@ def material_add(form, recipe_name):
         if material_name:
             dic[material_name] = amount_value
     for k, v in dic.items():
-        material = Material(k, v, recipe_name)
+        material = Material(k, v, recipe_id)
         material.add()
 
-def steps_add(form, recipename):
+def steps_add(form, recipe_id):
     for i in range(1, 11): #暂定只用十步
         step_number = i
         technique = form.get('step' + str(i) +'_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
         if technique:
             picture_path = upload(f)
-            recipename = recipename
-            steps = Step(i, technique, picture_path, recipename)
+            steps = Step(i, technique, picture_path, recipe_id)
             steps.add()
 
 @recipe.route('/', methods=['GET'])
@@ -48,7 +47,6 @@ def index():
 def recipe_add():
     form = request.form
     f = request.files.get('pictures')
-    recipe_name = form.get('name')
     tips = form.get('tips')
     if f:
         filename = f.filename
@@ -56,6 +54,7 @@ def recipe_add():
         f.save(path)
         recipe = Recipe(form, path, tips)
         recipe.add()
-        material_add(form, recipe_name)
-        steps_add(form, recipe_name)
+        recipe_id = recipe.id
+        material_add(form, recipe_id)
+        steps_add(form, recipe_id)
     return redirect(url_for('main.index'))

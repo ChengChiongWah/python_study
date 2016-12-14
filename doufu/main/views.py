@@ -28,9 +28,9 @@ def login_require(f):
 
 @main.route('/', methods=['GET'])
 def index():
-    # res = Recipe.query(Recipe.name).all()
-    # return res
-    return render_template('index.html')
+     res = Recipe.query.limit(10).all()
+     length = len(res)
+     return render_template('index.html',res=res, length=length )
 
 
 @main.route('/register', methods=['GET'])
