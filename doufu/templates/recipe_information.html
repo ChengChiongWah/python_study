@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+        {{ super() }}
+
+        <div class="container">
+            <div class="col-md-12">
+                修改| 删除
+            </div>
+            <div class="col-md-12">
+                <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-9">
+                    <h5>简介：</h5>
+                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="3" cols="58">jflkdjf;adfj;d</textarea>
+                </div>
+            </div>
+            <div class="com-md-12">
+                <div class="col-md-6">
+                    <h5>用料：</h5>
+                    <table class="table table-table-condensed">
+                        <tr>
+                            <th>八角</th><th>2g</th>
+                        </tr>
+                        <tr>
+                            <th>姜</th><th>3片</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6"></div>
+            <div class="col-md-12">
+                <h4>***的做法</h4>
+                <div class="col-md-6">
+                    <h4>豆腐切块，用开水焯半分钟左右</h4>
+                </div>
+                <div class="col-md-6">
+                    <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <h4>小贴士</h4>
+                <h4>1.豆腐焯水后口感会更加细腻，在接下来的炒至中不易碎。</h4>
+                <h4>2.因豆腐中含嘌呤较多，对嘌呤代谢失常的痛风病人和血尿酸浓度增高的患者，忌食豆腐；脾胃虚寒，经常腹泻便溏者忌食。 </h4>
+            </div>
+            <div class="col-md-12">
+                修改| 删除
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block footer %}
+        {{ super() }}
+    {% endblock %}
+</body>
+</html>

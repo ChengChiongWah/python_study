@@ -44,7 +44,7 @@
                     <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
                 </div>
                 <div class="col-md-9">
-                    <h2 class="featurette-heading">豆腐 </h2>
+                    <h2 class="featurette-heading" style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 28px">豆腐 </h2>
                     <p><a href="http://baike.baidu.com/subview/11135/17875820.htm">去百度百科了解食材 ></a></p>
                 </div>
             </div>
@@ -68,8 +68,8 @@
                                             <img class="featurette-image img-responsive" src="{{ res[m].pictures }}" data-src="holder.js/100x100/auto" alt="Generic placeholder image" >
                                         </div>
                                         <div class="col-md-10">
-                                            <p>{{ res[m].name }}</p>
-                                            <p>
+                                            <p style="color:#922;font-size: 18px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">{{ res[m].name }}</p>
+                                            <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
                                                 {% for i in res[m].materials.all() %}
                                                     {{ i.name|truncate(200, True) }}
                                                     {% if not loop.last %}
@@ -93,13 +93,13 @@
                                     <p><br>豆腐是一种以黄豆为主要原料的食物，本身没有什么味道，但是含有高蛋白质，可以被做成各式各样的
                                         菜肴。它起源于中国，拥有美观、营养价值高、产品种类丰富等特点。
                                     </p>
-                                    <h4>豆腐的营养成分</h4>
-                                    <table class="table table-bordered">
+                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐的营养成分</h4>
+                                    <table class="table table-bordered" style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">
                                         <tr>
-                                            <th>营养成分</th>
-                                            <th>含量（每100g）</th>
-                                            <th>营养元素</th>
-                                            <th>含量（每100g）</th>
+                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">营养成分</th>
+                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">含量（每100g）</th>
+                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">营养元素</th>
+                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">含量（每100g）</th>
                                         </tr>
                                         <tr>
                                             <td>水</td>
@@ -186,11 +186,12 @@
                                             <td>0<em class="gray-font">&nbsp;毫克</em></td>
                                         </tr>
                                     </table>
-                                    <h4>豆腐的功效</h4>
-                                    <p>补中益气、清热润燥
+                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐的功效</h4>
+                                    <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">补中益气、清热润燥
                                         <br \="">生津止渴、清洁肠胃</p>
-                                    <h4>如何挑选豆腐</h4>
-                                        <p>进行感官鉴别：取一块样品在散射光线下直接观察。优质豆腐呈均匀的乳白色或淡黄色，稍有光泽。次质豆腐色泽变深直至呈
+                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">如何挑选豆腐</h4>
+                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                        进行感官鉴别：取一块样品在散射光线下直接观察。优质豆腐呈均匀的乳白色或淡黄色，稍有光泽。次质豆腐色泽变深直至呈
                                         浅红色，无光泽。劣质豆腐呈深灰色、深黄色或者红褐色。<br \="">进行豆腐组织状态的鉴别：应先取样品直接看其外部
                                         状况，然后用刀切成几块再仔细观察切口处，最后用手轻轻按压，以试验其弹性和硬度。优质豆腐块形完整，软硬适度，富
                                         有一定的弹性，质地细嫩，结构均匀，无杂质。次质豆腐块形基本完整，切面处可见比较粗糙，质地不细嫩，弹性差，有黄色
@@ -200,14 +201,16 @@
                                         取小块样品细细咀嚼以品尝其滋味。优质豆腐口感细腻鲜嫩、味道纯正、清香。次质豆腐口感粗糙、滋味平淡。劣质豆腐有酸
                                         味、苦味、涩味及其他不良滋味。
                                         </p>
-                                    <h4>豆腐的储存方法</h4>
-                                        <p>盒装豆腐需要冷藏，烹调前再取出。取出后不要超过4小时，以保持新鲜，最好是在购买当天食用完毕。若无法一次食用完毕，
+                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐的储存方法</h4>
+                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                            盒装豆腐需要冷藏，烹调前再取出。取出后不要超过4小时，以保持新鲜，最好是在购买当天食用完毕。若无法一次食用完毕，
                                             可依所需的分量切割使用，剩余的部分再放回冷冻室，方便下次食用。
                                         </p>
-                                    <h4>珠联璧合的豆腐海带配</h4>
-                                        <p>豆腐中的皂角苷会促进人体排碘，造成碘缺乏。而海带是很好的补碘佳品，因此吃豆腐的时候最好搭配海带，营养不流失。</p>
-                                    <h4>豆腐虽好，也不宜天天吃</h4>
-                                        <p>豆腐虽好，过量食用却会危害健康。
+                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">珠联璧合的豆腐海带配</h4>
+                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                            豆腐中的皂角苷会促进人体排碘，造成碘缺乏。而海带是很好的补碘佳品，因此吃豆腐的时候最好搭配海带，营养不流失。</p>
+                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐虽好，也不宜天天吃</h4>
+                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐虽好，过量食用却会危害健康。
                                             <br \="">引起消化不良：豆腐含有丰富的蛋白质，一次食用过多不仅阻碍人体对铁的吸收，而且容易出现腹胀、腹泻等症状。
                                             <br \="">促使肾功能衰退：人到老年，肾脏排泄废物的能力下降，大量食用豆腐，摄入过多的植物性蛋白质，会使体内生
                                             成的含氮废物增多，加重肾脏负担，使肾功能衰退，不利于身体健康。
@@ -217,8 +220,9 @@
                                             引起碘缺乏。
                                             <br \="">促使痛风发作：豆腐含嘌呤较多，嘌呤代谢失常的痛风病人和血尿酸浓度较高的患者多食易导致痛风发作。
                                         </p>
-                                    <h4>豆腐怎样烧不易破碎</h4>
-                                        <p>豆腐切块大些，容易保持原有的形状。
+                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐怎样烧不易破碎</h4>
+                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                            豆腐切块大些，容易保持原有的形状。
                                             <br \="">如果可以，先把豆腐煎一下，“外强中干”就不大容易碎啦。
                                             <br \="">豆腐下锅后，尽量少用锅铲，只要轻轻晃动锅就好了。
                                         </p>

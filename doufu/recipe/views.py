@@ -58,3 +58,8 @@ def recipe_add():
         material_add(form, recipe_id)
         steps_add(form, recipe_id)
     return redirect(url_for('main.index'))
+
+
+@recipe.route('/recipe_information', methods=['GET'])
+def recipe_information():
+    return render_template('recipe_information.html')
