@@ -21,7 +21,7 @@ class Recipe(db.Model): #菜谱
     tips = db.Column(db.Text) #小贴士
     author = db.Column(db.Text) #菜谱的发布者
     materials = db.relationship('Material', backref='recipe', foreign_keys='Material.recipe_id', lazy='dynamic')
-    setps = db.relationship('Step', backref='recipe', foreign_keys='Step.recipe_id', lazy='dynamic')
+    steps = db.relationship('Step', backref='recipe', foreign_keys='Step.recipe_id', lazy='dynamic')
     create_time = db.Column(db.String)
 
 
@@ -34,6 +34,13 @@ class Recipe(db.Model): #菜谱
 
     def add(self):
         db.session.add(self)
+        db.session.commit()
+
+    def update(self, form, path):
+        self.name = form.get('name') or self.name
+        self.introduce = form.get('introduce') or self.introduce
+        self.pictures = path or self.pictures
+        self.tips = form.get('tips') or self.tips
         db.session.commit()
 
 
@@ -52,6 +59,11 @@ class Material(db.Model): #用料
 
     def add(self):
         db.session.add(self)
+        db.session.commit()
+
+    def update(self, material_name, amount_value):
+        self.name = material_name
+        self.amount = amount_value
         db.session.commit()
 
 

@@ -6,8 +6,9 @@ from flask import request
 from models import Recipe, Material, Step
 
 
-recipe = Blueprint('recipe', __name__)
+recipe = Blueprint('recipe', __name__, static_folder='../static' )
 uploads_dir = 'static/images/'
+
 
 def upload(f):
     if f:
@@ -28,6 +29,15 @@ def material_add(form, recipe_id):
         material = Material(k, v, recipe_id)
         material.add()
 
+def material_update(form, recipe_id):
+    material = Material.query.filter_by(id=recipe_id).first()
+    for i in range(1, 11):
+        material_name = form.get('material'+str(i))
+        amount_value = form.get('amount'+str(i))
+        if material_name:
+            material.update(material_name, amount_value)
+
+
 def steps_add(form, recipe_id):
     for i in range(1, 11): #暂定只用十步
         step_number = i
@@ -37,6 +47,7 @@ def steps_add(form, recipe_id):
             picture_path = upload(f)
             steps = Step(i, technique, picture_path, recipe_id)
             steps.add()
+
 
 @recipe.route('/', methods=['GET'])
 def index():
@@ -62,4 +73,30 @@ def recipe_add():
 
 @recipe.route('/recipe_information', methods=['GET'])
 def recipe_information():
-    return render_template('recipe_information.html')
+    recipe_id = int(request.args.get('recipe_id'))
+    recipes = Recipe.query.filter_by(id=recipe_id).first()
+    return render_template('recipe_information.html', recipes=recipes)
+
+
+@recipe.route('/recipe_edit', methods=['GET'])
+def recipe_edit():
+    recipe_id = int(request.args.get('recipe_id'))
+    recipes = Recipe.query.filter_by(id=recipe_id).first()
+    return render_template('recipe_edit.html', recipes=recipes)
+
+
+@recipe.route('/recipe_update', methods=['POST'])
+def recipe_update():
+    recipe_id = int(request.args.get('recipe_id'))
+    form = request.form
+    f = request.files.get('pictures')
+    if f:
+        filename = f.filename
+        path = uploads_dir + filename
+        f.save(path)
+    else:
+        path = ''
+    recipes = Recipe.query.filter_by(id=recipe_id).first()
+    recipes.update(form, path)
+    material_update(form, recipe_id)
+    return redirect(url_for('recipe.recipe_information', recipe_id=recipe_id))

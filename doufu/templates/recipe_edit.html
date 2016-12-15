@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en" xmlns:margin="http://www.w3.org/1999/xhtml">
+<head>
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+        {{ super() }}
+
+        <div class="container">
+            <form class="form-inline" role="form" enctype="multipart/form-data" action={{url_for("recipe.recipe_update", recipe_id=recipes.id)}} method="post">
+                <div class="col-md-6">
+                    <p>菜谱名称：</p>
+                    <input name="name" type="text" class="form-control" placeholder="{{recipes.name}}">
+                </div>
+                <div class="col-md-12"></div><br>
+                <div class="col-md-6">
+                    <h5>菜谱封面：</h5>
+                    <input name="pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12">
+                    <h5>简介：</h5>
+                    <textarea name="introduce"  class="form-control" placeholder="{{recipes.introduce}}" rows="3" cols="58"></textarea>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12">
+                    <h5>用料：</h5>
+                    {% for material in recipes.materials.all() %}
+                        <input name="material1" type="text" class="span2" placeholder="{{material.name}}">
+                        <input name="amount1" type="text" class="span3" placeholder="{{material.amount}}">
+                    {% endfor %}
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12" >
+                    <h5>做法：</h5>
+                    <div class="form-group">
+                        <textarea name="step1_introduce" class="form-control" placeholder="菜谱步骤1" rows="3" cols="28"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="step1_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    </div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12" >
+                    <div class="form-group">
+                        <textarea name="step2_introduce" class="form-control" placeholder="菜谱步骤2" rows="3" cols="28"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="step2_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    </div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12" >
+                    <div class="form-group">
+                        <textarea name="step3_introduce" class="form-control" placeholder="菜谱步骤3" rows="3" cols="28"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="step3_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    </div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12" >
+                    <div class="form-group">
+                        <textarea name="step4_introduce" class="form-control" placeholder="菜谱步骤4" rows="3" cols="28"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="step4_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    </div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12" >
+                    <div class="form-group">
+                        <textarea name="step5_introduce" class="form-control" placeholder="菜谱步骤5" rows="3" cols="28"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="step5_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    </div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12" >
+                    <div class="form-group">
+                        <textarea name="step6_introduce" class="form-control" placeholder="菜谱步骤6" rows="3" cols="28"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input name="step6_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    </div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12">
+                    <h5>小贴士：</h5>
+                    <textarea name="tips"  class="form-control" placeholder="{{recipes.tips}}" rows="3" cols="58"></textarea>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-6">
+                    <input type="submit" value="提交修改">
+                </div>
+            </form>
+        </div>
+    {% endblock %}
+
+    {% block footer %}
+        {{ super() }}
+    {% endblock %}
+
+</body>
+</html>

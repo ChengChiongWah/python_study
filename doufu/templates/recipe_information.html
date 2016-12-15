@@ -12,47 +12,61 @@
 
         <div class="container">
             <div class="col-md-12">
-                修改| 删除
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <p style="color:#922;font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
+                        <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}}>修改菜谱</a>
+                        | 删除菜谱
+                        <a href={{url_for("recipe.index")}}>| 创建菜谱</a></p>
+                </div>
             </div>
             <div class="col-md-12">
-                <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
+                <p style="color:#000;font-size:28px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{recipes.name}}</p>
             </div>
-            <div class="col-md-12">
+            <div class="col-md-9">
+                <img class="featurette-image img-responsive" src="{{ recipes.pictures }}" data-src="holder.js/300x300/auto" alt="Generic placeholder image" >
+                <br>
+            </div>
+            <div class="com-md-12">
                 <div class="col-md-9">
-                    <h5>简介：</h5>
-                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="3" cols="58">jflkdjf;adfj;d</textarea>
+                    <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">简介：</p>
+                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="3" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.introduce }}</textarea>
                 </div>
             </div>
             <div class="com-md-12">
                 <div class="col-md-6">
-                    <h5>用料：</h5>
+                    <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif"><br>用料：</p>
                     <table class="table table-table-condensed">
+                        {% for material in recipes.materials.all() %}
                         <tr>
-                            <th>八角</th><th>2g</th>
+                            <th>{{ material.name }}</th><th> {{ material.amount }}</th>
                         </tr>
-                        <tr>
-                            <th>姜</th><th>3片</th>
-                        </tr>
+                        {% endfor %}
                     </table>
                 </div>
             </div>
             <div class="col-md-6"></div>
             <div class="col-md-12">
-                <h4>***的做法</h4>
-                <div class="col-md-6">
-                    <h4>豆腐切块，用开水焯半分钟左右</h4>
-                </div>
-                <div class="col-md-6">
-                    <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
-                </div>
+                <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ recipes.name }}的做法</p>
+                {% for step in recipes.steps.all() %}
+                    <div class="col-md-6">
+                        <h4>{{ step.step_number }}:{{ step.technique }}</h4>
+                    </div>
+                    <div class="col-md-2">
+                        <img class="img-circle" data-src="holder.js/100x100/auto" alt="Generic placeholder image" src={{step.pictures}}>
+                    </div>
+                    <div class="col-md-4"></div>
+                {% endfor %}
             </div>
             <div class="col-md-12">
-                <h4>小贴士</h4>
-                <h4>1.豆腐焯水后口感会更加细腻，在接下来的炒至中不易碎。</h4>
-                <h4>2.因豆腐中含嘌呤较多，对嘌呤代谢失常的痛风病人和血尿酸浓度增高的患者，忌食豆腐；脾胃虚寒，经常腹泻便溏者忌食。 </h4>
+                <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">小贴士</p>
+                <p>{{recipes.tips}}</p>
             </div>
             <div class="col-md-12">
-                修改| 删除
+                <div class="col-md-8"></div>
+                <div class="col-md-4">
+                    <p style="color:#922;font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱| 删除菜谱| 创建菜谱</p>
+                </div>
             </div>
         </div>
     {% endblock %}
