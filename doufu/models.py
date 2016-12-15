@@ -44,6 +44,11 @@ class Recipe(db.Model): #菜谱
         db.session.commit()
 
 
+    def delete_element(self):
+        db.session.delete(self)
+        db.session.commit()
+
+
 class Material(db.Model): #用料
     __tablename__ = 'materials'
     id = db.Column(db.Integer, primary_key=True)
@@ -66,6 +71,10 @@ class Material(db.Model): #用料
         self.amount = amount_value
         db.session.commit()
 
+    def delete_element(self):
+        db.session.delete(self)
+        db.session.commit()
+
 
 class Step(db.Model):
     __tablename__ = 'steps'
@@ -84,6 +93,16 @@ class Step(db.Model):
 
     def add(self):
         db.session.add(self)
+        db.session.commit()
+
+    def update(self, step_number, technique, pictures):
+        self.step_number = step_number or self.step_number
+        self.technique = technique or self.technique
+        self.pictures = pictures or self.pictures
+        db.session.commit()
+
+    def delete_element(self):
+        db.session.delete(self)
         db.session.commit()
 
 

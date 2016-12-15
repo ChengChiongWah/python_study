@@ -16,7 +16,7 @@
                 <div class="col-md-4">
                     <p style="color:#922;font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
                         <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}}>修改菜谱</a>
-                        | 删除菜谱
+                        <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}}>| 删除菜谱</a>
                         <a href={{url_for("recipe.index")}}>| 创建菜谱</a></p>
                 </div>
             </div>

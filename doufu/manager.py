@@ -9,6 +9,5 @@ app.register_blueprint(main)
 app.register_blueprint(recipe, url_prefix='/recipe')
 
 
-
 if __name__ == '__main__':
     app.run()
