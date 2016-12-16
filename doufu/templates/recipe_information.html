@@ -14,10 +14,11 @@
             <div class="col-md-12">
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
-                    <p style="color:#922;font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
-                        <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}}>修改菜谱</a>
-                        <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}}>| 删除菜谱</a>
-                        <a href={{url_for("recipe.index")}}>| 创建菜谱</a></p>
+                    <p>
+                        <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱</a>
+                        <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 删除菜谱</a>
+                        <a href={{url_for("recipe.index")}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 创建菜谱</a>
+                    </p>
                 </div>
             </div>
             <div class="col-md-12">
@@ -30,7 +31,7 @@
             <div class="com-md-12">
                 <div class="col-md-9">
                     <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">简介：</p>
-                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="3" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.introduce }}</textarea>
+                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="11" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.introduce }}</textarea>
                 </div>
             </div>
             <div class="com-md-12">
@@ -49,23 +50,34 @@
             <div class="col-md-12">
                 <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ recipes.name }}的做法</p>
                 {% for step in recipes.steps.all() %}
+                <div class="col-md-12">
                     <div class="col-md-6">
-                        <h4>{{ step.step_number }}:{{ step.technique }}</h4>
+                        <p  style="color:rgb(0,0,0);font-size:15px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ step.step_number }}:{{ step.technique }}</p>
                     </div>
-                    <div class="col-md-2">
-                        <img class="img-circle" data-src="holder.js/100x100/auto" alt="Generic placeholder image" src={{step.pictures}}>
+                    <div class="col-md-6">
+                        <img class="featurette-image img-responsive" data-src="holder.js/200x200/auto" alt="Generic placeholder image" src={{step.pictures}}>
                     </div>
-                    <div class="col-md-4"></div>
+                </div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12"></div>
                 {% endfor %}
             </div>
             <div class="col-md-12">
-                <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">小贴士</p>
-                <p>{{recipes.tips}}</p>
+                <div class="col-md-9">
+                    <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">小贴士：</p>
+                    <textarea name="introduce"  class="form-control"  rows="11" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.tips }}</textarea>
+                </div>
+                <div class="col-md-3"></div>
             </div>
             <div class="col-md-12">
+                <div class="col-md-12"><br></div>
                 <div class="col-md-8"></div>
                 <div class="col-md-4">
-                    <p style="color:#922;font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱| 删除菜谱| 创建菜谱</p>
+                    <p>
+                        <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱</a>
+                        <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 删除菜谱</a>
+                        <a href={{url_for("recipe.index")}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 创建菜谱</a>
+                    </p>
                 </div>
             </div>
         </div>

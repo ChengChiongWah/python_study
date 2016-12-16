@@ -79,7 +79,7 @@ class Material(db.Model): #用料
 class Step(db.Model):
     __tablename__ = 'steps'
     id = db.Column(db.Integer, primary_key=True)
-    step_number = db.Column(db.Integer, unique=True)
+    step_number = db.Column(db.Integer)
     technique = db.Column(db.Integer) #步骤方法
     pictures = db.Column(db.String) #步骤图
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) #对应的菜谱名
