@@ -2,6 +2,7 @@ from flask import Flask
 from flask import session
 from flask_sqlalchemy import SQLAlchemy
 import time
+import os
 
 app = Flask(__name__)
 app.security_key = 'The Python Language 3.5'
@@ -45,6 +46,8 @@ class Recipe(db.Model): #菜谱
 
 
     def delete_element(self):
+        if self.pictures: #删除文件
+            os.remove(self.pictures)
         db.session.delete(self)
         db.session.commit()
 
@@ -102,6 +105,8 @@ class Step(db.Model):
         db.session.commit()
 
     def delete_element(self):
+        if self.pictures:
+            os.remove(self.pictures)
         db.session.delete(self)
         db.session.commit()
 

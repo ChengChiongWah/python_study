@@ -94,7 +94,8 @@ def recipe_information():
 def recipe_edit():
     recipe_id = int(request.args.get('recipe_id'))
     recipes = Recipe.query.filter_by(id=recipe_id).first()
-    return render_template('recipe_edit.html', recipes=recipes)
+    material_length = len(recipes.materials.all())
+    return render_template('recipe_edit.html', recipes=recipes, material_length=material_length)
 
 
 @recipe.route('/recipe_update', methods=['POST'])
