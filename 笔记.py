@@ -906,7 +906,7 @@ functools.wraps()函数：调用进过装饰的函数，相当于调用一个新
 就只能看到装饰器的相关信息，被包装函数的信息被丢掉了，而wraps则可以帮你转移这些信息。
 =======
 
-'''
+
 web20
 装饰器
 def current_uer():#判断是否登录
@@ -1095,19 +1095,19 @@ account = {
 }
 
 def quqm(n):
-    '''
+    """
      1.1.取出存款数字
      1.2.减去 n
      1.3.存回去
-    '''
+    """
     account['cpkr'] -= n
 
 def cpqm(n):
-    '''
+    """
     2.1 取出存款数
     2.2 加上n
     2.3 存回去
-    '''
+    """
     account['cpkr'] += n
 
  以上如果按照 11 21 12 13 23的顺序执行会出问题，可以用加锁的方式，比如对def quqm（）可以做如下修改
@@ -1169,7 +1169,7 @@ def Range(n):
 '''
 '''\
 
-'''
+
 web23
 聊天室
 使用gunicorn启动
@@ -1187,3 +1187,40 @@ gunicorn --log-level debug --access-logfile gunicorn.log
 用nginx而不是gunicorn转发的权重一个理由：nginx支持https而gunicorn不支持
 
 '''
+
+"""
+flask-migrate 用法
+安装flask-script flask-migrate
+python models.py db init
+python models.py db migrate -m "初始化"
+python models.py db upgrade
+
+以后要升级数据库的话执行下面语句：
+python models.py migrate -m "****"
+python models.py db upgrade
+"""
+
+"""
+You can use the with_entities() method to restrict which columns you'd like to return in the result.
+result = SomeModel.query.with_entities(SomeModel.col1, SomeModel.col2)
+"""
+
+"""
+ Python中有三个内建函数：列表，元组和字符串，他们之间的互相转换使用三个函数，str(),tuple()和list(),具体示例如下所示:
+ >>> s = "xxxxx"
+>>> list(s)
+['x', 'x', 'x', 'x', 'x']
+>>> tuple(s)
+('x', 'x', 'x', 'x', 'x')
+>>> tuple(list(s))
+('x', 'x', 'x', 'x', 'x')
+>>> list(tuple(s))
+['x', 'x', 'x', 'x', 'x']
+列表和元组转换为字符串则必须依靠join函数
+>>> "".join(tuple(s))
+'xxxxx'
+>>> "".join(list(s))
+'xxxxx'
+>>> str(tuple(s))
+"('x', 'x', 'x', 'x', 'x')
+"""

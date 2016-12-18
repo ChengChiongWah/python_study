@@ -24,18 +24,27 @@ def material_add(form, recipe_id):
         material_name = form.get('material'+str(i))
         amount_value = form.get('amount' + str(i))
         if material_name:
-            dic[material_name] = amount_value
-    for k, v in dic.items():
-        material = Material(k, v, recipe_id)
-        material.add()
+            dic[i] = {material_name:amount_value}
+    for i, values in dic.items():
+        for k, v in values.items():
+            material = Material(i, k, v, recipe_id)
+            material.add()
 
 def material_update(form, recipe_id):
-    material = Material.query.filter_by(recipe_id=recipe_id).first()
+    material_names = Material.query.with_entities(Material.name).filter_by(recipe_id="1").all() #返回的是[('酱油',), ('辣椒',)]的格式
+    materials = []
+    for m in material_names: #转化成['酱油', '辣椒']的格式
+        materials.append(''.join(m))
     for i in range(1, 11):
         material_name = form.get('material'+str(i))
         amount_value = form.get('amount'+str(i))
-        if material_name:
-            material.update(material_name, amount_value)
+        if material_name is not None or amount_value is not None:
+            if material_name not in material_names: #新增的材料
+                m = Material(i, material_name, amount_value, recipe_id)
+                m.add()
+            else:
+                material = Material.query.filter_by(recipe_id=recipe_id, material_number=i).first()
+                material.update(material_name, amount_value)
 
 
 def steps_add(form, recipe_id):

@@ -63,12 +63,12 @@
                             <div class="col-md-5">
                                 <table>
                                     <tr>
-                                        <th><input type="text" name="material{{i}}"placeholder="{{material.name}}"></th><th> <input type="text" name="{{material.amount}}" placeholder="用量"></th>
+                                        <th><input type="text" name="material{{i}}"placeholder="{{material.name}}"></th><th> <input type="text" name="amount{{i}}" placeholder="{{material.amount}}"></th>
                                 </tr>
                                 </table>
                             </div>
                         {% endfor %}
-                        {% for i in range(11-material_length, 11) %}
+                        {% for i in range(1, 11-material_length) %}
                             <div class="col-md-5">
                                 <table>
                                     <tr>

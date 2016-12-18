@@ -1,6 +1,8 @@
 from flask import Flask
 from flask import session
 from flask_sqlalchemy import SQLAlchemy
+from flask_script import Manager
+from flask_migrate import Migrate, MigrateCommand
 import time
 import os
 
@@ -9,6 +11,12 @@ app.security_key = 'The Python Language 3.5'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
 db = SQLAlchemy(app)
+
+
+migrate = Migrate(app, db)
+manager = Manager(app)
+manager.add_command('db', MigrateCommand)
+
 
 def formatetime(): #给出时间格式
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
@@ -55,11 +63,13 @@ class Recipe(db.Model): #菜谱
 class Material(db.Model): #用料
     __tablename__ = 'materials'
     id = db.Column(db.Integer, primary_key=True)
+    material_number = db.Column(db.Integer)
     name = db.Column(db.Text)
     amount = db.Column(db.Integer) #数量
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'))
 
-    def __init__(self, material_name, amount, recipe_id):
+    def __init__(self, material_number, material_name, amount, recipe_id):
+        self.material_number = int(material_number)
         self.name = material_name
         self.amount = amount
         self.recipe_id = recipe_id
@@ -70,8 +80,8 @@ class Material(db.Model): #用料
         db.session.commit()
 
     def update(self, material_name, amount_value):
-        self.name = material_name
-        self.amount = amount_value
+        self.name = material_name or self.name
+        self.amount = amount_value or self.amount
         db.session.commit()
 
     def delete_element(self):
@@ -128,14 +138,14 @@ class User(db.Model):
         db.session.commit()
 
 def test():
-    r = Recipe.query.limit(10).all()
-    for m in range(0, len(r)):
-        print(r[m].name)
-        for i in r[m].materials.all():
-            print (''*10, i.name, i.amount)
+    material = Material.query.with_entities(Material.name).filter_by(recipe_id="1").all()
+    print (material)
+    materials = []
+    for m in material:
+        materials.append(''.join(m))
+    print(materials)
 
 if __name__ == '__main__':
-    db.drop_all()
-    db.create_all()
+    # manager.run()
     test()
 
