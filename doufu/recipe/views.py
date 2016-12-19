@@ -4,6 +4,7 @@ from flask import redirect
 from flask import url_for
 from flask import request
 from models import Recipe, Material, Step
+import os
 
 
 recipe = Blueprint('recipe', __name__, static_folder='../static' )
@@ -30,16 +31,17 @@ def material_add(form, recipe_id):
             material = Material(i, k, v, recipe_id)
             material.add()
 
+
 def material_update(form, recipe_id):
-    material_names = Material.query.with_entities(Material.name).filter_by(recipe_id="1").all() #返回的是[('酱油',), ('辣椒',)]的格式
+    material_names = Material.query.with_entities(Material.name).filter_by(recipe_id=recipe_id).all() #返回的是[('酱油',), ('辣椒',)]的格式
     materials = []
     for m in material_names: #转化成['酱油', '辣椒']的格式
         materials.append(''.join(m))
     for i in range(1, 11):
         material_name = form.get('material'+str(i))
         amount_value = form.get('amount'+str(i))
-        if material_name is not None or amount_value is not None:
-            if material_name not in material_names: #新增的材料
+        if (material_name) or (amount_value):
+            if material_name and amount_value and material_name not in materials: #新增的材料
                 m = Material(i, material_name, amount_value, recipe_id)
                 m.add()
             else:
@@ -59,14 +61,20 @@ def steps_add(form, recipe_id):
 
 
 def steps_update(form, recipe_id):
-    steps = Step.query.filter_by(recipe_id=recipe_id).first()
+    steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id=recipe_id).all() #返回如[(1,), （2,), (3,)]的格式
+    step_numbers = [s[0] for s in steps] #转换成[1, 2, 3]的格式
     for i in range(1, 11):
-        step_number = i
         technique = form.get('step' + str(i) + '_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
-        if technique:
+        if technique or f:
             picture_path = upload(f)
-            steps.update(step_number, technique, picture_path)
+            if technique and f and i not in step_numbers:
+                s = Step(i, technique, picture_path, recipe_id)
+                s.add()
+            else:
+                s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
+                os.remove(s.pictures) #删掉旧图片
+                s.update(i, technique, picture_path)
 
 
 
@@ -104,15 +112,18 @@ def recipe_edit():
     recipe_id = int(request.args.get('recipe_id'))
     recipes = Recipe.query.filter_by(id=recipe_id).first()
     material_length = len(recipes.materials.all())
-    return render_template('recipe_edit.html', recipes=recipes, material_length=material_length)
+    step_length = len(recipes.steps.all())
+    return render_template('recipe_edit.html', recipes=recipes, material_length=material_length, step_length=step_length)
 
 
 @recipe.route('/recipe_update', methods=['POST'])
 def recipe_update():
     recipe_id = int(request.args.get('recipe_id'))
+    recipe_item = Recipe.query.filter_by(id=recipe_id).first()
     form = request.form
     f = request.files.get('pictures')
     if f:
+        os.remove(recipe_item.pictures) #如果有图片更新，先删除旧图片
         filename = f.filename
         path = uploads_dir + filename
         f.save(path)
@@ -131,10 +142,10 @@ def recipe_delete():
     recipes = Recipe.query.filter_by(id=recipe_id).all()
     materials = Material.query.filter_by(recipe_id=recipe_id)
     steps = Step.query.filter_by(recipe_id=recipe_id)
-    for r in recipes:
-        r.delete_element()
     for m in materials:
         m.delete_element()
     for s in steps:
         s.delete_element()
-    return render_template(url_for('main.index'))
+    for r in recipes:
+        r.delete_element()
+    return redirect(url_for('main.index'))

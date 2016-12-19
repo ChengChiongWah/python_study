@@ -38,6 +38,9 @@
                 <div class="col-md-6">
                     <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif"><br>用料：</p>
                     <table class="table table-table-condensed">
+                        <tr>
+                            <th>用料名称：</th><th>用量：</th>
+                        </tr>
                         {% for material in recipes.materials.all() %}
                         <tr>
                             <th>{{ material.name }}</th><th> {{ material.amount }}</th>
@@ -49,18 +52,25 @@
             </div>
             <div class="col-md-12">
                 <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ recipes.name }}的做法</p>
-                {% for step in recipes.steps.all() %}
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        <p  style="color:rgb(0,0,0);font-size:15px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ step.step_number }}:{{ step.technique }}</p>
+                {% if recipes.steps.all() %}
+                    {% for step in recipes.steps.all() %}
+                       <div class="col-md-12">
+                            <div class="col-md-6">
+                                <p  style="color:rgb(0,0,0);font-size:15px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ step.step_number }}:{{ step.technique }}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <img class="featurette-image img-responsive" data-src="holder.js/200x200/auto" alt="Generic placeholder image" src={{step.pictures}}>
+                            </div>
+                        </div>
+                        <div class="col-md-12"></div>
+                       <div class="col-md-12"></div>
+                    {% endfor %}
+                {% else %}
+                    <div class="col-md-12">
+                        <p style="color:rgb(0,0,0);font-size:15px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">暂时无相关信息</p>
                     </div>
-                    <div class="col-md-6">
-                        <img class="featurette-image img-responsive" data-src="holder.js/200x200/auto" alt="Generic placeholder image" src={{step.pictures}}>
-                    </div>
-                </div>
-                <div class="col-md-12"></div>
-                <div class="col-md-12"></div>
-                {% endfor %}
+                {% endif %}
+
             </div>
             <div class="col-md-12">
                 <div class="col-md-9">

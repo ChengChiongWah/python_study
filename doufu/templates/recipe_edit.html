@@ -26,19 +26,11 @@
                     <h5>简介：</h5>
                     <textarea name="introduce"  class="form-control" placeholder="{{recipes.introduce}}" rows="9" cols="58"></textarea>
                 </div>
-                <!--<div class="col-md-12"></div>-->
-                <!--<div class="col-md-12">-->
-                    <!--<h5>用料：</h5>-->
-                    <!--{% for material in recipes.materials.all() %}-->
-                        <!--<input name="material1" type="text" class="span2" placeholder="{{material.name}}">-->
-                        <!--<input name="amount1" type="text" class="span3" placeholder="{{material.amount}}">-->
-                    <!--{% endfor %}-->
-                <!--</div>-->
                 <div class="col-md-12">
                     <h5>用料：</h5>
                     {% if material_length==0 %}
                         {% for i in range(1, 11) %}
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                             <table>
                                 <tr>
                                     <th><input type="text" name="material{{i}}"placeholder="用料名称"></th><th> <input type="text" name="amount{{i}}" placeholder="用量"></th>
@@ -46,10 +38,10 @@
                             </table>
                         </div>
                         {% endfor %}
-                        <div class="col-md-7"></div>
+                        <div class="col-md-5"></div>
                     {% elif material_length==10 %}
                         {% for material in recipes.materials.all() %}
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                                 <table>
                                     <tr>
                                         <th><input type="text" name="material{{i}}"placeholder="{{material.name}}"></th><th> <input type="text" name="amount{{i}}" placeholder="{{material.amount}}"></th>
@@ -57,43 +49,77 @@
                                 </table>
                             </div>
                         {% endfor %}
-                        <div class="col-md-7"></div>
+                        <div class="col-md-5"></div>
                     {% else %}
+                        {% set i=1 %}
                         {% for material in recipes.materials.all() %}
-                            <div class="col-md-5">
+                            <div class="col-md-7">
                                 <table>
                                     <tr>
                                         <th><input type="text" name="material{{i}}"placeholder="{{material.name}}"></th><th> <input type="text" name="amount{{i}}" placeholder="{{material.amount}}"></th>
                                 </tr>
                                 </table>
                             </div>
+                            {% set i=i+1 %}
+                            <div class="col-md-5"></div>
                         {% endfor %}
-                        {% for i in range(1, 11-material_length) %}
-                            <div class="col-md-5">
+                        {% for i in range(material_length+1, 11) %}
+                            <div class="col-md-7">
                                 <table>
                                     <tr>
-                                        <th><input type="text" name="material{{i}}"placeholder="用料名称"></th><th> <input type="text" name="amount{{i}}" placeholder="用量"></th>
+                                        <th><input type="text" name="material{{i}}"placeholder="用料名称{{i}}"></th><th> <input type="text" name="amount{{i}}" placeholder="用量"></th>
                                     </tr>
                                 </table>
                             </div>
                         {% endfor %}
-                        <div class="col-md-7"></div>
+                        <div class="col-md-5"></div>
                     {% endif %}
                 </div>
                 <div class="col-md-12"></div>
-                <div class="col-md-12" >
+                    <div class="col-md-12">
                     <h5>做法：</h5>
-                    {% for step in recipes.steps.all() %}
-                        <div class="form-group">
-                            <textarea name="step1_introduce" class="form-control" placeholder="菜谱步骤{{step.step_number}}: {{step.technique}}" rows="3" cols="28"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <input name="step1_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
-                        </div>
-                    {% endfor %}
-                </div>
-                    <div class="col-md-12"></div>
+                    {% if step_length==0 %}
+                        {% for i in range(1, 11) %}
+                            <div class="form-group">
+                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤" rows="3" cols="28"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                            </div>
+                        {% endfor %}
 
+                    {% elif step_length==10 %}
+                        {% for step in recipes.steps.all() %}
+                            <div class="form-group">
+                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤{{step.step_number}}: {{step.technique}}" rows="3" cols="28"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                            </div>
+                        {% endfor %}
+                    {% else %}
+                        {% set i=1 %}
+                        {% for step in recipes.steps.all() %}
+                            <div class="form-group">
+                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤{{step.step_number}}: {{step.technique}}" rows="3" cols="28"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                            </div>
+                            {% set i=i+1 %}
+                        {% endfor %}
+                        {% for i in range(step_length, 10) %}
+                            <div class="form-group">
+                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤" rows="3" cols="28"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="col-md-12"></div>
                 <div class="col-md-12"></div>
                 <div class="col-md-12">
                     <h5>小贴士：</h5>

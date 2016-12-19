@@ -138,12 +138,13 @@ class User(db.Model):
         db.session.commit()
 
 def test():
-    material = Material.query.with_entities(Material.name).filter_by(recipe_id="1").all()
-    print (material)
-    materials = []
-    for m in material:
-        materials.append(''.join(m))
-    print(materials)
+    steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id='1').all()
+    print (steps)
+    step_numbers = [s[0] for s in steps]
+    # for s in steps:
+    #     step_numbers.append(s[0])
+    #     print(s)
+    print(step_numbers)
 
 if __name__ == '__main__':
     # manager.run()
