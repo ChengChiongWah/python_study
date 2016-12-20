@@ -72,9 +72,6 @@
                                             <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
                                                 {% for i in res[m].materials.all() %}
                                                     {{ i.name|truncate(200, True) }}
-                                                    {% if not loop.last %}
-                                                        ,
-                                                    {% endif %}
                                                 {% endfor %}
                                             </p>
                                         </div>
