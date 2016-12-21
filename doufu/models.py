@@ -24,7 +24,7 @@ def formatetime(): #给出时间格式
 class Recipe(db.Model): #菜谱
     __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, unique=True) #名称
+    name = db.Column(db.Text) #名称
     introduce = db.Column(db.Text) #简介
     pictures = db.Column(db.String) #保留图片路径
     tips = db.Column(db.Text) #小贴士
@@ -147,6 +147,6 @@ def test():
     print(step_numbers)
 
 if __name__ == '__main__':
-    # manager.run()
-    test()
+    manager.run()
+    # test()
 

@@ -65,7 +65,7 @@
                                 {% for m in range(0, length) %}
                                     <div class="row featurette">
                                         <div class="col-md-2">
-                                            <img class="featurette-image img-responsive" src="{{ res[m].pictures }}" data-src="holder.js/100x100/auto" alt="Generic placeholder image" >
+                                            <img class="featurette-image img-responsive" src="{{ res[m].pictures }}" style="height:auto;width:140px" data-src="holder.js/100x100/auto" alt="Generic placeholder image" >
                                         </div>
                                         <div class="col-md-10">
                                             <a href={{url_for("recipe.recipe_information",recipe_id=res[m].id)}}><p style="color:#922;font-size: 18px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">{{ res[m].name }}</p></a>

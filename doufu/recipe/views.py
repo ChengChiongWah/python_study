@@ -41,12 +41,12 @@ def material_update(form, recipe_id):
         material_name = form.get('material'+str(i))
         amount_value = form.get('amount'+str(i))
         if (material_name) or (amount_value):
-            if material_name and amount_value and material_name not in materials: #新增的材料
+            material = Material.query.filter_by(recipe_id=recipe_id, material_number=i).first()
+            if material:
+                material.update(material_name, amount_value)
+            else:
                 m = Material(i, material_name, amount_value, recipe_id)
                 m.add()
-            else:
-                material = Material.query.filter_by(recipe_id=recipe_id, material_number=i).first()
-                material.update(material_name, amount_value)
 
 
 def steps_add(form, recipe_id):
@@ -68,14 +68,13 @@ def steps_update(form, recipe_id):
         f = request.files.get('step' + str(i) + '_pictures')
         if technique or f:
             picture_path = upload(f)
-            if technique and f and i not in step_numbers:
-                s = Step(i, technique, picture_path, recipe_id)
-                s.add()
-            else:
-                s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
+            s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
+            if s:
                 os.remove(s.pictures) #删掉旧图片
                 s.update(i, technique, picture_path)
-
+            else:
+                s = Step(i, technique, picture_path, recipe_id)
+                s.add()
 
 
 @recipe.route('/', methods=['GET'])

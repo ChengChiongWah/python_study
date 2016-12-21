@@ -1196,7 +1196,7 @@ python models.py db migrate -m "初始化"
 python models.py db upgrade
 
 以后要升级数据库的话执行下面语句：
-python models.py migrate -m "****"
+python models.py db migrate -m "****"
 python models.py db upgrade
 """
 

@@ -11,18 +11,15 @@
         {{ super() }}
 
         <div class="container">
-            <div class="col-md-12">
-                <div class="col-md-8"></div>
-                <div class="col-md-4">
-                    <p>
-                        <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱</a>
-                        <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 删除菜谱</a>
-                        <a href={{url_for("recipe.index")}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 创建菜谱</a>
-                    </p>
-                </div>
-            </div>
-            <div class="col-md-12">
+            <div class="col-md-8">
                 <p style="color:#000;font-size:28px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{recipes.name}}</p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱</a>
+                    <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 删除菜谱</a>
+                    <a href={{url_for("recipe.index")}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">| 创建菜谱</a>
+                </p>
             </div>
             <div class="col-md-9">
                 <img class="featurette-image img-responsive" src="{{ recipes.pictures }}" data-src="holder.js/300x300/auto" alt="Generic placeholder image" >
