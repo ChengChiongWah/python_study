@@ -348,7 +348,7 @@ m = hashlib.md5(pwd)   #md5
 print (m.hexdigest())
 
 s = hashlib.sha1(pwd) #sha1
-prin他（m.hexdigest())
+print（m.hexdigest())
 
 用MD5或者sha1保护用户的密码 用户的密码存在数据库中，有可能会被黑客盗取（拖库）
 

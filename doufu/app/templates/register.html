@@ -30,10 +30,11 @@
   <body>
 
     <div class="container">
-      <form class="form-signin" role="form" action={{url_for('main.register_add')}} method='post'>
-        <h2 class="form-signin-heading">Please register</h2>
+      <form class="form-signin" role="form" action={{url_for('auth.register_add')}} method='post'>
+        <h2 class="form-signin-heading"></h2>
         <input name="username" type="username" class="form-control" placeholder="Username" required autofocus>
         <input name="password" type="password" class="form-control" placeholder="Password" required>
+        <input name="email" type="username" class="form-control" placeholder="Email" required>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       </form>
 

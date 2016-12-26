@@ -1,21 +1,8 @@
-from flask import Flask
-from flask import session
-from flask_sqlalchemy import SQLAlchemy
-from flask_script import Manager
-from flask_migrate import Migrate, MigrateCommand
+from flask_login import UserMixin, AnonymousUserMixin
+from . import db
+from . import login_manager
 import time
 import os
-
-app = Flask(__name__)
-app.security_key = 'The Python Language 3.5'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///sqlite.db'
-db = SQLAlchemy(app)
-
-
-migrate = Migrate(app, db)
-manager = Manager(app)
-manager.add_command('db', MigrateCommand)
 
 
 def formatetime(): #给出时间格式
@@ -121,21 +108,30 @@ class Step(db.Model):
         db.session.commit()
 
 
-class User(db.Model):
+class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, unique=True)
     password = db.Column(db.Text)
+    email = db.Column(db.String, unique=True)
+    role_id = db.Column(db.Integer)
     create_time = db.Column(db.String)
 
     def __init__(self, form):
         self.name = form.get('username', '')
         self.password = form.get('password', '')
+        self.email = form.get('email', '')
         self.create_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
     def add(self):
         db.session.add(self)
         db.session.commit()
+
+
+
+@login_manager.user_loader
+def load_user(user_id):  #flask-login加载用户的回调函数
+    return User.query.get(user_id)
 
 def test():
     steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id='1').all()
@@ -146,7 +142,5 @@ def test():
     #     print(s)
     print(step_numbers)
 
-if __name__ == '__main__':
-    manager.run()
-    # test()
+
 

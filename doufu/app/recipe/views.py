@@ -3,11 +3,11 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import request
-from models import Recipe, Material, Step
+from . import recipe
+from ..models import Material, Recipe, Step
 import os
 
-
-recipe = Blueprint('recipe', __name__, static_folder='../static' )
+os.chdir('./app') #更改工作路径到app下
 uploads_dir = 'static/images/'
 
 

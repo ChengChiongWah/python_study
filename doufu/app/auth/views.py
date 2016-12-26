@@ -4,10 +4,10 @@ from flask import request
 from flask import redirect
 from flask import url_for
 from flask import session
+from flask_login import login_user, logout_user, login_required
 from functools import wraps
-from models import User, Recipe, Material, Step
-
-main = Blueprint('main', __name__)
+from . import auth
+from ..models import User
 
 
 def current_user():
@@ -26,31 +26,24 @@ def login_require(f):
     return functions
 
 
-@main.route('/', methods=['GET'])
-def index():
-     res = Recipe.query.limit(10).all()
-     length = len(res)
-     return render_template('index.html',res=res, length=length )
-
-
-@main.route('/register', methods=['GET'])
+@auth.route('/register', methods=['GET'])
 def register_view():
     return render_template('register.html')
 
 
-@main.route('/register/add', methods=['POST'])
+@auth.route('/register/add', methods=['POST'])
 def register_add():
     form = request.form
     user = User(form)
     user.add()
-    return redirect(url_for('main.login_view'))
+    return redirect(url_for('auth.login_view'))
 
 
-@main.route('/login_view', methods=['GET'])
+@auth.route('/login_view', methods=['GET'])
 def login_view():
     return render_template('login.html')
 
-@main.route('/login', methods=['post'])
+@auth.route('/login', methods=['post'])
 def login():
     form = request.form
     username = form.get('username')
@@ -58,8 +51,13 @@ def login():
     user = User.query.filter_by(name=username).first()
     if user:
         if password == user.password:
-            session[user.id] = user.id
-            return redirect(url_for('main.index'))
+            login_user(user)
+            return redirect(request.args.get('next') or url_for('main.index'))
     else:
-        return redirect(url_for('main.login_view'))
+        return redirect(url_for('auth.login_view'))
 
+@auth.route('/login')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('main.index'))
