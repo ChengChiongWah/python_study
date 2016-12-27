@@ -3,6 +3,7 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import request
+from flask_login import login_required
 from . import recipe
 from ..models import Material, Recipe, Step
 import os
@@ -78,6 +79,7 @@ def steps_update(form, recipe_id):
 
 
 @recipe.route('/', methods=['GET'])
+@login_required
 def index():
     return render_template('recipe.html')
 
@@ -87,7 +89,7 @@ def recipe_add():
     form = request.form
     f = request.files.get('pictures')
     tips = form.get('tips')
-    if f:
+    if f :
         filename = f.filename
         path = uploads_dir + filename
         f.save(path)

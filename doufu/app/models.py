@@ -1,4 +1,5 @@
-from flask_login import UserMixin, AnonymousUserMixin
+from flask_login import UserMixin, current_user
+from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from . import login_manager
 import time
@@ -26,6 +27,7 @@ class Recipe(db.Model): #菜谱
         self.introduce = form.get('introduce')
         self.pictures = path
         self.tips = tips
+        self.author = current_user.name
         self.create_time = formatetime()
 
     def add(self):
@@ -119,7 +121,7 @@ class User(db.Model, UserMixin):
 
     def __init__(self, form):
         self.name = form.get('username', '')
-        self.password = form.get('password', '')
+        self.password = generate_password_hash(form.get('password', ''))
         self.email = form.get('email', '')
         self.create_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
@@ -127,7 +129,8 @@ class User(db.Model, UserMixin):
         db.session.add(self)
         db.session.commit()
 
-
+    def verify_password(self, password):
+        return check_password_hash(self.password, password)
 
 @login_manager.user_loader
 def load_user(user_id):  #flask-login加载用户的回调函数

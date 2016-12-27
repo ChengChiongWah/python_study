@@ -49,10 +49,9 @@ def login():
     username = form.get('username')
     password = form.get('password')
     user = User.query.filter_by(name=username).first()
-    if user:
-        if password == user.password:
-            login_user(user)
-            return redirect(request.args.get('next') or url_for('main.index'))
+    if user is not None and user.verify_password(password):
+        login_user(user)
+        return redirect(request.args.get('next') or url_for('main.index'))
     else:
         return redirect(url_for('auth.login_view'))
 
