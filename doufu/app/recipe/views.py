@@ -1,8 +1,9 @@
-from flask import Blueprint
 from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import request
+from flask import flash
+from werkzeug.utils import secure_filename
 from flask_login import login_required
 from . import recipe
 from ..models import Material, Recipe, Step
@@ -10,11 +11,17 @@ import os
 
 os.chdir('./app') #更改工作路径到app下
 uploads_dir = 'static/images/'
+allow_extensions = set(['png', 'jpg', 'jpeg']) #允许的图片格式
+
+
+def allowed_file(filename):  #允许的文件格式
+    return '.' in filename and \
+            filename.rsplit('.', 1)[1].lower() in allow_extensions
 
 
 def upload(f):
-    if f:
-        filename = f.filename
+    if f and allowed_file(f.filename):
+        filename = secure_filename(f.filename)
         path = uploads_dir + filename
         f.save(path)
         return path
@@ -89,15 +96,15 @@ def recipe_add():
     form = request.form
     f = request.files.get('pictures')
     tips = form.get('tips')
-    if f :
-        filename = f.filename
-        path = uploads_dir + filename
-        f.save(path)
+    if f and upload(f):
+        path = upload(f)
         recipe = Recipe(form, path, tips)
         recipe.add()
         recipe_id = recipe.id
         material_add(form, recipe_id)
         steps_add(form, recipe_id)
+    else:
+        return redirect(url_for('recipe.index'))
     return redirect(url_for('main.index'))
 
 
