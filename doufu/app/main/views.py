@@ -1,12 +1,6 @@
-from flask import Blueprint
 from flask import render_template
-from flask import request
-from flask import redirect
-from flask import url_for
-from flask import session
-from functools import wraps
 from . import main
-from ..models import User, Recipe
+from ..models import Recipe
 
 
 @main.route('/', methods=['GET'])

@@ -12,13 +12,15 @@
 
         <div class="container">
             <form class="form-inline" role="form" enctype="multipart/form-data" action={{url_for("recipe.recipe_add")}} method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
                 <div class="col-md-6">
                     <input name="name" type="text" class="form-control" placeholder="菜谱名称">
                 </div>
                 <div class="col-md-12"></div><br>
+                <div class="col-md-12"></div><br>
                 <div class="col-md-6">
                     <span style="color:#922;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">*菜谱封面(仅支持png jpg jpeg格式,必填）：</span>
-                    <input name="pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    <input name="pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" value="菜谱封面">
                 </div>
                 <div class="col-md-12"></div>
                 <div class="col-md-12">
@@ -75,7 +77,7 @@
                 <div class="col-md-12"></div>
                 <div class="col-md-12"></div>
                 <div class="col-md-12" >
-                    <h5>做法：</h5>
+                    <h5>做法（每一步骤和对应图片）：</h5>
                     <div class="form-group">
                         <textarea name="step1_introduce" class="form-control" placeholder="菜谱步骤1" rows="3" cols="28"></textarea>
                     </div>

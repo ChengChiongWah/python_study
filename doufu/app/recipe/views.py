@@ -2,7 +2,6 @@ from flask import render_template
 from flask import redirect
 from flask import url_for
 from flask import request
-from flask import flash
 from werkzeug.utils import secure_filename
 from flask_login import login_required
 from . import recipe
@@ -59,7 +58,6 @@ def material_update(form, recipe_id):
 
 def steps_add(form, recipe_id):
     for i in range(1, 11): #暂定只用十步
-        step_number = i
         technique = form.get('step' + str(i) +'_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
         if technique:

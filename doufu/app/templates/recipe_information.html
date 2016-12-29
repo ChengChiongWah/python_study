@@ -29,21 +29,31 @@
             <div class="com-md-12">
                 <div class="col-md-9">
                     <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">简介：</p>
+                    {% if recipes.introduce %}
                     <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="11" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.introduce }}</textarea>
+                    {% else %}
+                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="3" cols="58" boder-color=rgb(255, 255, 255)>暂无该菜谱描述</textarea>
+                    {% endif %}
                 </div>
             </div>
             <div class="com-md-12">
                 <div class="col-md-6">
                     <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif"><br>用料：</p>
                     <table class="table table-table-condensed">
-                        <tr>
-                            <th>用料名称：</th><th>用量：</th>
-                        </tr>
-                        {% for material in recipes.materials.all() %}
-                        <tr>
-                            <th>{{ material.name }}</th><th> {{ material.amount }}</th>
-                        </tr>
-                        {% endfor %}
+                        {% if recipes.materials.all() %}
+                            <tr>
+                                <th>用料名称：</th><th>用量：</th>
+                            </tr>
+                            {% for material in recipes.materials.all() %}
+                            <tr>
+                                <th>{{ material.name }}</th><th> {{ material.amount }}</th>
+                            </tr>
+                            {% endfor %}
+                        {% else %}
+                            <tr>
+                                <th>暂无该菜谱用料信息</th>
+                            </tr>
+                        {% endif %}
                     </table>
                 </div>
                 <div class="col-md-6"></div>
@@ -64,7 +74,7 @@
                     {% endfor %}
                 {% else %}
                     <div class="col-md-12">
-                        <p style="color:rgb(0,0,0);font-size:15px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">暂时无相关信息</p>
+                        <p style="color:rgb(0,0,0);font-size:15px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">暂无该菜谱做法信息</p>
                     </div>
                 {% endif %}
 
@@ -72,7 +82,11 @@
             <div class="col-md-12">
                 <div class="col-md-9">
                     <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">小贴士：</p>
+                    {% if recipes.tips %}
                     <textarea name="introduce"  class="form-control"  rows="11" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.tips }}</textarea>
+                    {% else %}
+                    <textarea name="introduce" class="form-control" rows="3" cols="58" boder-color=rgb(255, 255, 255)>暂无该菜谱贴士</textarea>
+                    {% endif %}
                 </div>
                 <div class="col-md-3"></div>
             </div>

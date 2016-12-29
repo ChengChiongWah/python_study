@@ -12,6 +12,7 @@
 
         <div class="container">
             <form class="form-inline" role="form" enctype="multipart/form-data" action={{url_for("recipe.recipe_update", recipe_id=recipes.id)}} method="post">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
                 <div class="col-md-6">
                     <p>菜谱名称：</p>
                     <input name="name" type="text" class="form-control" placeholder="{{recipes.name}}">

@@ -1,4 +1,3 @@
-from flask import Blueprint
 from flask import render_template
 from flask import request
 from flask import redirect
@@ -43,6 +42,7 @@ def register_add():
 def login_view():
     return render_template('login.html')
 
+
 @auth.route('/login', methods=['post'])
 def login():
     form = request.form
@@ -54,6 +54,7 @@ def login():
         return redirect(request.args.get('next') or url_for('main.index'))
     else:
         return redirect(url_for('auth.login_view'))
+
 
 @auth.route('/login')
 @login_required
