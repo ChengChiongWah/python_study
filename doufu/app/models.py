@@ -1,7 +1,10 @@
+from flask import current_app
 from flask_login import UserMixin, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import db
 from . import login_manager
+from ..config import Config
 import time
 import os
 
@@ -132,8 +135,26 @@ class User(db.Model, UserMixin):
     def verify_password(self, password):
         return check_password_hash(self.password, password)
 
+    def generate_confirmation_token(self, expiration=3600):
+        s = Serializer(current_app.Config['SECRIT_KEY'], expiration)
+        return s.dumps({'email':self.email})
+
+    def confirm(selfself, token):
+        s = Serializer(current_app.Config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('email') != self.email:
+            return False
+
+
+    def pwd_update(self, pwd):
+        self.password = generate_password_hash(pwd)
+        db.session.commit()
+
 @login_manager.user_loader
-def load_user(user_id):  #flask-login加载用户的回调函数
+def load_user(user_id):  #flask-login扩展加载用户的回调函数
     return User.query.get(user_id)
 
 def test():
