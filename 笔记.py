@@ -1224,3 +1224,15 @@ result = SomeModel.query.with_entities(SomeModel.col1, SomeModel.col2)
 >>> str(tuple(s))
 "('x', 'x', 'x', 'x', 'x')
 """
+
+"""
+在配置文件config.py上面新建class Config：
+在注册之后：app.config.from_object(Config)
+           Config.init_app(app)
+如果要引用配置，只需要current_app.config，也即不管你用的是啥名，注册之后用current_app.config来调用就可以了
+"""
+
+"""
+在form 的action函数里面，初测不能用request.args.get(**)返回的是空，
+那就在Form里面新增一字段赋值，然后再form.get(**)调用
+"""

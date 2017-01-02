@@ -30,9 +30,9 @@
                 <div class="col-md-9">
                     <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">简介：</p>
                     {% if recipes.introduce %}
-                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="11" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.introduce }}</textarea>
+                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="11" cols="58" boder-color=rgb(255, 255, 255) style="resize:none">{{ recipes.introduce }}</textarea>
                     {% else %}
-                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="3" cols="58" boder-color=rgb(255, 255, 255)>暂无该菜谱描述</textarea>
+                    <textarea name="introduce"  class="form-control" placeholder="菜谱描述" rows="3" cols="58" boder-color=rgb(255, 255, 255) style="resize:none">暂无该菜谱描述</textarea>
                     {% endif %}
                 </div>
             </div>
@@ -83,9 +83,9 @@
                 <div class="col-md-9">
                     <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">小贴士：</p>
                     {% if recipes.tips %}
-                    <textarea name="introduce"  class="form-control"  rows="11" cols="58" boder-color=rgb(255, 255, 255)>{{ recipes.tips }}</textarea>
+                    <textarea name="introduce"  class="form-control"  rows="11" cols="58"  boder-color=rgb(255, 255, 255) style="resize:none">{{ recipes.tips }}</textarea>
                     {% else %}
-                    <textarea name="introduce" class="form-control" rows="3" cols="58" boder-color=rgb(255, 255, 255)>暂无该菜谱贴士</textarea>
+                    <textarea name="introduce" class="form-control" rows="3" cols="58" boder-color=rgb(255, 255, 255) style="resize:none">暂无该菜谱贴士</textarea>
                     {% endif %}
                 </div>
                 <div class="col-md-3"></div>

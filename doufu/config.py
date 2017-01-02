@@ -1,7 +1,8 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-class Config:
+
+class Config(object):
     SECRET_KEY = 'The Python Language 3.5'
     SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'sqlite.db')
     SQLALCHEMY_TRACK_MODIFICATIONS = True
@@ -13,7 +14,10 @@ class Config:
     MAIL_USERNAME = 'sguzch'
     MAIL_PASSWORD = 'wywywywy2013'
 
-
     @staticmethod
     def init_app(app):
         pass
+
+
+
+

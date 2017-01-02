@@ -4,7 +4,6 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import db
 from . import login_manager
-from ..config import Config
 import time
 import os
 
