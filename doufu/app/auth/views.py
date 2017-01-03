@@ -77,31 +77,31 @@ def send_mail_view():
     send_mail(recive_mail)
     return redirect(url_for('auth.login'))
 
+
 @auth.route('/token_check', methods=['GET'])
 def token_check():
     try:
         token = request.args.get('token')
-        s = Serializer(current_app.config['SECRET_KEY'], expires_in=3600)
-        token_data = s.loads(token) #对token解码成对应的值
-        return redirect(url_for('auth.pwd_update_view', email=token_data['email']))
+        return redirect(url_for('auth.pwd_update_view', token=token))
     except:
         return redirect(url_for('main.index'))
 
 
-
 @auth.route('/pwd_update_view', methods=['GET'])
 def pwd_update_view():
-    email = request.args.get('email')
-    return render_template('pwd_update.html', email=email)
+    token = request.args.get('token')
+    return render_template('pwd_update.html', token=token)
 
 
 @auth.route('/pwd_update', methods=['POST'])
 def pwd_update():
     form = request.form
-    email = form.get('email')
+    token = form.get('token')
     pwd = form.get('password')
+    s = Serializer(current_app.config['SECRET_KEY'], expires_in=3600)
+    token_data = s.loads(token) # 对token解码成对应的值
+    email = token_data['email']
     user = User.query.filter_by(email=email).first()
-    # print (email, pwd, user.name)
     if user and pwd:
         user.pwd_update(pwd)
         return redirect(url_for('auth.login'))
