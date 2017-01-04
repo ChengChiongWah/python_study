@@ -1236,3 +1236,21 @@ result = SomeModel.query.with_entities(SomeModel.col1, SomeModel.col2)
 在form 的action函数里面，初测不能用request.args.get(**)返回的是空，
 那就在Form里面新增一字段赋值，然后再form.get(**)调用
 """
+
+"""
+Ubuntu新增用户后方向键会出现乱码
+问题描述：用adduser命令新增了用户之后，发现在该新建用户下的命令终端，使用方向键无法调出历史命令，同时tab键也
+         无法补全输入命令。
+问题解决：在/etc/passwd中发现，该新建用户使用的shell为/bin/sh，而能正常使用的用户shell为/bin/bash，
+        通过ls -l /bin/sh查看/bin/sh得知，在ubuntu系统中，/bin/sh默认链接为dash。因此，只需要
+        在/etc/passwd中修改该用户对应的shell为/bin/bash即可解决该问题。
+"""
+
+"""
+ubuntu 16 安装虚拟环境的时候
+因为Ubuntu包含了python2.7 python3 python3.5等多个版本
+安装虚拟环境的时候默认是用的python2.7
+如果要指定某个版本，执行（virtualenv --python=、usr/bin/python3 doufu_env）
+安装完后进入虚拟环境，pip也有pip pip2 pip2.7 pip3 pip3.5等多个版本
+那么用pip安装的时候也要选择对应python版本的pip比如python3  那么就用pip3来安装
+"""

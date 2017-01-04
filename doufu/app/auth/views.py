@@ -116,19 +116,19 @@ def send_mail(reciver_mail):
     s = Serializer(current_app.config['SECRET_KEY'], expires_in = 3600)
     token = s.dumps({'email':reciver_mail})
 
-    sender = 'sguzch@163.com'
+    sender = 'chengchiongwah@gmail.com'
     subject = '密码修改邮件'
     mail_content = '<html><body><a href="' + url_for('auth.token_check', token=token, _external=True) + '">修改密码链接</a></body></html>'
-    smtpserver = 'smtp.163.com'
-    username = 'sguzch@163.com'
-    password = 'wywywywy2013'
+    smtpserver = 'smtp.gmail.com:587'
+    username = 'chengchiongwah@gmail.com'
+    password = 'gmgmgmgm2013'
 
     msg = MIMEText(mail_content, 'html', 'utf-8')
     msg['Subject'] = Header(subject, 'utf-8')
-    msg['From'] = 'zhengch<sguzch@163.com>'
+    msg['From'] = 'zhengch<chengchiongwah@gmail.com>'
     msg['To'] = reciver_mail
-    smtp = smtplib.SMTP()
-    smtp.connect(smtpserver)
-    smtp.login(username, password)
-    smtp.sendmail(sender, reciver_mail, msg.as_string())
-    smtp.quit()
+    server = smtplib.SMTP(smtpserver)
+    server.starttls()
+    server.login(username, password)
+    server.sendmail(sender, reciver_mail, msg.as_string())
+    server.quit()
