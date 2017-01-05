@@ -7,6 +7,7 @@ from . import login_manager
 import time
 import os
 
+uploads_dir = 'static/images/'
 
 def formatetime(): #给出时间格式
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
@@ -24,25 +25,28 @@ class Recipe(db.Model): #菜谱
     create_time = db.Column(db.String)
 
 
-    def __init__(self, form, path, tips):
+    def __init__(self, form, filename, tips):
         self.name = form.get('name')
         self.introduce = form.get('introduce')
-        self.pictures = path
+        self.pictures = filename
         self.tips = tips
         self.author = current_user.name
         self.create_time = formatetime()
 
     def add(self):
         db.session.add(self)
+        db.session.commit()  # 先commit获得recipe对应id
+        oldname = self.pictures
+        os.rename(uploads_dir+oldname, uploads_dir+'recipe_'+str(self.id)+'_'+oldname) # 对上传的文件更改文件名
+        self.pictures = 'static/images/recipe_' + str(self.id) + '_' + oldname #转成路径格式
         db.session.commit()
 
-    def update(self, form, path):
+    def update(self, form, filename):
         self.name = form.get('name') or self.name
         self.introduce = form.get('introduce') or self.introduce
-        self.pictures = path or self.pictures
+        self.pictures = filename or self.pictures
         self.tips = form.get('tips') or self.tips
         db.session.commit()
-
 
     def delete_element(self):
         if self.pictures: #删除文件
@@ -88,10 +92,10 @@ class Step(db.Model):
     pictures = db.Column(db.String) #步骤图
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) #对应的菜谱名
 
-    def __init__(self, step_number, technique, pictuees, recipe_id):
+    def __init__(self, step_number, technique, filename, recipe_id):
         self.step_number = step_number
         self.technique = technique
-        self.pictures = pictuees
+        self.pictures = filename
         self.recipe_id = recipe_id
 
 

@@ -18,12 +18,17 @@ def allowed_file(filename):  #允许的文件格式
             filename.rsplit('.', 1)[1].lower() in allow_extensions
 
 
-def upload(f):
-    if f and allowed_file(f.filename):
+def upload(f, file_formate):
+    if allowed_file(f.filename):
         filename = secure_filename(f.filename)
         path = uploads_dir + filename
         f.save(path)
-        return path
+        if file_formate:
+            os.rename(uploads_dir+filename, uploads_dir+file_formate+filename) # 按给定格式修改上传的文件
+            filename = uploads_dir + file_formate + filename
+            return filename
+        else:
+            return filename
 
 
 def material_add(form, recipe_id):
@@ -57,29 +62,31 @@ def material_update(form, recipe_id):
 
 
 def steps_add(form, recipe_id):
-    for i in range(1, 11): #暂定只用十步
+    for i in range(1, 11): # 暂定只用十步
         technique = form.get('step' + str(i) +'_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
+        file_formate = 'recipe_' + str(recipe_id) + '_step_' + str(i) + '_'
         if technique:
-            picture_path = upload(f)
-            steps = Step(i, technique, picture_path, recipe_id)
+            filename = upload(f, file_formate)
+            steps = Step(i, technique, filename, recipe_id)
             steps.add()
 
 
 def steps_update(form, recipe_id):
-    steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id=recipe_id).all() #返回如[(1,), （2,), (3,)]的格式
-    step_numbers = [s[0] for s in steps] #转换成[1, 2, 3]的格式
+    steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id=recipe_id).all() # 返回如[(1,), （2,), (3,)]的格式
+    step_numbers = [s[0] for s in steps] # 转换成[1, 2, 3]的格式
     for i in range(1, 11):
         technique = form.get('step' + str(i) + '_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
+        file_formate = 'recipe_' + str(recipe_id) + '_step_' + str(i) + '_'
         if technique or f:
-            picture_path = upload(f)
+            filename = upload(f, file_formate)
             s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
             if s:
-                os.remove(s.pictures) #删掉旧图片
-                s.update(i, technique, picture_path)
+                os.remove(s.pictures) # 删掉旧图片
+                s.update(i, technique, filename)
             else:
-                s = Step(i, technique, picture_path, recipe_id)
+                s = Step(i, technique, filename, recipe_id)
                 s.add()
 
 
@@ -94,9 +101,9 @@ def recipe_add():
     form = request.form
     f = request.files.get('pictures')
     tips = form.get('tips')
-    if f and upload(f):
-        path = upload(f)
-        recipe = Recipe(form, path, tips)
+    if f:
+        filename = upload(f, None)
+        recipe = Recipe(form, filename, tips)
         recipe.add()
         recipe_id = recipe.id
         material_add(form, recipe_id)
@@ -128,15 +135,14 @@ def recipe_update():
     recipe_item = Recipe.query.filter_by(id=recipe_id).first()
     form = request.form
     f = request.files.get('pictures')
+    file_formate = 'recipe_' + str(recipe_id) + '_'
     if f:
-        os.remove(recipe_item.pictures) #如果有图片更新，先删除旧图片
-        filename = f.filename
-        path = uploads_dir + filename
-        f.save(path)
+        os.remove(recipe_item.pictures) # 如果有图片更新，先删除旧图片
+        filename = upload(f, file_formate)
     else:
-        path = ''
+        filename = ''
     recipes = Recipe.query.filter_by(id=recipe_id).first()
-    recipes.update(form, path)
+    recipes.update(form, filename)
     material_update(form, recipe_id)
     steps_update(form, recipe_id)
     return redirect(url_for('recipe.recipe_information', recipe_id=recipe_id))
