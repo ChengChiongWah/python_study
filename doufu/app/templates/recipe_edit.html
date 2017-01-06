@@ -90,7 +90,6 @@
                                 <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
                             </div>
                         {% endfor %}
-
                     {% elif step_length==10 %}
                         {% for step in recipes.steps.all() %}
                             <div class="form-group">
@@ -111,12 +110,12 @@
                             </div>
                             {% set i=i+1 %}
                         {% endfor %}
-                        {% for i in range(step_length, 10) %}
+                        {% for j in range(step_length+1, 11) %}
                             <div class="form-group">
-                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤" style="resize:none" rows="3" cols="28"></textarea>
+                                <textarea name="step{{j}}_introduce" class="form-control" placeholder="菜谱步骤" style="resize:none" rows="3" cols="28"></textarea>
                             </div>
                             <div class="form-group">
-                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                                <input name="step{{j}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
                             </div>
                         {% endfor %}
                     {% endif %}

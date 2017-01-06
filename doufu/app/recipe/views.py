@@ -6,9 +6,9 @@ from werkzeug.utils import secure_filename
 from flask_login import login_required
 from . import recipe
 from ..models import Material, Recipe, Step
+from ..log import Log
 import os
 
-os.chdir('./app') #更改工作路径到app下
 uploads_dir = 'static/images/'
 allow_extensions = set(['png', 'jpg', 'jpeg']) #允许的图片格式
 
@@ -79,6 +79,7 @@ def steps_update(form, recipe_id):
         technique = form.get('step' + str(i) + '_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
         file_formate = 'recipe_' + str(recipe_id) + '_step_' + str(i) + '_'
+        print(technique)
         if technique or f:
             filename = upload(f, file_formate)
             s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
@@ -97,6 +98,7 @@ def index():
 
 
 @recipe.route('/recipe_add', methods=['POST'])
+@login_required
 def recipe_add():
     form = request.form
     f = request.files.get('pictures')
@@ -121,6 +123,7 @@ def recipe_information():
 
 
 @recipe.route('/recipe_edit', methods=['GET'])
+@login_required
 def recipe_edit():
     recipe_id = int(request.args.get('recipe_id'))
     recipes = Recipe.query.filter_by(id=recipe_id).first()
@@ -130,6 +133,7 @@ def recipe_edit():
 
 
 @recipe.route('/recipe_update', methods=['POST'])
+@login_required
 def recipe_update():
     recipe_id = int(request.args.get('recipe_id'))
     recipe_item = Recipe.query.filter_by(id=recipe_id).first()
@@ -149,6 +153,7 @@ def recipe_update():
 
 
 @recipe.route('/recipe_delete', methods=['GET'])
+@login_required
 def recipe_delete():
     recipe_id = int(request.args.get('recipe_id'))
     recipes = Recipe.query.filter_by(id=recipe_id).all()

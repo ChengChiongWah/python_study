@@ -12,6 +12,7 @@ uploads_dir = 'static/images/'
 def formatetime(): #给出时间格式
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
+
 class Recipe(db.Model): #菜谱
     __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
@@ -69,7 +70,6 @@ class Material(db.Model): #用料
         self.amount = amount
         self.recipe_id = recipe_id
 
-
     def add(self):
         db.session.add(self)
         db.session.commit()
@@ -88,16 +88,15 @@ class Step(db.Model):
     __tablename__ = 'steps'
     id = db.Column(db.Integer, primary_key=True)
     step_number = db.Column(db.Integer)
-    technique = db.Column(db.Integer) #步骤方法
-    pictures = db.Column(db.String) #步骤图
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) #对应的菜谱名
+    technique = db.Column(db.Integer) # 步骤方法
+    pictures = db.Column(db.String) # 步骤图
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) # 对应的菜谱名
 
     def __init__(self, step_number, technique, filename, recipe_id):
         self.step_number = step_number
         self.technique = technique
         self.pictures = filename
         self.recipe_id = recipe_id
-
 
     def add(self):
         db.session.add(self)
@@ -150,7 +149,6 @@ class User(db.Model, UserMixin):
             return False
         if data.get('email') != self.email:
             return False
-
 
     def pwd_update(self, pwd):
         self.password = generate_password_hash(pwd)
