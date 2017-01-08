@@ -4,7 +4,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
     SECRET_KEY = 'The Python Language 3.5'
-    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'sqlite.db')
+#    SQLALCHEMY_DATABASE_URI = 'sqlite:///' + os.path.join(basedir, 'sqlite.db')
+    SQLALCHEMY_DATABASE_URI = 'mysql+pymysql://root:dfdfdfdf2013@localhost/doufu'
     SQLALCHEMY_TRACK_MODIFICATIONS = True
     MAX_CONTENT_LENGTH = 3*1024*1024  #upload文件限制3M
     ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])

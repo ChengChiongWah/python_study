@@ -16,14 +16,14 @@ def formatetime(): #给出时间格式
 class Recipe(db.Model): #菜谱
     __tablename__ = 'recipes'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text) #名称
-    introduce = db.Column(db.Text) #简介
-    pictures = db.Column(db.String) #保留图片路径
-    tips = db.Column(db.Text) #小贴士
-    author = db.Column(db.Text) #菜谱的发布者
+    name = db.Column(db.Text(20)) #名称
+    introduce = db.Column(db.Text(100)) #简介
+    pictures = db.Column(db.String(50)) #保留图片路径
+    tips = db.Column(db.Text(100)) #小贴士
+    author = db.Column(db.Text(20)) #菜谱的发布者
     materials = db.relationship('Material', backref='recipe', foreign_keys='Material.recipe_id', lazy='dynamic')
     steps = db.relationship('Step', backref='recipe', foreign_keys='Step.recipe_id', lazy='dynamic')
-    create_time = db.Column(db.String)
+    create_time = db.Column(db.String(20))
 
 
     def __init__(self, form, filename, tips):
@@ -60,7 +60,7 @@ class Material(db.Model): #用料
     __tablename__ = 'materials'
     id = db.Column(db.Integer, primary_key=True)
     material_number = db.Column(db.Integer)
-    name = db.Column(db.Text)
+    name = db.Column(db.Text(20))
     amount = db.Column(db.Integer) #数量
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'))
 
@@ -88,8 +88,8 @@ class Step(db.Model):
     __tablename__ = 'steps'
     id = db.Column(db.Integer, primary_key=True)
     step_number = db.Column(db.Integer)
-    technique = db.Column(db.Integer) # 步骤方法
-    pictures = db.Column(db.String) # 步骤图
+    technique = db.Column(db.String(50)) # 步骤方法
+    pictures = db.Column(db.String(50)) # 步骤图
     recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) # 对应的菜谱名
 
     def __init__(self, step_number, technique, filename, recipe_id):
@@ -118,11 +118,11 @@ class Step(db.Model):
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.Text, unique=True)
-    password = db.Column(db.Text)
-    email = db.Column(db.String, unique=True)
+    name = db.Column(db.String(20), unique=True)
+    password = db.Column(db.Text(100))
+    email = db.Column(db.String(30), unique=True)
     role_id = db.Column(db.Integer)
-    create_time = db.Column(db.String)
+    create_time = db.Column(db.String(30))
 
     def __init__(self, form):
         self.name = form.get('username', '')

@@ -3,7 +3,7 @@ from flask import redirect
 from flask import url_for
 from flask import request
 from werkzeug.utils import secure_filename
-from flask_login import login_required
+from flask_login import login_required, current_user
 from . import recipe
 from ..models import Material, Recipe, Step
 from ..log import Log
@@ -159,10 +159,11 @@ def recipe_delete():
     recipes = Recipe.query.filter_by(id=recipe_id).all()
     materials = Material.query.filter_by(recipe_id=recipe_id)
     steps = Step.query.filter_by(recipe_id=recipe_id)
-    for m in materials:
-        m.delete_element()
-    for s in steps:
-        s.delete_element()
-    for r in recipes:
-        r.delete_element()
+    if current_user == 'recipes.author' or current_user == 'admin':
+        for m in materials:
+            m.delete_element()
+        for s in steps:
+            s.delete_element()
+        for r in recipes:
+            r.delete_element()
     return redirect(url_for('main.index'))

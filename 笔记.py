@@ -658,8 +658,8 @@ gunicorn 运行服务器程序  会用一个监控程序监控gunicorn来运行�
          使用gunicorn启动程序  gunicorn -b 0.0.0.0:8000 main:app
          (-b 是用来绑定地址 main 是main.py  app是main中的flask实例
 
-         使用gunicorn可以增加工作进程，充分利用多核 使用--workders 参数 4是进程数
-         gunicorn --workders 4 main：app -b 0.0.0.0:8000
+         使用gunicorn可以增加工作进程，充分利用多核 使用--workers 参数 4是进程数
+         gunicorn --workers 4 main：app -b 0.0.0.0:8000
 
 nginx使用（包括Apache 是和nginx一样流行的服务）
          1.nginx 市场占有率高 开发投入大 安全性高 bug 修复快
@@ -696,7 +696,7 @@ nginx使用（包括Apache 是和nginx一样流行的服务）
                 权限问题  有些是
                 路径问题
 
-                通用wsgi.py文件(用来解决 无论你是main 还是
+                通用wsgi.py文件(从文件抽出app ）
                 #!/usr/bin/env python3
 
                 import sys
@@ -707,6 +707,12 @@ nginx使用（包括Apache 是和nginx一样流行的服务）
 
                 import app
                 application = app.configured_app()
+对gunicorn启动做成一个脚本
+echo '（gunicorn wsgi -b 127.0.0.1:8000' &） > gun.sh
+chmod +x gun.sh
+然后要运行的话就：sh gun.sh
+杀掉gunicornkillall gunicorn
+
 
 服务器管理
     http服务器 （nginx  apache）
@@ -1253,4 +1259,8 @@ ubuntu 16 安装虚拟环境的时候
 如果要指定某个版本，执行（virtualenv --python=、usr/bin/python3 doufu_env）
 安装完后进入虚拟环境，pip也有pip pip2 pip2.7 pip3 pip3.5等多个版本
 那么用pip安装的时候也要选择对应python版本的pip比如python3  那么就用pip3来安装
+"""
+
+"""
+
 """
