@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from app import create_app, db
@@ -10,5 +11,4 @@ migrate = Migrate(app, db)
 manager.add_command('db', MigrateCommand)
 
 if __name__ == '__main__':
-    os.chdir('./app')  # 更改工作路径到app下
     manager.run()

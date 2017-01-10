@@ -23,7 +23,6 @@
             </div>
             <div class="col-md-9">
                 <img class="featurette-image img-responsive" src="{{ recipes.pictures }}" data-src="holder.js/300x300/auto" alt="Generic placeholder image" >
-                <h4>{{recipes.pictures}}</h4>
                 <br>
             </div>
             <div class="com-md-12">
@@ -59,7 +58,7 @@
                 <div class="col-md-6"></div>
             </div>
             <div class="col-md-12">
-                <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ recipes.name }}的做法</p>
+                <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{ recipes.name }}的做法:</p>
                 {% if recipes.steps.all() %}
                     {% for step in recipes.steps.all() %}
                         <div class="col-md-6">
@@ -76,8 +75,8 @@
                     <div class="col-md-12">
                         <p style="color:rgb(0,0,0);font-size:15px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">暂无该菜谱做法信息</p>
                     </div>
+		    <br><br>
                 {% endif %}
-
             </div>
             <div class="com-md-12">
                 <div class="col-md-9">
@@ -87,6 +86,13 @@
                     {% else %}
                     <textarea name="introduce" class="form-control" rows="3" cols="58" boder-color=rgb(255, 255, 255) style="resize:none">暂无该菜谱贴士</textarea>
                     {% endif %}
+                </div>
+            </div>
+            <div class="com-md-12">
+                <div class="col-md-9">
+		    <br>
+                    <p style="color:rgb(200,190,172);font-size:20px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">{{recipes.name}}的留言：</p>
+                    <p><a href={{url_for("recipe.recipe_questions", recipe_id=recipes.id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">查看菜谱留言</a></p>
                 </div>
             </div>
             <div class="col-md-12">

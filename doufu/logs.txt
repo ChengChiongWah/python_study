@@ -1,0 +1,7 @@
+2017/01/10 01:34:15 /home/cheng/python_study/doufu
+2017/01/10 01:38:39 /home/cheng/python_study/doufu
+2017/01/10 01:39:14 /home/cheng/python_study/doufu
+2017/01/10 01:39:54 /home/cheng/python_study/doufu
+2017/01/10 01:48:01 <app.models.User object at 0x7f66cef8c5c0>
+2017/01/10 01:50:23 user
+2017/01/10 01:51:26 user

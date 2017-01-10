@@ -9,7 +9,8 @@ from ..models import Material, Recipe, Step
 from ..log import Log
 import os
 
-uploads_dir = 'static/images/'
+uploads_dir = './app/static/images/' # 以.app为起点，用于删除或重命名图片文件
+static_images_dir = 'static/images/' #保存到数据库中的图片路径，供template调用
 allow_extensions = set(['png', 'jpg', 'jpeg']) #允许的图片格式
 
 
@@ -18,14 +19,18 @@ def allowed_file(filename):  #允许的文件格式
             filename.rsplit('.', 1)[1].lower() in allow_extensions
 
 
-def upload(f, file_formate):
+def upload(f, file_formate): 
+    '''
+    file_formate 是对上传图片文件名rename的格式，reicpe的图片因为要引用recipe_id作为
+    文件名的一部分，在此为Null，在Model的add方法中对其rename格式
+    '''
     if allowed_file(f.filename):
         filename = secure_filename(f.filename)
         path = uploads_dir + filename
         f.save(path)
         if file_formate:
             os.rename(uploads_dir+filename, uploads_dir+file_formate+filename) # 按给定格式修改上传的文件
-            filename = uploads_dir + file_formate + filename
+            filename = static_images_dir + file_formate + filename
             return filename
         else:
             return filename
@@ -79,12 +84,11 @@ def steps_update(form, recipe_id):
         technique = form.get('step' + str(i) + '_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
         file_formate = 'recipe_' + str(recipe_id) + '_step_' + str(i) + '_'
-        print(technique)
         if technique or f:
             filename = upload(f, file_formate)
             s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
             if s:
-                os.remove(s.pictures) # 删掉旧图片
+                os.remove('app/' + s.pictures) # 删掉旧图片
                 s.update(i, technique, filename)
             else:
                 s = Step(i, technique, filename, recipe_id)
@@ -141,7 +145,7 @@ def recipe_update():
     f = request.files.get('pictures')
     file_formate = 'recipe_' + str(recipe_id) + '_'
     if f:
-        os.remove(recipe_item.pictures) # 如果有图片更新，先删除旧图片
+        os.remove('app/' + recipe_item.pictures) # 如果有图片更新，先删除旧图片
         filename = upload(f, file_formate)
     else:
         filename = ''
@@ -159,7 +163,8 @@ def recipe_delete():
     recipes = Recipe.query.filter_by(id=recipe_id).all()
     materials = Material.query.filter_by(recipe_id=recipe_id)
     steps = Step.query.filter_by(recipe_id=recipe_id)
-    if current_user == 'recipes.author' or current_user == 'admin':
+    Log.log(current_user.name)
+    if current_user.name == recipes[0].author or current_user.name == 'admin':
         for m in materials:
             m.delete_element()
         for s in steps:
@@ -167,3 +172,22 @@ def recipe_delete():
         for r in recipes:
             r.delete_element()
     return redirect(url_for('main.index'))
+
+
+@recipe.route('/recipe_questions', methods=['GET'])
+@login_required
+def recipe_questions():
+    return render_template('recipe_questions.html')
+
+
+@recipe.route('/recipe_questions_view', methods=['GET'])
+@login_required
+def recipe_questions_view():
+    return render_template('recipe_questions_add.html')
+
+
+@recipe.route('/recipe_add', methods=['POST'])
+@login_required
+def recipe_questions_add():
+    form = request.form
+    return redirect(url_for('recipe.recipe_questions'))

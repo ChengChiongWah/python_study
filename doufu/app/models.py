@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from flask import current_app
 from flask_login import UserMixin, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,7 +8,7 @@ from . import login_manager
 import time
 import os
 
-uploads_dir = 'static/images/'
+uploads_dir = 'app/static/images/'
 
 def formatetime(): #给出时间格式
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
@@ -15,7 +16,7 @@ def formatetime(): #给出时间格式
 
 class Recipe(db.Model): #菜谱
     __tablename__ = 'recipes'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.INT, primary_key=True)
     name = db.Column(db.Text(20)) #名称
     introduce = db.Column(db.Text(100)) #简介
     pictures = db.Column(db.String(50)) #保留图片路径
@@ -51,18 +52,18 @@ class Recipe(db.Model): #菜谱
 
     def delete_element(self):
         if self.pictures: #删除文件
-            os.remove(self.pictures)
+            os.remove('app/' + self.pictures)
         db.session.delete(self)
         db.session.commit()
 
 
 class Material(db.Model): #用料
     __tablename__ = 'materials'
-    id = db.Column(db.Integer, primary_key=True)
-    material_number = db.Column(db.Integer)
+    id = db.Column(db.INT, primary_key=True)
+    material_number = db.Column(db.INT)
     name = db.Column(db.Text(20))
-    amount = db.Column(db.Integer) #数量
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'))
+    amount = db.Column(db.String(20)) #数量
+    recipe_id = db.Column(db.INT, db.ForeignKey('recipes.id'))
 
     def __init__(self, material_number, material_name, amount, recipe_id):
         self.material_number = int(material_number)
@@ -86,11 +87,11 @@ class Material(db.Model): #用料
 
 class Step(db.Model):
     __tablename__ = 'steps'
-    id = db.Column(db.Integer, primary_key=True)
-    step_number = db.Column(db.Integer)
+    id = db.Column(db.INT, primary_key=True)
+    step_number = db.Column(db.INT)
     technique = db.Column(db.String(50)) # 步骤方法
-    pictures = db.Column(db.String(50)) # 步骤图
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) # 对应的菜谱名
+    pictures = db.Column(db.String(100)) # 步骤图
+    recipe_id = db.Column(db.INT, db.ForeignKey('recipes.id')) # 对应的菜谱名
 
     def __init__(self, step_number, technique, filename, recipe_id):
         self.step_number = step_number
@@ -110,18 +111,18 @@ class Step(db.Model):
 
     def delete_element(self):
         if self.pictures:
-            os.remove(self.pictures)
+            os.remove('app/' + self.pictures)
         db.session.delete(self)
         db.session.commit()
 
 
 class User(db.Model, UserMixin):
     __tablename__ = 'user'
-    id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.INT, primary_key=True)
     name = db.Column(db.String(20), unique=True)
     password = db.Column(db.Text(100))
     email = db.Column(db.String(30), unique=True)
-    role_id = db.Column(db.Integer)
+    role_id = db.Column(db.INT)
     create_time = db.Column(db.String(30))
 
     def __init__(self, form):
@@ -158,14 +159,14 @@ class User(db.Model, UserMixin):
 def load_user(user_id):  #flask-login扩展加载用户的回调函数
     return User.query.get(user_id)
 
-def test():
-    steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id='1').all()
-    print (steps)
-    step_numbers = [s[0] for s in steps]
-    # for s in steps:
-    #     step_numbers.append(s[0])
-    #     print(s)
-    print(step_numbers)
 
-
-
+class Questions(db.Model): 
+    '''
+    菜谱的留言信息
+    '''
+    __tablename__ ='questions'
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.Text(100)) #留言内容
+    recipe_id = db.Column(db.Integer) #留言的菜谱id
+    author = db.Column(db.String(30)) #留言作者
+    create_time = db.Column(db.String(20)) #留言时间
