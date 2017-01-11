@@ -24,6 +24,7 @@ class Recipe(db.Model): #菜谱
     author = db.Column(db.Text(20)) #菜谱的发布者
     materials = db.relationship('Material', backref='recipe', foreign_keys='Material.recipe_id', lazy='dynamic')
     steps = db.relationship('Step', backref='recipe', foreign_keys='Step.recipe_id', lazy='dynamic')
+    questions = db.relationship('Questions', backref='recipe', foreign_keys='Questions.recipe_id', lazy='dynamic')
     create_time = db.Column(db.String(20))
 
 
@@ -122,6 +123,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(20), unique=True)
     password = db.Column(db.Text(100))
     email = db.Column(db.String(30), unique=True)
+    picture = db.Column(db.String(50))
     role_id = db.Column(db.INT)
     create_time = db.Column(db.String(30))
 
@@ -167,6 +169,16 @@ class Questions(db.Model):
     __tablename__ ='questions'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.Text(100)) #留言内容
-    recipe_id = db.Column(db.Integer) #留言的菜谱id
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) #留言的菜谱id
     author = db.Column(db.String(30)) #留言作者
     create_time = db.Column(db.String(20)) #留言时间
+    
+    def __init__(self, content, recipe_id, author):
+        self.content = content
+        self.recipe_id = recipe_id
+        self.author = author
+        self.create_time = formatetime()
+
+    def add(self):
+        db.session.add(self)
+        db.session.commit()

@@ -5,7 +5,7 @@ from flask import request
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 from . import recipe
-from ..models import Material, Recipe, Step
+from ..models import Material, Recipe, Step, Questions
 from ..log import Log
 import os
 
@@ -177,17 +177,25 @@ def recipe_delete():
 @recipe.route('/recipe_questions', methods=['GET'])
 @login_required
 def recipe_questions():
-    return render_template('recipe_questions.html')
+    recipe_id = request.args.get('recipe_id')
+    recipes = Recipe.query.filter_by(id = int(recipe_id)).first()
+    return render_template('recipe_questions.html', recipe_id=recipe_id, recipes=recipes)
 
 
 @recipe.route('/recipe_questions_view', methods=['GET'])
 @login_required
 def recipe_questions_view():
-    return render_template('recipe_questions_add.html')
+    recipe_id = request.args.get('recipe_id')
+    return render_template('recipe_questions_add.html', recipe_id=recipe_id)
 
 
-@recipe.route('/recipe_add', methods=['POST'])
+@recipe.route('/recipe_questions_add', methods=['POST'])
 @login_required
 def recipe_questions_add():
     form = request.form
-    return redirect(url_for('recipe.recipe_questions'))
+    content = form.get('contents')
+    recipe_id = request.args.get('recipe_id')
+    author = current_user.name
+    question = Questions(content, recipe_id, author)
+    question.add()
+    return redirect(url_for('recipe.recipe_questions', recipe_id=recipe_id))

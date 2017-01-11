@@ -12,20 +12,27 @@
 
         <div class="container">
             <div class="col-md-12">
-                    <div class="col-md-6">
+                    <div class="col-md-7">
                         <p style="color:#000;font-size:28px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
-                            某某的留言
+                           {{recipes.name}}的留言 
                         </p>
                     </div>
                     <div class="col-md-2">
-                        <p><a href={{url_for("recipe.recipe_questions_view", recipe_id=recipe_id)}}>写留言</a></p>
+                        <a href={{url_for("recipe.recipe_questions_view", recipe_id=recipe_id)}} style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">写留言</a>
                     </div>
-                    <div class="col-md-4">
-                        <p>
-                            此处显示菜谱封面
-                        </p>
+                    <div class="col-md-3">
                     </div>
             </div>
+	    <div class="col-md-12">
+	        <div class="col-md-9">
+		    {% for q in recipes.questions.all() %}
+		    <p>{{ q.content }}</p>
+		    {% endfor %}
+		</div>
+		<div class="col-md-3">
+                    <img class="featurette-image img-responsive" data-src="holder.js/200x200/auto" alt="Generic placeholder image" src={{recipes.pictures}}>
+		</div>
+	    </div>
         </div>
     {% endblock %}
 
