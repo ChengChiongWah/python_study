@@ -20,8 +20,8 @@ class Recipe(db.Model): #菜谱
     name = db.Column(db.Text(20)) #名称
     introduce = db.Column(db.Text(100)) #简介
     pictures = db.Column(db.String(50)) #保留图片路径
+    author = db.Column(db.Text(20)) #菜谱发布者
     tips = db.Column(db.Text(100)) #小贴士
-    author = db.Column(db.Text(20)) #菜谱的发布者
     materials = db.relationship('Material', backref='recipe', foreign_keys='Material.recipe_id', lazy='dynamic')
     steps = db.relationship('Step', backref='recipe', foreign_keys='Step.recipe_id', lazy='dynamic')
     questions = db.relationship('Questions', backref='recipe', foreign_keys='Questions.recipe_id', lazy='dynamic')
@@ -131,6 +131,7 @@ class User(db.Model, UserMixin):
         self.name = form.get('username', '')
         self.password = generate_password_hash(form.get('password', ''))
         self.email = form.get('email', '')
+        self.picture = 'static/images/users/pictures/user_default.jpg'
         self.create_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
     def add(self):

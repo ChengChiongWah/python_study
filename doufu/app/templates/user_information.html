@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+        {{ super() }}
+
+        <div class="container">
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <p>某某某</p>
+                </div>
+                <div class="col-md-7"></div>
+	        </div>
+	        <div class="col-md-12">
+                <div class="col-md-5">
+                    <img class="featurette-image img-responsive" src="static/images/users_pictures/user_default.jpg" data-src="holder.js/300x300/auto" alt="Generic placeholder image" >
+                </div>
+                <div class="col-md-7"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-5">
+                    <p><a href={{url_for("auth.user_picture_update_view")}}>修改头像</a> </p>
+                </div>
+		        <div class="col-md-7"></div>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block footer %}
+        {{ super() }}
+    {% endblock %}
+</body>
+</html>

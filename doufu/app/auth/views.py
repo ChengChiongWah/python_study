@@ -109,6 +109,21 @@ def pwd_update():
         return redirect(url_for('main.index'))
 
 
+@auth.route('/auth_user_information', methods=['GET'])
+def user_information():
+    return render_template('user_information.html')
+
+
+@auth.route('/auth_user_picture_update_view', methods=['GET'])
+def user_picture_update_view():
+    return render_template('user_picture_update.html')
+
+
+@auth.route('/auth_user_picture_update', methods=['POST'])
+def user_picture_update():
+    return redirect(url_for('auth.user_information'))
+
+
 def send_mail(reciver_mail):
     import smtplib
     from email.mime.text import MIMEText

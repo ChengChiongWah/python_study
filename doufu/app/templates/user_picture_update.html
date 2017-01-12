@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+        {{ super() }}
+    {% endblock %}
+</head>
+<body>
+    {% block body %}
+        {{ super() }}
+
+        <div class="container">
+            <div class="col-md-7">
+		<p>请选择头像文件</p>
+                <form class="form-inline" role="form" enctype="multipart/form-data" action={{url_for("auth.user_picture_update")}} method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+                    <div class="col-md-12">
+                        <input name="picture" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="submit" value="提交">
+                    </div>
+                </form>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block footer %}
+        {{ super() }}
+    {% endblock %}
+</body>
+</html>

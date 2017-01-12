@@ -19,11 +19,12 @@ def allowed_file(filename):  #允许的文件格式
             filename.rsplit('.', 1)[1].lower() in allow_extensions
 
 
-def upload(f, file_formate): 
+def upload(f, file_formate, uploads_dir):
     '''
     file_formate 是对上传图片文件名rename的格式，reicpe的图片因为要引用recipe_id作为
     文件名的一部分，在此为Null，在Model的add方法中对其rename格式
     '''
+
     if allowed_file(f.filename):
         filename = secure_filename(f.filename)
         path = uploads_dir + filename
@@ -72,7 +73,7 @@ def steps_add(form, recipe_id):
         f = request.files.get('step' + str(i) + '_pictures')
         file_formate = 'recipe_' + str(recipe_id) + '_step_' + str(i) + '_'
         if technique:
-            filename = upload(f, file_formate)
+            filename = upload(f, file_formate, uploads_dir)
             steps = Step(i, technique, filename, recipe_id)
             steps.add()
 
@@ -85,7 +86,7 @@ def steps_update(form, recipe_id):
         f = request.files.get('step' + str(i) + '_pictures')
         file_formate = 'recipe_' + str(recipe_id) + '_step_' + str(i) + '_'
         if technique or f:
-            filename = upload(f, file_formate)
+            filename = upload(f, file_formate, uploads_dir)
             s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
             if s:
                 os.remove('app/' + s.pictures) # 删掉旧图片
@@ -108,7 +109,7 @@ def recipe_add():
     f = request.files.get('pictures')
     tips = form.get('tips')
     if f:
-        filename = upload(f, None)
+        filename = upload(f, None, uploads_dir)
         recipe = Recipe(form, filename, tips)
         recipe.add()
         recipe_id = recipe.id
@@ -146,7 +147,7 @@ def recipe_update():
     file_formate = 'recipe_' + str(recipe_id) + '_'
     if f:
         os.remove('app/' + recipe_item.pictures) # 如果有图片更新，先删除旧图片
-        filename = upload(f, file_formate)
+        filename = upload(f, file_formate, uploads_dir)
     else:
         filename = ''
     recipes = Recipe.query.filter_by(id=recipe_id).first()
