@@ -123,7 +123,7 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(20), unique=True)
     password = db.Column(db.Text(100))
     email = db.Column(db.String(30), unique=True)
-    picture = db.Column(db.String(50))
+    picture = db.Column(db.String(100))
     role_id = db.Column(db.INT)
     create_time = db.Column(db.String(30))
 
@@ -158,9 +158,13 @@ class User(db.Model, UserMixin):
         self.password = generate_password_hash(pwd)
         db.session.commit()
 
+    def picture_update(self, filename):
+        self.picture = filename
+        db.session.commit()
+
 @login_manager.user_loader
 def load_user(user_id):  #flask-login扩展加载用户的回调函数
-    return User.query.get(user_id)
+    return User.query.get(int(user_id))
 
 
 class Questions(db.Model): 

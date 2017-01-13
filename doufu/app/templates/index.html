@@ -17,289 +17,338 @@
     <link href='static/css/jumbotron-narrow.css' rel='stylesheet'>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src='static/js/ie-emulation-modes-warning.js'></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <ul class="nav nav-pills pull-right" role="tablist">
-                <li role="presentation"><a href={{url_for("main.index")}}>Home</a></li>
-                <li role="presentation"><a href="#">About</a></li>
-                {% if current_user.is_authenticated %}
-		    <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information")}}>{{current_user.name}}</a>
-		    </li>
-		    <li role="presentation">
-		        <a href={{url_for("auth.logout")}}> 退出</a>
-		    </li>
-                {% else %}
-		    <li role="presentation">
-                        <a href={{url_for('auth.login_view')}}>登录</a>
-                    </li>
-                {% endif %}
-            </ul>
-            <h3 class="text-muted">豆腐的美味世界</h3>
+<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right" role="tablist">
+            <li role="presentation"><a href={{url_for("main.index")}}>首页</a></li>
+            <li role="presentation"><a href="#">关于</a></li>
+            {% if current_user.is_authenticated %}
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information")}}>{{current_user.name}}</a>
+            </li>
+            <li role="presentation">
+                <a href={{url_for("auth.logout")}}> 退出</a>
+            </li>
+            {% else %}
+            <li role="presentation">
+                <a href={{url_for('auth.login_view')}}>登录</a>
+            </li>
+            {% endif %}
+        </ul>
+        <h3 class="text-muted">豆腐的美味世界</h3>
+    </div>
+
+    <div class="container marketing">
+        <!-- START THE FEATURETTES -->
+        <div class="row featurette">
+            <div class="col-md-3">
+                <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image"
+                     src='static/images/doufu.jpg'>
+            </div>
+            <div class="col-md-9">
+                <h2 class="featurette-heading"
+                    style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 28px">
+                    豆腐 </h2>
+                <p><a href="http://baike.baidu.com/subview/11135/17875820.htm">去百度百科了解食材 ></a></p>
+            </div>
         </div>
 
-        <div class="container marketing">
-            <!-- START THE FEATURETTES -->
-            <div class="row featurette">
-                <div class="col-md-3">
-                    <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image" src='static/images/doufu.jpg'>
-                </div>
-                <div class="col-md-9">
-                    <h2 class="featurette-heading" style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 28px">豆腐 </h2>
-                    <p><a href="http://baike.baidu.com/subview/11135/17875820.htm">去百度百科了解食材 ></a></p>
-                </div>
-            </div>
+        <div class="row featurette">
+            <div class="col-md-10">
 
-            <div class="row featurette">
-                <div class="col-md-10">
+                <!-- 标签页导航栏 -->
+                <ul class="nav nav-tabs" role="tablist" id="myTab1">
+                    <li role="presentation" class="active"><a href="#xiangguancaipu" data-toggle="tab">相关菜谱</a></li>
+                    <li role="presentation"><a href="#shicaixiangqing" data-toggle="tab">食材详情</a></li>
+                </ul>
 
-                    <!-- 标签页导航栏 -->
-                    <ul class="nav nav-tabs" role="tablist" id="myTab1">
-                        <li role="presentation" class="active"><a href="#xiangguancaipu" data-toggle="tab">相关菜谱</a> </li>
-                        <li role="presentation"><a href="#shicaixiangqing" data-toggle="tab">食材详情</a></li>
-                    </ul>
-
-                    <div id="myTabContent1" class="tab-content">
-                        <!-- 对应相关菜谱标签页的内容 -->
-                        <div class="tab-pane fade in active" id="xiangguancaipu">
-                            {% if res %}
-                                {% for m in range(0, length) %}
-                                    <div class="row featurette">
-                                        <div class="col-md-2">
-                                            <img class="featurette-image img-responsive" src="{{ res[m].pictures }}" style="height:auto;width:140px" data-src="holder.js/100x100/auto" alt="Generic placeholder image" >
-                                        </div>
-                                        <div class="col-md-10">
-                                            <a href={{url_for("recipe.recipe_information",recipe_id=res[m].id)}}><p style="color:#922;font-size: 18px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">{{ res[m].name }}</p></a>
-                                            <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
-                                                {% for i in res[m].materials.all() %}
-                                                    {{ i.name|truncate(200, True) }}
-                                                {% endfor %}
-                                            </p>
-                                            <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
-					        {{res[m].author}}
-					    </p>
-                                        </div>
-                                    </div>
-                                {% endfor %}
-                            {% else %}
-                                <p>没有任何信息!</p>
-                            {% endif %}
+                <div id="myTabContent1" class="tab-content">
+                    <!-- 对应相关菜谱标签页的内容 -->
+                    <div class="tab-pane fade in active" id="xiangguancaipu">
+                        {% if res %}
+                        {% for m in pageitems %}
+                        <div class="row featurette">
+                            <div class="col-md-2">
+                                <img class="featurette-image img-responsive" src="{{ m.pictures }}"
+                                     style="height:auto;width:140px" data-src="holder.js/100x100/auto"
+                                     alt="Generic placeholder image">
+                            </div>
+                            <div class="col-md-10">
+                                <a href={{url_for("recipe.recipe_information",recipe_id=m.id)}}><p
+                                        style="color:#922;font-size: 18px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">
+                                    {{ m.name }}</p></a>
+                                <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
+                                    {% for i in m.materials.all() %}
+                                    {{ i.name|truncate(200, True) }}
+                                    {% endfor %}
+                                </p>
+                                <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
+                                    {{m.author}}
+                                </p>
+                            </div>
                         </div>
+                        {% endfor %}
+                        <div class="col-md-10">
+                            <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                {% if pagination.has_prev %}
+                                <a href={{url_for('main.index', page=page-1)}}>上一页</a>
+                                {% else %}
+                                <h>上一页</h>
+                                {% endif %}
+                                <a href={{url_for('main.index', page=1)}}>1</a>
+                                <a href={{url_for('main.index', page=2)}}>2</a>
+                                <a href={{url_for('main.index', page=3)}}>3</a>
+                                <a href={{url_for('main.index', page=4)}}>4</a>
+                                <a href={{url_for('main.index', page=5)}}>5</a>
+                                {% if pagination.has_next %}
+                                <a href={{url_for('main.index', page=page+1)}}>下一页</a>
+                                {% else %}
+                                <h>下一页</h>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-3"></div>
+                        </div>
+                        {% else %}
+                        <p>没有任何信息!</p>
+                        {% endif %}
+                    </div>
 
-                        <!-- 对应食材详情标签页的内容 -->
-                        <div class="tab-pane fade" id="shicaixiangqing">
-                            <div class="row featurette">
-                                <div class="col-md-12">
-                                    存储时间：1～3天
-                                    <p><br>豆腐是一种以黄豆为主要原料的食物，本身没有什么味道，但是含有高蛋白质，可以被做成各式各样的
-                                        菜肴。它起源于中国，拥有美观、营养价值高、产品种类丰富等特点。
-                                    </p>
-                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐的营养成分</h4>
-                                    <table class="table table-bordered" style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">
-                                        <tr>
-                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">营养成分</th>
-                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">含量（每100g）</th>
-                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">营养元素</th>
-                                            <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">含量（每100g）</th>
-                                        </tr>
-                                        <tr>
-                                            <td>水</td>
-                                            <td>84.55<em class="gray-font">&nbsp;克</em></td>
-                                            <td>热量</td>
-                                            <td>76<em class="gray-font">&nbsp;千卡</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>蛋白质</td>
-                                            <td>8.08<em class="gray-font">&nbsp;克</em></td>
-                                            <td>脂肪</td>
-                                            <td>4.78<em class="gray-font">&nbsp;克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>碳水化合物</td>
-                                            <td>1.88<em class="gray-font">&nbsp;克</em></td>
-                                            <td>纤维</td>
-                                            <td>0.3<em class="gray-font">&nbsp;克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>钙</td>
-                                            <td>350<em class="gray-font">&nbsp;毫克</em></td>
-                                            <td>铁</td>
-                                            <td>5.36<em class="gray-font">&nbsp;毫克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>镁</td>
-                                            <td>30<em class="gray-font">&nbsp;毫克</em></td>
-                                            <td>磷</td>
-                                            <td>97<em class="gray-font">&nbsp;毫克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>钾</td>
-                                            <td>121<em class="gray-font">&nbsp;毫克</em></td>
-                                            <td>钠</td>
-                                            <td>7<em class="gray-font">&nbsp;毫克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>锌</td>
-                                            <td>0.8<em class="gray-font">&nbsp;毫克</em></td>
-                                            <td>维生素C</td>
-                                            <td>0.1<em class="gray-font">&nbsp;毫克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>维生素B1</td>
-                                            <td>0.081<em class="gray-font">&nbsp;毫克</em></td>
-                                            <td>核黄素</td>
-                                            <td>0.052<em class="gray-font">&nbsp;毫克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>烟酸</td>
-                                            <td>0.195<em class="gray-font">&nbsp;毫克</em></td>
-                                            <td>维生素B6</td>
-                                            <td>0.047<em class="gray-font">&nbsp;毫克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>叶酸</td>
-                                            <td>15<em class="gray-font">&nbsp;微克</em></td>
-                                            <td>维生素B12</td>
-                                            <td>0<em class="gray-font">&nbsp;微克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>维生素A</td>
-                                            <td>4<em class="gray-font">&nbsp;微克</em></td>
-                                            <td>维生素D（D2+D3）</td>
-                                            <td>0<em class="gray-font">&nbsp;微克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>维生素D</td>
-                                            <td>0<em class="gray-font">&nbsp;国际单位</em></td>
-                                            <td>饱和脂肪酸</td>
-                                            <td>0.691<em class="gray-font">&nbsp;克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>单不饱和脂肪酸</td>
-                                            <td>1.056<em class="gray-font">&nbsp;克</em></td>
-                                            <td>多不饱和脂肪酸</td>
-                                            <td>2.699<em class="gray-font">&nbsp;克</em></td>
-                                        </tr>
-                                        <tr>
-                                            <td>胆固醇</td>
-                                            <td>0<em class="gray-font">&nbsp;毫克</em></td>
-                                            <td>咖啡因</td>
-                                            <td>0<em class="gray-font">&nbsp;毫克</em></td>
-                                        </tr>
-                                    </table>
-                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐的功效</h4>
-                                    <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">补中益气、清热润燥
-                                        <br \="">生津止渴、清洁肠胃</p>
-                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">如何挑选豆腐</h4>
-                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
-                                        进行感官鉴别：取一块样品在散射光线下直接观察。优质豆腐呈均匀的乳白色或淡黄色，稍有光泽。次质豆腐色泽变深直至呈
-                                        浅红色，无光泽。劣质豆腐呈深灰色、深黄色或者红褐色。<br \="">进行豆腐组织状态的鉴别：应先取样品直接看其外部
-                                        状况，然后用刀切成几块再仔细观察切口处，最后用手轻轻按压，以试验其弹性和硬度。优质豆腐块形完整，软硬适度，富
-                                        有一定的弹性，质地细嫩，结构均匀，无杂质。次质豆腐块形基本完整，切面处可见比较粗糙，质地不细嫩，弹性差，有黄色
-                                        液体渗出，表面发黏，用水冲后即不粘手了。劣质豆腐块形不完整，组织结构粗糙而松散，触之易碎，无弹性，有杂质，表面
-                                        发黏，用水洗冲后仍然粘手。<br \="">在常温下直接嗅闻其气味。优质豆腐具有豆腐特有的香味。次
-                                        质豆腐香气平淡。劣质豆腐有豆腥味、馊味等不良气味或其他外来气味。<br \="">进行豆腐滋味鉴别时，可在室温下
-                                        取小块样品细细咀嚼以品尝其滋味。优质豆腐口感细腻鲜嫩、味道纯正、清香。次质豆腐口感粗糙、滋味平淡。劣质豆腐有酸
-                                        味、苦味、涩味及其他不良滋味。
-                                        </p>
-                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐的储存方法</h4>
-                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
-                                            盒装豆腐需要冷藏，烹调前再取出。取出后不要超过4小时，以保持新鲜，最好是在购买当天食用完毕。若无法一次食用完毕，
-                                            可依所需的分量切割使用，剩余的部分再放回冷冻室，方便下次食用。
-                                        </p>
-                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">珠联璧合的豆腐海带配</h4>
-                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
-                                            豆腐中的皂角苷会促进人体排碘，造成碘缺乏。而海带是很好的补碘佳品，因此吃豆腐的时候最好搭配海带，营养不流失。</p>
-                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐虽好，也不宜天天吃</h4>
-                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐虽好，过量食用却会危害健康。
-                                            <br \="">引起消化不良：豆腐含有丰富的蛋白质，一次食用过多不仅阻碍人体对铁的吸收，而且容易出现腹胀、腹泻等症状。
-                                            <br \="">促使肾功能衰退：人到老年，肾脏排泄废物的能力下降，大量食用豆腐，摄入过多的植物性蛋白质，会使体内生
-                                            成的含氮废物增多，加重肾脏负担，使肾功能衰退，不利于身体健康。
-                                            <br \="">造成动脉硬化：豆制品中含有丰富的蛋氨酸，在酶的作用下可转化为半胱氨酸，半胱氨酸会损伤动脉管壁内皮细胞，
-                                            易使胆固醇和甘油三酯沉积于动脉壁上，造成动脉硬化。
-                                            <br \="">导致碘缺乏：大豆含有皂角苷，不仅能预防动脉粥样硬化，还能促进人体内碘的排泄。但长期过量食用豆腐很容易
-                                            引起碘缺乏。
-                                            <br \="">促使痛风发作：豆腐含嘌呤较多，嘌呤代谢失常的痛风病人和血尿酸浓度较高的患者多食易导致痛风发作。
-                                        </p>
-                                    <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">豆腐怎样烧不易破碎</h4>
-                                        <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
-                                            豆腐切块大些，容易保持原有的形状。
-                                            <br \="">如果可以，先把豆腐煎一下，“外强中干”就不大容易碎啦。
-                                            <br \="">豆腐下锅后，尽量少用锅铲，只要轻轻晃动锅就好了。
-                                        </p>
-                                </div>
+
+                    <!-- 对应食材详情标签页的内容 -->
+                    <div class="tab-pane fade" id="shicaixiangqing">
+                        <div class="row featurette">
+                            <div class="col-md-12">
+                                存储时间：1～3天
+                                <p><br>豆腐是一种以黄豆为主要原料的食物，本身没有什么味道，但是含有高蛋白质，可以被做成各式各样的
+                                    菜肴。它起源于中国，拥有美观、营养价值高、产品种类丰富等特点。
+                                </p>
+                                <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐的营养成分</h4>
+                                <table class="table table-bordered"
+                                       style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">
+                                    <tr>
+                                        <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">
+                                            营养成分
+                                        </th>
+                                        <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">
+                                            含量（每100g）
+                                        </th>
+                                        <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">
+                                            营养元素
+                                        </th>
+                                        <th style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 12px">
+                                            含量（每100g）
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <td>水</td>
+                                        <td>84.55<em class="gray-font">&nbsp;克</em></td>
+                                        <td>热量</td>
+                                        <td>76<em class="gray-font">&nbsp;千卡</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>蛋白质</td>
+                                        <td>8.08<em class="gray-font">&nbsp;克</em></td>
+                                        <td>脂肪</td>
+                                        <td>4.78<em class="gray-font">&nbsp;克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>碳水化合物</td>
+                                        <td>1.88<em class="gray-font">&nbsp;克</em></td>
+                                        <td>纤维</td>
+                                        <td>0.3<em class="gray-font">&nbsp;克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>钙</td>
+                                        <td>350<em class="gray-font">&nbsp;毫克</em></td>
+                                        <td>铁</td>
+                                        <td>5.36<em class="gray-font">&nbsp;毫克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>镁</td>
+                                        <td>30<em class="gray-font">&nbsp;毫克</em></td>
+                                        <td>磷</td>
+                                        <td>97<em class="gray-font">&nbsp;毫克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>钾</td>
+                                        <td>121<em class="gray-font">&nbsp;毫克</em></td>
+                                        <td>钠</td>
+                                        <td>7<em class="gray-font">&nbsp;毫克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>锌</td>
+                                        <td>0.8<em class="gray-font">&nbsp;毫克</em></td>
+                                        <td>维生素C</td>
+                                        <td>0.1<em class="gray-font">&nbsp;毫克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>维生素B1</td>
+                                        <td>0.081<em class="gray-font">&nbsp;毫克</em></td>
+                                        <td>核黄素</td>
+                                        <td>0.052<em class="gray-font">&nbsp;毫克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>烟酸</td>
+                                        <td>0.195<em class="gray-font">&nbsp;毫克</em></td>
+                                        <td>维生素B6</td>
+                                        <td>0.047<em class="gray-font">&nbsp;毫克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>叶酸</td>
+                                        <td>15<em class="gray-font">&nbsp;微克</em></td>
+                                        <td>维生素B12</td>
+                                        <td>0<em class="gray-font">&nbsp;微克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>维生素A</td>
+                                        <td>4<em class="gray-font">&nbsp;微克</em></td>
+                                        <td>维生素D（D2+D3）</td>
+                                        <td>0<em class="gray-font">&nbsp;微克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>维生素D</td>
+                                        <td>0<em class="gray-font">&nbsp;国际单位</em></td>
+                                        <td>饱和脂肪酸</td>
+                                        <td>0.691<em class="gray-font">&nbsp;克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>单不饱和脂肪酸</td>
+                                        <td>1.056<em class="gray-font">&nbsp;克</em></td>
+                                        <td>多不饱和脂肪酸</td>
+                                        <td>2.699<em class="gray-font">&nbsp;克</em></td>
+                                    </tr>
+                                    <tr>
+                                        <td>胆固醇</td>
+                                        <td>0<em class="gray-font">&nbsp;毫克</em></td>
+                                        <td>咖啡因</td>
+                                        <td>0<em class="gray-font">&nbsp;毫克</em></td>
+                                    </tr>
+                                </table>
+                                <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐的功效</h4>
+                                <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    补中益气、清热润燥
+                                    <br \="">生津止渴、清洁肠胃</p>
+                                <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    如何挑选豆腐</h4>
+                                <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    进行感官鉴别：取一块样品在散射光线下直接观察。优质豆腐呈均匀的乳白色或淡黄色，稍有光泽。次质豆腐色泽变深直至呈
+                                    浅红色，无光泽。劣质豆腐呈深灰色、深黄色或者红褐色。<br \="">进行豆腐组织状态的鉴别：应先取样品直接看其外部
+                                    状况，然后用刀切成几块再仔细观察切口处，最后用手轻轻按压，以试验其弹性和硬度。优质豆腐块形完整，软硬适度，富
+                                    有一定的弹性，质地细嫩，结构均匀，无杂质。次质豆腐块形基本完整，切面处可见比较粗糙，质地不细嫩，弹性差，有黄色
+                                    液体渗出，表面发黏，用水冲后即不粘手了。劣质豆腐块形不完整，组织结构粗糙而松散，触之易碎，无弹性，有杂质，表面
+                                    发黏，用水洗冲后仍然粘手。<br \="">在常温下直接嗅闻其气味。优质豆腐具有豆腐特有的香味。次
+                                    质豆腐香气平淡。劣质豆腐有豆腥味、馊味等不良气味或其他外来气味。<br \="">进行豆腐滋味鉴别时，可在室温下
+                                    取小块样品细细咀嚼以品尝其滋味。优质豆腐口感细腻鲜嫩、味道纯正、清香。次质豆腐口感粗糙、滋味平淡。劣质豆腐有酸
+                                    味、苦味、涩味及其他不良滋味。
+                                </p>
+                                <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐的储存方法</h4>
+                                <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    盒装豆腐需要冷藏，烹调前再取出。取出后不要超过4小时，以保持新鲜，最好是在购买当天食用完毕。若无法一次食用完毕，
+                                    可依所需的分量切割使用，剩余的部分再放回冷冻室，方便下次食用。
+                                </p>
+                                <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    珠联璧合的豆腐海带配</h4>
+                                <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐中的皂角苷会促进人体排碘，造成碘缺乏。而海带是很好的补碘佳品，因此吃豆腐的时候最好搭配海带，营养不流失。</p>
+                                <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐虽好，也不宜天天吃</h4>
+                                <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐虽好，过量食用却会危害健康。
+                                    <br \="">引起消化不良：豆腐含有丰富的蛋白质，一次食用过多不仅阻碍人体对铁的吸收，而且容易出现腹胀、腹泻等症状。
+                                    <br \="">促使肾功能衰退：人到老年，肾脏排泄废物的能力下降，大量食用豆腐，摄入过多的植物性蛋白质，会使体内生
+                                    成的含氮废物增多，加重肾脏负担，使肾功能衰退，不利于身体健康。
+                                    <br \="">造成动脉硬化：豆制品中含有丰富的蛋氨酸，在酶的作用下可转化为半胱氨酸，半胱氨酸会损伤动脉管壁内皮细胞，
+                                    易使胆固醇和甘油三酯沉积于动脉壁上，造成动脉硬化。
+                                    <br \="">导致碘缺乏：大豆含有皂角苷，不仅能预防动脉粥样硬化，还能促进人体内碘的排泄。但长期过量食用豆腐很容易
+                                    引起碘缺乏。
+                                    <br \="">促使痛风发作：豆腐含嘌呤较多，嘌呤代谢失常的痛风病人和血尿酸浓度较高的患者多食易导致痛风发作。
+                                </p>
+                                <h4 style="color:#909090;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐怎样烧不易破碎</h4>
+                                <p style="color:#000;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;font-size: 14px">
+                                    豆腐切块大些，容易保持原有的形状。
+                                    <br \="">如果可以，先把豆腐煎一下，“外强中干”就不大容易碎啦。
+                                    <br \="">豆腐下锅后，尽量少用锅铲，只要轻轻晃动锅就好了。
+                                </p>
                             </div>
                         </div>
                     </div>
-
-                    <hr class="featurette-divider">
-
                 </div>
+                <div class="col-md-12"></div>
+                <hr class="featurette-divider">
 
-                <div class="col-md-2">
-                      <div class="panel-group" id="accordion">
-                          <div >
-                              <div class="panel-heading">
-                                  <h5 class="panel-title">
-                                      <a href={{url_for("recipe.index")}}>创建菜谱</a>
-                                  </h5>
-                              </div>
-                              <div class="panel-heading">
-                                  <h5 class="panel-title">
-                                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">标签 </a>
-                                  </h5>
-                              </div>
-                              <div id="collapseTwo" class="panel-collapse collapse">
-                                  <div class="panel-body" style="color:#922">22222</div>
-                              </div>
-                          </div>
-                          <div>
-                              <div class="panel-heading">
-                                  <h5 class="panel-title">
-                                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">豆制品</a>
-                                  </h5>
-                              </div>
-                              <div id="collapseThree" class="panel-collapse collapse">
-                                  <div class="panel-body" style="color:#922">33333</div>
-                              </div>
-
-                          </div>
-                      </div>
-                </div>
             </div>
 
-            <!-- /END THE FEATURETTES -->
+            <div class="col-md-2">
+                <div class="panel-group" id="accordion">
+                    <div>
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a href={{url_for("recipe.index")}}>创建菜谱</a>
+                            </h5>
+                        </div>
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion"
+                                   href="#collapseTwo">标签 </a>
+                            </h5>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse">
+                            <div class="panel-body" style="color:#922">22222</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="panel-heading">
+                            <h5 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">豆制品</a>
+                            </h5>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse">
+                            <div class="panel-body" style="color:#922">33333</div>
+                        </div>
 
-
-            <!-- FOOTER -->
-            <footer>
-                <p class="pull-right"><a href="#">Back to top</a></p>
-                <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-            </footer>
-
+                    </div>
+                </div>
+            </div>
         </div>
 
+        <!-- /END THE FEATURETTES -->
+
+
+        <!-- FOOTER -->
+        <footer>
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        </footer>
+
     </div>
-    <!-- /container -->
 
-    <!-- 标签卡切换的javascript代码 -->
-    <script src='static/js/jquery.min.js'></script>
-    <script src='static/js/transition.js'></script>
-    <script src='static/js/tab.js'></script>
-     <script src='static/js/collapse.js'></script>
+</div>
+<!-- /container -->
 
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src='static/js/ie10-viewport-bug-workaround.js'></script>
-    <script src='static/js/docs.min.js'></script>
+<!-- 标签卡切换的javascript代码 -->
+<script src='static/js/jquery.min.js'></script>
+<script src='static/js/transition.js'></script>
+<script src='static/js/tab.js'></script>
+<script src='static/js/collapse.js'></script>
+
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src='static/js/ie10-viewport-bug-workaround.js'></script>
+<script src='static/js/docs.min.js'></script>
 </body>
 </html>

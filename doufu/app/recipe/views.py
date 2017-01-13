@@ -5,7 +5,7 @@ from flask import request
 from werkzeug.utils import secure_filename
 from flask_login import login_required, current_user
 from . import recipe
-from ..models import Material, Recipe, Step, Questions
+from ..models import Material, Recipe, Step, Questions, User
 from ..log import Log
 import os
 
@@ -19,7 +19,7 @@ def allowed_file(filename):  #允许的文件格式
             filename.rsplit('.', 1)[1].lower() in allow_extensions
 
 
-def upload(f, file_formate, uploads_dir):
+def upload(f, file_formate, uploads_dir, static_images_dir):
     '''
     file_formate 是对上传图片文件名rename的格式，reicpe的图片因为要引用recipe_id作为
     文件名的一部分，在此为Null，在Model的add方法中对其rename格式
@@ -176,11 +176,11 @@ def recipe_delete():
 
 
 @recipe.route('/recipe_questions', methods=['GET'])
-@login_required
 def recipe_questions():
     recipe_id = request.args.get('recipe_id')
-    recipes = Recipe.query.filter_by(id = int(recipe_id)).first()
-    return render_template('recipe_questions.html', recipe_id=recipe_id, recipes=recipes)
+    recipes = Recipe.query.filter_by(id=int(recipe_id)).first()
+    questionsList = User.query.join(Questions, User.name==Questions.author).add_columns(User.picture, User.name, Questions.content).filter(User.name==Questions.author).filter(Questions.recipe_id==int(recipe_id)).all()
+    return render_template('recipe_questions.html', recipe_id=recipe_id, questionsList=questionsList, recipes=recipes)
 
 
 @recipe.route('/recipe_questions_view', methods=['GET'])

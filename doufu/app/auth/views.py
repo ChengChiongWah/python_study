@@ -4,28 +4,29 @@ from flask import redirect
 from flask import url_for
 from flask import session
 from flask import current_app
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from functools import wraps
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import auth
 from ..models import User
+from ..recipe.views import allowed_file, upload
+from ..log import Log
+import os
+
+#def current_user():
+#    username = session.get('username', '')
+#    u = User.query.filter_by(name=username).first()
+#    return u
 
 
-
-def current_user():
-    username = session.get('username', '')
-    u = User.query.filter_by(name=username).first()
-    return u
-
-
-def login_require(f):
-    @wraps(f)
-    def functions(*args, **kwargs):
-        if current_user() is None:
-            return redirect(url_for('main.index'))
-        else:
-            f(*args, **kwargs)
-    return functions
+#def login_require(f):
+#    @wraps(f)
+#    def functions(*args, **kwargs):
+#        if current_user() is None:
+#            return redirect(url_for('main.index'))
+#        else:
+#            f(*args, **kwargs)
+#   return functions
 
 
 @auth.route('/register', methods=['GET'])
@@ -110,17 +111,35 @@ def pwd_update():
 
 
 @auth.route('/auth_user_information', methods=['GET'])
+@login_required
 def user_information():
     return render_template('user_information.html')
 
 
 @auth.route('/auth_user_picture_update_view', methods=['GET'])
+@login_required
 def user_picture_update_view():
     return render_template('user_picture_update.html')
 
 
 @auth.route('/auth_user_picture_update', methods=['POST'])
+@login_required
 def user_picture_update():
+    form = request.form
+    f = request.files.get('picture')
+    username = current_user.name
+    file_formate = username + '_picture_'
+    uploads_dir = './app/static/images/users_pictures/'
+    static_images_dir = 'static/images/users_pictures/'
+    if f and file_formate:
+        if current_user.picture.rsplit('/', 1)[1] == 'user_default.jpg':# 判断用户的头像是否更改过
+            filename = upload(f, file_formate, uploads_dir, static_images_dir)
+            current_user.picture_update(filename)
+        else:
+            Log.log(os.getcwd())
+            os.remove('app/' + current_user.picture)
+            filename = upload(f, file_formate, uploads_dir, static_images_dir)
+            current_user.picture_update(filename)
     return redirect(url_for('auth.user_information'))
 
 
