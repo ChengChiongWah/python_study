@@ -8,6 +8,7 @@ from ..log import Log
 @main.route('/', methods=['GET'])
 def index():
     res = Recipe.query.all()
+    page_number = len(res)//10
     if request.args.get('page') is None:
         page = 1
         pagination = Recipe.query.paginate(page, 10, False)
@@ -16,4 +17,8 @@ def index():
         page = int(request.args.get('page'))
         pagination = Recipe.query.paginate(page, 10, False)
         pageitems = pagination.items
-    return render_template('index.html', pageitems=pageitems, pagination=pagination, page=page, res=res)
+    return render_template('index.html', pageitems=pageitems, pagination=pagination, page=page, res=res, page_number=page_number+1)
+
+@main.route('/contact_us', methods=['GET'])
+def contact_us():
+    return render_template('contact_us.html')

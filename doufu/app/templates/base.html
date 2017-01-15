@@ -19,65 +19,67 @@
     <link href='../static/css/jumbotron-narrow.css' rel='stylesheet'>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
     <script src='../static/js/ie-emulation-modes-warning.js'></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     {% endblock %}
 </head>
 
 <body>
-    {% block body %}
-    <div class="container">
-        {% block body_head %}
-        <div class="header">
-            <ul class="nav nav-pills pull-right" role="tablist">
-                <li role="presentation"><a href={{url_for("main.index")}}>首页</a></li>
-                <li role="presentation"><a href="#">关于</a></li>
-                {% if current_user.is_authenticated %}
-		            <li role="presentation">
-                        <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information")}}>{{current_user.name}}</a>
-		            </li>
-		            <li role="presentation">
-		                <a href={{url_for("auth.logout")}}> 退出</a>
-		            </li>
-                {% else %}
-		            <li role="presentation">
-                        <a href={{url_for('auth.login_view')}}>登录</a>
-                    </li>
-                {% endif %}
-            </ul>
-            <h3 class="text-muted">豆腐的美味世界</h3>
-        </div>
-        {% endblock %}
-
-        {% block container %}
-
-        {% endblock %}<!-- container -->
-
-        {% block script %}
-            <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-            <script src='../static/js/ie10-viewport-bug-workaround.js'></script>
-            <script src='../static/js/docs.min.js'></script>
-        {% endblock %} <!-- block script -->
-
-    </div>
-    <!-- /container -->
-    {% endblock %}<!-- block body -->
-
-    {% block footer %}
-    <div class="container">
-        <!-- FOOTER -->
-        <footer>
-            <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
-        </footer>
+{% block body %}
+<div class="container">
+    {% block body_head %}
+    <div class="header">
+        <ul class="nav nav-pills pull-right" role="tablist">
+            <li role="presentation"><a href={{url_for("main.index")}}>首页</a></li>
+            <li role="presentation"><a href="#">关于</a></li>
+            {% if current_user.is_authenticated %}
+            <li role="presentation">
+                <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information")}}>{{current_user.name}}</a>
+            </li>
+            <li role="presentation">
+                <a href={{url_for("auth.logout")}}> 退出</a>
+            </li>
+            {% else %}
+            <li role="presentation">
+                <a href={{url_for('auth.login_view')}}>登录</a>
+            </li>
+            {% endif %}
+        </ul>
+        <h3 class="text-muted">豆腐的美味世界</h3>
     </div>
     {% endblock %}
+
+    {% block container %}
+
+    {% endblock %}<!-- container -->
+
+    {% block script %}
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src='../static/js/ie10-viewport-bug-workaround.js'></script>
+    <script src='../static/js/docs.min.js'></script>
+    {% endblock %} <!-- block script -->
+
+</div>
+<!-- /container -->
+{% endblock %}<!-- block body -->
+
+{% block footer %}
+<div class="container">
+    <!-- FOOTER -->
+    <footer>
+	<hr class="featurette-divider">
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; 2014 Company, Inc. &middot; <a href={{url_for("main.contact_us")}}>联系我们</a> &middot;</p>
+    </footer>
+</div>
+{% endblock %}
 </body>
 
 </html>

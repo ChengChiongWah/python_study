@@ -51,7 +51,7 @@
 
     <div class="container marketing">
         <!-- START THE FEATURETTES -->
-        <div class="row featurette">
+        <div class="row">
             <div class="col-md-3">
                 <img class="img-circle" data-src="holder.js/150x150/auto" alt="Generic placeholder image"
                      src='static/images/doufu.jpg'>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="row featurette">
+        <div class="row">
             <div class="col-md-10">
 
                 <!-- 标签页导航栏 -->
@@ -78,7 +78,7 @@
                     <div class="tab-pane fade in active" id="xiangguancaipu">
                         {% if res %}
                         {% for m in pageitems %}
-                        <div class="row featurette">
+                        <div class="row">
                             <div class="col-md-2">
                                 <img class="featurette-image img-responsive" src="{{ m.pictures }}"
                                      style="height:auto;width:140px" data-src="holder.js/100x100/auto"
@@ -99,36 +99,31 @@
                             </div>
                         </div>
                         {% endfor %}
-                        <div class="col-md-10">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12 text-center">
                                 {% if pagination.has_prev %}
                                 <a href={{url_for('main.index', page=page-1)}}>上一页</a>
                                 {% else %}
                                 <h>上一页</h>
                                 {% endif %}
-                                <a href={{url_for('main.index', page=1)}}>1</a>
-                                <a href={{url_for('main.index', page=2)}}>2</a>
-                                <a href={{url_for('main.index', page=3)}}>3</a>
-                                <a href={{url_for('main.index', page=4)}}>4</a>
-                                <a href={{url_for('main.index', page=5)}}>5</a>
+                                {% for p in range(1, page_number+1) %}
+                                    <a href={{url_for('main.index', page=(p))}}>{{p}}</a>
+                                {% endfor %}
                                 {% if pagination.has_next %}
                                 <a href={{url_for('main.index', page=page+1)}}>下一页</a>
                                 {% else %}
                                 <h>下一页</h>
                                 {% endif %}
                             </div>
-                            <div class="col-md-3"></div>
                         </div>
                         {% else %}
                         <p>没有任何信息!</p>
                         {% endif %}
                     </div>
 
-
                     <!-- 对应食材详情标签页的内容 -->
                     <div class="tab-pane fade" id="shicaixiangqing">
-                        <div class="row featurette">
+                        <div class="row">
                             <div class="col-md-12">
                                 存储时间：1～3天
                                 <p><br>豆腐是一种以黄豆为主要原料的食物，本身没有什么味道，但是含有高蛋白质，可以被做成各式各样的
@@ -289,9 +284,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12"></div>
                 <hr class="featurette-divider">
-
             </div>
 
             <div class="col-md-2">
@@ -329,11 +322,10 @@
 
         <!-- /END THE FEATURETTES -->
 
-
         <!-- FOOTER -->
         <footer>
             <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>&copy; 2014 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+            <p>&copy; 2017 Company, Inc. &middot; <a href={{url_for("main.contact_us")}}>联系我们</a> &middot;</p>
         </footer>
 
     </div>

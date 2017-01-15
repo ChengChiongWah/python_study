@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    {{ super() }}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+{{ super() }}
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-18 col-md-12 text-center">Email地址：sguzch{小老鼠}163.com</div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+</body>
+</html>
