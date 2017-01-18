@@ -3,141 +3,160 @@
 <html lang="en" xmlns:margin="http://www.w3.org/1999/xhtml">
 <head>
     {% block head %}
-        {{ super() }}
+    {{ super() }}
     {% endblock %}
 </head>
 <body>
-    {% block body %}
-        {{ super() }}
+{% block body %}
+{{ super() }}
 
-        <div class="container">
-            <form class="form-inline" role="form" enctype="multipart/form-data" action={{url_for("recipe.recipe_update", recipe_id=recipes.id)}} method="post">
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
-                <div class="col-md-6">
-                    <p>菜谱名称：</p>
-                    <input name="name" type="text" class="form-control" placeholder="{{recipes.name}}">
-                </div>
-                <div class="col-md-12"></div><br>
-                <div class="col-md-6">
-                    <h5>菜谱封面：</h5>
-                    <input name="pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
-                </div>
-                <div class="col-md-12"></div>
-                <div class="col-md-12">
-                    <h5>简介：</h5>
-                    <textarea name="introduce"  class="form-control" placeholder="{{recipes.introduce}}" style="resize:none" rows="9" cols="58"></textarea>
-                </div>
-                <div class="col-md-12">
-                    <h5>用料：</h5>
-                    {% if material_length==0 %}
-                        {% for i in range(1, 11) %}
-                            <div class="col-md-7">
-                            <table>
-                                <tr>
-                                    <th><input type="text" name="material{{i}}"placeholder="用料名称"></th><th> <input type="text" name="amount{{i}}" placeholder="用量"></th>
-                                </tr>
-                            </table>
-                        </div>
-                        {% endfor %}
-                        <div class="col-md-5"></div>
-                    {% elif material_length==10 %}
-                        {% set i=1 %}
-                        {% for material in recipes.materials.all() %}
-                            <div class="col-md-7">
-                                <table>
-                                    <tr>
-                                        <th><input type="text" name="material{{i}}"placeholder="{{material.name}}"></th><th> <input type="text" name="amount{{i}}" placeholder="{{material.amount}}"></th>
-                                </tr>
-                                </table>
-                            </div>
-                            {% set i=i+1 %}
-                        {% endfor %}
-                        <div class="col-md-5"></div>
-                    {% else %}
-                        {% set i=1 %}
-                        {% for material in recipes.materials.all() %}
-                            <div class="col-md-7">
-                                <table>
-                                    <tr>
-                                        <th><input type="text" name="material{{i}}"placeholder="{{material.name}}"></th><th> <input type="text" name="amount{{i}}" placeholder="{{material.amount}}"></th>
-                                </tr>
-                                </table>
-                            </div>
-                            {% set i=i+1 %}
-                            <div class="col-md-5"></div>
-                        {% endfor %}
-                        {% for j in range(material_length+1, 11) %}
-                            <div class="col-md-7">
-                                <table>
-                                    <tr>
-                                        <th><input type="text" name="material{{j}}"placeholder="用料名称{{j}}"></th><th> <input type="text" name="amount{{j}}" placeholder="用量"></th>
-                                    </tr>
-                                </table>
-                            </div>
-                        {% endfor %}
-                        <div class="col-md-5"></div>
-                    {% endif %}
-                </div>
-                <div class="col-md-12"></div>
-                    <div class="col-md-12">
-                    <h5>做法：</h5>
-                    {% if step_length==0 %}
-                        {% for i in range(1, 11) %}
-                            <div class="form-group">
-                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤" style="resize:none" rows="3" cols="28"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
-                            </div>
-                        {% endfor %}
-                    {% elif step_length==10 %}
-                        {% for step in recipes.steps.all() %}
-                            <div class="form-group">
-                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤{{step.step_number}}: {{step.technique}}" style="resize:none" rows="3" cols="28"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
-                            </div>
-                        {% endfor %}
-                    {% else %}
-                        {% set i=1 %}
-                        {% for step in recipes.steps.all() %}
-                            <div class="form-group">
-                                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤{{step.step_number}}: {{step.technique}}" style="resize:none" rows="3" cols="28"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input name="step{{i}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
-                            </div>
-                            {% set i=i+1 %}
-                        {% endfor %}
-                        {% for j in range(step_length+1, 11) %}
-                            <div class="form-group">
-                                <textarea name="step{{j}}_introduce" class="form-control" placeholder="菜谱步骤" style="resize:none" rows="3" cols="28"></textarea>
-                            </div>
-                            <div class="form-group">
-                                <input name="step{{j}}_pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
-                            </div>
-                        {% endfor %}
-                    {% endif %}
-                </div>
-
-                <div class="col-md-12"></div>
-                <div class="col-md-12"></div>
-                <div class="col-md-12">
-                    <h5>小贴士：</h5>
-                    <textarea name="tips"  class="form-control" placeholder="{{recipes.tips}}" style="resize:none" rows="9" cols="58"></textarea>
-                </div>
-                <div class="col-md-12"></div>
-                <div class="col-md-6">
-                    <input type="submit" value="提交修改">
-                </div>
-            </form>
+<div class="container">
+    <form class="form-inline" role="form" enctype="multipart/form-data" action={{url_for("recipe.recipe_update",
+          recipe_id=recipes.id)}} method="post">
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+        <div class="col-md-6">
+            <p>菜谱名称：</p>
+            <input name="name" type="text" class="form-control" placeholder="{{recipes.name}}">
         </div>
-    {% endblock %}
+        <div class="col-md-12"></div>
+        <br>
+        <div class="col-md-6">
+            <h5>菜谱封面：</h5>
+            <input name="pictures" type="file" class="form-control" style="padding-top: 30px;padding-bottom: 60px;"
+                   placeholder="封面">
+        </div>
+        <div class="col-md-12"></div>
+        <div class="col-md-12">
+            <h5>简介：</h5>
+            <textarea name="introduce" class="form-control" placeholder="{{recipes.introduce}}" style="resize:none"
+                      rows="9" cols="58"></textarea>
+        </div>
+        <div class="col-md-12">
+            <h5>用料：</h5>
+            {% if material_length==0 %}
+            {% for i in range(1, 11) %}
+            <div class="col-md-7">
+                <table>
+                    <tr>
+                        <th><input type="text" name="material{{i}}" placeholder="用料名称"></th>
+                        <th><input type="text" name="amount{{i}}" placeholder="用量"></th>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+            <div class="col-md-5"></div>
+            {% elif material_length==10 %}
+            {% set i=1 %}
+            {% for material in recipes.materials.all() %}
+            <div class="col-md-7">
+                <table>
+                    <tr>
+                        <th><input type="text" name="material{{i}}" placeholder="{{material.name}}"></th>
+                        <th><input type="text" name="amount{{i}}" placeholder="{{material.amount}}"></th>
+                    </tr>
+                </table>
+            </div>
+            {% set i=i+1 %}
+            {% endfor %}
+            <div class="col-md-5"></div>
+            {% else %}
+            {% set i=1 %}
+            {% for material in recipes.materials.all() %}
+            <div class="col-md-7">
+                <table>
+                    <tr>
+                        <th><input type="text" name="material{{i}}" placeholder="{{material.name}}"></th>
+                        <th><input type="text" name="amount{{i}}" placeholder="{{material.amount}}"></th>
+                    </tr>
+                </table>
+            </div>
+            {% set i=i+1 %}
+            <div class="col-md-5"></div>
+            {% endfor %}
+            {% for j in range(material_length+1, 11) %}
+            <div class="col-md-7">
+                <table>
+                    <tr>
+                        <th><input type="text" name="material{{j}}" placeholder="用料名称{{j}}"></th>
+                        <th><input type="text" name="amount{{j}}" placeholder="用量"></th>
+                    </tr>
+                </table>
+            </div>
+            {% endfor %}
+            <div class="col-md-5"></div>
+            {% endif %}
+        </div>
+        <div class="col-md-12"></div>
+        <div class="col-md-12">
+            <h5>做法：</h5>
+            {% if step_length==0 %}
+            {% for i in range(1, 11) %}
+            <div class="form-group">
+                <textarea name="step{{i}}_introduce" class="form-control" placeholder="菜谱步骤" style="resize:none"
+                          rows="3" cols="28"></textarea>
+            </div>
+            <div class="form-group">
+                <input name="step{{i}}_pictures" type="file" class="form-control"
+                       style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+            </div>
+            {% endfor %}
+            {% elif step_length==10 %}
+            {% for step in recipes.steps.all() %}
+            <div class="form-group">
+                <textarea name="step{{i}}_introduce" class="form-control"
+                          placeholder="菜谱步骤{{step.step_number}}: {{step.technique}}" style="resize:none" rows="3"
+                          cols="28"></textarea>
+            </div>
+            <div class="form-group">
+                <input name="step{{i}}_pictures" type="file" class="form-control"
+                       style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+            </div>
+            {% endfor %}
+            {% else %}
+            {% set i=1 %}
+            {% for step in recipes.steps.all() %}
+            <div class="form-group">
+                <textarea name="step{{i}}_introduce" class="form-control"
+                          placeholder="菜谱步骤{{step.step_number}}: {{step.technique}}" style="resize:none" rows="3"
+                          cols="28"></textarea>
+            </div>
+            <div class="form-group">
+                <input name="step{{i}}_pictures" type="file" class="form-control"
+                       style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+            </div>
+            {% set i=i+1 %}
+            {% endfor %}
+            {% for j in range(step_length+1, 11) %}
+            <div class="form-group">
+                <textarea name="step{{j}}_introduce" class="form-control" placeholder="菜谱步骤" style="resize:none"
+                          rows="3" cols="28"></textarea>
+            </div>
+            <div class="form-group">
+                <input name="step{{j}}_pictures" type="file" class="form-control"
+                       style="padding-top: 30px;padding-bottom: 60px;" placeholder="封面">
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
 
-    {% block footer %}
-        {{ super() }}
-    {% endblock %}
+        <div class="col-md-12"></div>
+        <div class="col-md-12"></div>
+        <div class="col-md-12">
+            <h5>小贴士：</h5>
+            <textarea name="tips" class="form-control" placeholder="{{recipes.tips}}" style="resize:none" rows="9"
+                      cols="58"></textarea>
+        </div>
+        <div class="col-md-12"></div>
+        <div class="col-md-6">
+            <input type="submit" value="提交修改">
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
 
 </body>
 </html>

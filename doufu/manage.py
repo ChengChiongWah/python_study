@@ -1,4 +1,5 @@
-#! /usr/bin/env python3
+#!/usr/bin/env python3.5
+# coding:utf-8
 from flask_script import Manager
 from flask_migrate import Migrate, MigrateCommand
 from app import create_app, db

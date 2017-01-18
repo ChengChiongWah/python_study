@@ -35,7 +35,7 @@
             <li role="presentation"><a href="#">关于</a></li>
             {% if current_user.is_authenticated %}
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information")}}>{{current_user.name}}</a>
+                <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information", username=current_user.name)}}>{{current_user.name}}</a>
             </li>
             <li role="presentation">
                 <a href={{url_for("auth.logout")}}> 退出</a>
@@ -86,7 +86,7 @@
                             </div>
                             <div class="col-md-10">
                                 <a href={{url_for("recipe.recipe_information",recipe_id=m.id)}}><p
-                                        style="color:#922;font-size: 18px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">
+                                    style="color:#922;font-size: 18px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">
                                     {{ m.name }}</p></a>
                                 <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
                                     {% for i in m.materials.all() %}
@@ -94,7 +94,7 @@
                                     {% endfor %}
                                 </p>
                                 <p style="color:#aa8b6b;font-size: 12px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
-                                    {{m.author}}
+                                    <a href={{url_for("auth.user_information", username=m.author)}}>{{m.author}}</a>
                                 </p>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
                                 <h>上一页</h>
                                 {% endif %}
                                 {% for p in range(1, page_number+1) %}
-                                    <a href={{url_for('main.index', page=(p))}}>{{p}}</a>
+                                <a href={{url_for('main.index', page=(p))}}>{{p}}</a>
                                 {% endfor %}
                                 {% if pagination.has_next %}
                                 <a href={{url_for('main.index', page=page+1)}}>下一页</a>
@@ -295,27 +295,26 @@
                                 <a href={{url_for("recipe.index")}}>创建菜谱</a>
                             </h5>
                         </div>
-                        <div class="panel-heading">
-                            <h5 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion"
-                                   href="#collapseTwo">标签 </a>
-                            </h5>
-                        </div>
-                        <div id="collapseTwo" class="panel-collapse collapse">
-                            <div class="panel-body" style="color:#922">22222</div>
-                        </div>
+                        <!--<div class="panel-heading">-->
+                        <!--<h5 class="panel-title">-->
+                        <!--<a role="button" data-toggle="collapse" data-parent="#accordion"-->
+                        <!--href="#collapseTwo">标签 </a>-->
+                        <!--</h5>-->
+                        <!--</div>-->
+                        <!--<div id="collapseTwo" class="panel-collapse collapse">-->
+                        <!--<div class="panel-body" style="color:#922">22222</div>-->
+                        <!--</div>-->
                     </div>
-                    <div>
-                        <div class="panel-heading">
-                            <h5 class="panel-title">
-                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">豆制品</a>
-                            </h5>
-                        </div>
-                        <div id="collapseThree" class="panel-collapse collapse">
-                            <div class="panel-body" style="color:#922">33333</div>
-                        </div>
-
-                    </div>
+                    <!--<div>-->
+                    <!--<div class="panel-heading">-->
+                    <!--<h5 class="panel-title">-->
+                    <!--<a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">豆制品</a>-->
+                    <!--</h5>-->
+                    <!--</div>-->
+                    <!--<div id="collapseThree" class="panel-collapse collapse">-->
+                    <!--<div class="panel-body" style="color:#922">33333</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
                 </div>
             </div>
         </div>

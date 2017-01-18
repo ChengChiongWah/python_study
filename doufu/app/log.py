@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.5
+# coding:utf-8
 import time
 
 log_config = {
@@ -26,9 +28,3 @@ class Log(object):
             path = log_config['file']
         with open(path, 'a', encoding='utf-8') as f:
             print(dt, *args, file=f, **kwargs)
-
-
-
-
-
-

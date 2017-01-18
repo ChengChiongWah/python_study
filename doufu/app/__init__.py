@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.5
+# coding:utf-8
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -31,4 +33,3 @@ def create_app():
     app.register_blueprint(auth)
 
     return app
-

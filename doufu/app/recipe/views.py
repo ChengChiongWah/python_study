@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.5
+# coding:utf-8
 from flask import render_template
 from flask import redirect
 from flask import url_for
@@ -9,14 +11,14 @@ from ..models import Material, Recipe, Step, Questions, User
 from ..log import Log
 import os
 
-uploads_dir = './app/static/images/' # 以.app为起点，用于删除或重命名图片文件
-static_images_dir = 'static/images/' #保存到数据库中的图片路径，供template调用
-allow_extensions = set(['png', 'jpg', 'jpeg']) #允许的图片格式
+uploads_dir = './app/static/images/'  # 以.app为起点，用于删除或重命名图片文件
+static_images_dir = 'static/images/'  # 保存到数据库中的图片路径，供template调用
+allow_extensions = set(['png', 'jpg', 'jpeg'])  # 允许的图片格式
 
 
-def allowed_file(filename):  #允许的文件格式
+def allowed_file(filename):  # 允许的文件格式
     return '.' in filename and \
-            filename.rsplit('.', 1)[1].lower() in allow_extensions
+           filename.rsplit('.', 1)[1].lower() in allow_extensions
 
 
 def upload(f, file_formate, uploads_dir, static_images_dir):
@@ -26,11 +28,12 @@ def upload(f, file_formate, uploads_dir, static_images_dir):
     '''
 
     if allowed_file(f.filename):
+        Log.log(f.filename)
         filename = secure_filename(f.filename)
         path = uploads_dir + filename
         f.save(path)
         if file_formate:
-            os.rename(uploads_dir+filename, uploads_dir+file_formate+filename) # 按给定格式修改上传的文件
+            os.rename(uploads_dir + filename, uploads_dir + file_formate + filename)  # 按给定格式修改上传的文件
             filename = static_images_dir + file_formate + filename
             return filename
         else:
@@ -39,11 +42,11 @@ def upload(f, file_formate, uploads_dir, static_images_dir):
 
 def material_add(form, recipe_id):
     dic = {}
-    for i in range(1, 11): #暂定用十种材料
-        material_name = form.get('material'+str(i))
+    for i in range(1, 11):  # 暂定用十种材料
+        material_name = form.get('material' + str(i))
         amount_value = form.get('amount' + str(i))
         if material_name:
-            dic[i] = {material_name:amount_value}
+            dic[i] = {material_name: amount_value}
     for i, values in dic.items():
         for k, v in values.items():
             material = Material(i, k, v, recipe_id)
@@ -51,13 +54,14 @@ def material_add(form, recipe_id):
 
 
 def material_update(form, recipe_id):
-    material_names = Material.query.with_entities(Material.name).filter_by(recipe_id=recipe_id).all() #返回的是[('酱油',), ('辣椒',)]的格式
+    material_names = Material.query.with_entities(Material.name).filter_by(
+        recipe_id=recipe_id).all()  # 返回的是[('酱油',), ('辣椒',)]的格式
     materials = []
-    for m in material_names: #转化成['酱油', '辣椒']的格式
+    for m in material_names:  # 转化成['酱油', '辣椒']的格式
         materials.append(''.join(m))
     for i in range(1, 11):
-        material_name = form.get('material'+str(i))
-        amount_value = form.get('amount'+str(i))
+        material_name = form.get('material' + str(i))
+        amount_value = form.get('amount' + str(i))
         if (material_name) or (amount_value):
             material = Material.query.filter_by(recipe_id=recipe_id, material_number=i).first()
             if material:
@@ -68,8 +72,8 @@ def material_update(form, recipe_id):
 
 
 def steps_add(form, recipe_id):
-    for i in range(1, 11): # 暂定只用十步
-        technique = form.get('step' + str(i) +'_introduce')
+    for i in range(1, 11):  # 暂定只用十步
+        technique = form.get('step' + str(i) + '_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
         file_formate = 'recipe_' + str(recipe_id) + '_step_' + str(i) + '_'
         if technique:
@@ -79,8 +83,8 @@ def steps_add(form, recipe_id):
 
 
 def steps_update(form, recipe_id):
-    steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id=recipe_id).all() # 返回如[(1,), （2,), (3,)]的格式
-    step_numbers = [s[0] for s in steps] # 转换成[1, 2, 3]的格式
+    steps = Step.query.with_entities(Step.step_number).filter_by(recipe_id=recipe_id).all()  # 返回如[(1,), （2,), (3,)]的格式
+    step_numbers = [s[0] for s in steps]  # 转换成[1, 2, 3]的格式
     for i in range(1, 11):
         technique = form.get('step' + str(i) + '_introduce')
         f = request.files.get('step' + str(i) + '_pictures')
@@ -89,11 +93,14 @@ def steps_update(form, recipe_id):
             filename = upload(f, file_formate, uploads_dir, static_images_dir)
             s = Step.query.filter_by(recipe_id=recipe_id, step_number=i).first()
             if s:
-                os.remove('app/' + s.pictures) # 删掉旧图片
-                s.update(i, technique, filename)
-            else:
-                s = Step(i, technique, filename, recipe_id)
-                s.add()
+                if s.pictures:  # 如果已经配有图片
+                    os.remove('app/' + s.pictures)  # 删掉旧图片
+                    s.update(i, technique, filename)
+                else:  # 只有做法没有图片，对step做update
+                    s.update(i, technique, filename)
+            else: #新增的做法或图片
+                steps = Step(i, technique, filename, recipe_id)
+                steps.add()
 
 
 @recipe.route('/', methods=['GET'])
@@ -134,7 +141,8 @@ def recipe_edit():
     recipes = Recipe.query.filter_by(id=recipe_id).first()
     material_length = len(recipes.materials.all())
     step_length = len(recipes.steps.all())
-    return render_template('recipe_edit.html', recipes=recipes, material_length=material_length, step_length=step_length)
+    return render_template('recipe_edit.html', recipes=recipes, material_length=material_length,
+                           step_length=step_length)
 
 
 @recipe.route('/recipe_update', methods=['POST'])
@@ -146,7 +154,7 @@ def recipe_update():
     f = request.files.get('pictures')
     file_formate = 'recipe_' + str(recipe_id) + '_'
     if f:
-        os.remove('app/' + recipe_item.pictures) # 如果有图片更新，先删除旧图片
+        os.remove('app/' + recipe_item.pictures)  # 如果有图片更新，先删除旧图片
         filename = upload(f, file_formate, uploads_dir, static_images_dir)
     else:
         filename = ''
@@ -164,7 +172,6 @@ def recipe_delete():
     recipes = Recipe.query.filter_by(id=recipe_id).all()
     materials = Material.query.filter_by(recipe_id=recipe_id)
     steps = Step.query.filter_by(recipe_id=recipe_id)
-    Log.log(current_user.name)
     if current_user.name == recipes[0].author or current_user.name == 'admin':
         for m in materials:
             m.delete_element()
@@ -179,7 +186,9 @@ def recipe_delete():
 def recipe_questions():
     recipe_id = request.args.get('recipe_id')
     recipes = Recipe.query.filter_by(id=int(recipe_id)).first()
-    questionsList = User.query.join(Questions, User.name==Questions.author).add_columns(User.picture, User.name, Questions.content).filter(User.name==Questions.author).filter(Questions.recipe_id==int(recipe_id)).all()
+    questionsList = User.query.join(Questions, User.name == Questions.author).add_columns(User.picture, User.name,
+                                                                                          Questions.content).filter(
+        User.name == Questions.author).filter(Questions.recipe_id == int(recipe_id)).all()
     return render_template('recipe_questions.html', recipe_id=recipe_id, questionsList=questionsList, recipes=recipes)
 
 

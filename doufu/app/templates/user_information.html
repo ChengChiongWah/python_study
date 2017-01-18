@@ -3,37 +3,63 @@
 <html lang="en">
 <head>
     {% block head %}
-        {{ super() }}
+    {{ super() }}
     {% endblock %}
 </head>
 <body>
-    {% block body %}
-        {{ super() }}
+{% block body %}
+{{ super() }}
 
-        <div class="container">
-            <div class="col-md-12">
-                <div class="col-md-5">
-                    <p>{{current_user.name}}</p>
-                </div>
-                <div class="col-md-7"></div>
-	        </div>
-	        <div class="col-md-12">
-                <div class="col-md-5">
-                    <img class="featurette-image img-responsive" src={{current_user.picture}} data-src="holder.js/300x300/auto" alt="Generic placeholder image" >
-                </div>
-                <div class="col-md-7"></div>
-            </div>
-            <div class="col-md-12">
-                <div class="col-md-5">
-                    <p><a href={{url_for("auth.user_picture_update_view")}}>修改头像</a> </p>
-                </div>
-		        <div class="col-md-7"></div>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <img class="featurette-image img-responsive" src={{user.picture}} data-src="holder.js/300x300/auto"
+                 alt="Generic placeholder image">
         </div>
-    {% endblock %}
+        <div class="col-md-8 text-left">
+            <p>用户名：{{user.name}}</p>
 
-    {% block footer %}
-        {{ super() }}
-    {% endblock %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 text-center">
+            {% if current_user.is_authenticated and current_user.name==(user.name) %} <!-- # 只有用户本人才可以修改头像-->
+            <p><a href={{url_for("auth.user_picture_update_view", username=user.name)}}>修改头像</a></p>
+            {% endif %}
+        </div>
+        <div class="col-md-10"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-8">
+            <p>{{user.name}}的菜谱：</p>
+            {% if recipe %}
+            {% for r in recipe %}
+            <div class="row">
+                <div class="col-md-2">
+                    <img class="featurette-image img-responsive" src="{{ r.pictures }}"
+                         style="height:auto;width:140px" data-src="holder.js/100x100/auto"
+                         alt="Generic placeholder image">
+                </div>
+                <div class="col-md-10">
+                    <a href={{url_for("recipe.recipe_information",recipe_id=r.id)}}>
+                        <p style="color:#922;font-size: 14px;font-family: CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif ">
+                            {{ r.name }}
+                        </p>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+            {% else %}
+            <p>暂时没有相关菜谱信息。</p>
+            {% endif %}
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
 </body>
 </html>

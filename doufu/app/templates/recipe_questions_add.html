@@ -3,31 +3,34 @@
 <html lang="en">
 <head>
     {% block head %}
-        {{ super() }}
+    {{ super() }}
     {% endblock %}
 </head>
 <body>
-    {% block body %}
-        {{ super() }}
+{% block body %}
+{{ super() }}
 
-        <div class="container">
-            <div class="col-md-7">
-                <p style="color:#000;font-size:28px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">写留言</p>
-                <form class="form-inline" role="form" enctype="multipart/form-data" action={{url_for("recipe.recipe_questions_add", recipe_id=recipe_id)}} method="post">
-                    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
-                    <div class="col-md-12">
-                        <textarea name="contents"  class="form-control" placeholder="发表你的留言" style="resize:none" rows="9" cols="58"></textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <input type="submit" value="发布">
-                    </div>
-                </form>
+<div class="container">
+    <div class="col-md-7">
+        <p style="color:#000;font-size:28px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
+            写留言</p>
+        <form class="form-inline" role="form" enctype="multipart/form-data"
+              action={{url_for("recipe.recipe_questions_add", recipe_id=recipe_id)}} method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+            <div class="col-md-12">
+                <textarea name="contents" class="form-control" placeholder="发表你的留言" style="resize:none" rows="9"
+                          cols="58"></textarea>
             </div>
-        </div>
-    {% endblock %}
+            <div class="col-md-6">
+                <input type="submit" value="发布">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
 
-    {% block footer %}
-        {{ super() }}
-    {% endblock %}
+{% block footer %}
+{{ super() }}
+{% endblock %}
 </body>
 </html>

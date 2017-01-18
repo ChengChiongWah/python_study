@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+# coding:utf-8
 from flask import current_app
 from flask_login import UserMixin, current_user
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -10,23 +11,23 @@ import os
 
 uploads_dir = 'app/static/images/'
 
-def formatetime(): #给出时间格式
+
+def formatetime():  # 给出时间格式
     return time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
 
-class Recipe(db.Model): #菜谱
+class Recipe(db.Model):  # 菜谱
     __tablename__ = 'recipes'
     id = db.Column(db.INT, primary_key=True)
-    name = db.Column(db.Text(20)) #名称
-    introduce = db.Column(db.Text(100)) #简介
-    pictures = db.Column(db.String(50)) #保留图片路径
-    author = db.Column(db.Text(20)) #菜谱发布者
-    tips = db.Column(db.Text(100)) #小贴士
+    name = db.Column(db.Text(20))  # 名称
+    introduce = db.Column(db.Text(100))  # 简介
+    pictures = db.Column(db.String(50))  # 保留图片路径
+    author = db.Column(db.Text(20))  # 菜谱发布者
+    tips = db.Column(db.Text(100))  # 小贴士
     materials = db.relationship('Material', backref='recipe', foreign_keys='Material.recipe_id', lazy='dynamic')
     steps = db.relationship('Step', backref='recipe', foreign_keys='Step.recipe_id', lazy='dynamic')
     questions = db.relationship('Questions', backref='recipe', foreign_keys='Questions.recipe_id', lazy='dynamic')
     create_time = db.Column(db.String(20))
-
 
     def __init__(self, form, filename, tips):
         self.name = form.get('name')
@@ -40,8 +41,8 @@ class Recipe(db.Model): #菜谱
         db.session.add(self)
         db.session.commit()  # 先commit获得recipe对应id
         oldname = self.pictures
-        os.rename(uploads_dir+oldname, uploads_dir+'recipe_'+str(self.id)+'_'+oldname) # 对上传的文件更改文件名
-        self.pictures = 'static/images/recipe_' + str(self.id) + '_' + oldname #转成路径格式
+        os.rename(uploads_dir + oldname, uploads_dir + 'recipe_' + str(self.id) + '_' + oldname)  # 对上传的文件更改文件名
+        self.pictures = 'static/images/recipe_' + str(self.id) + '_' + oldname  # 转成路径格式
         db.session.commit()
 
     def update(self, form, filename):
@@ -52,18 +53,18 @@ class Recipe(db.Model): #菜谱
         db.session.commit()
 
     def delete_element(self):
-        if self.pictures: #删除文件
+        if self.pictures:  # 删除文件
             os.remove('app/' + self.pictures)
         db.session.delete(self)
         db.session.commit()
 
 
-class Material(db.Model): #用料
+class Material(db.Model):  # 用料
     __tablename__ = 'materials'
     id = db.Column(db.INT, primary_key=True)
     material_number = db.Column(db.INT)
     name = db.Column(db.Text(20))
-    amount = db.Column(db.String(20)) #数量
+    amount = db.Column(db.String(20))  # 数量
     recipe_id = db.Column(db.INT, db.ForeignKey('recipes.id'))
 
     def __init__(self, material_number, material_name, amount, recipe_id):
@@ -90,9 +91,9 @@ class Step(db.Model):
     __tablename__ = 'steps'
     id = db.Column(db.INT, primary_key=True)
     step_number = db.Column(db.INT)
-    technique = db.Column(db.String(50)) # 步骤方法
-    pictures = db.Column(db.String(100)) # 步骤图
-    recipe_id = db.Column(db.INT, db.ForeignKey('recipes.id')) # 对应的菜谱名
+    technique = db.Column(db.String(150))  # 步骤方法
+    pictures = db.Column(db.String(100))  # 步骤图
+    recipe_id = db.Column(db.INT, db.ForeignKey('recipes.id'))  # 对应的菜谱名
 
     def __init__(self, step_number, technique, filename, recipe_id):
         self.step_number = step_number
@@ -131,7 +132,7 @@ class User(db.Model, UserMixin):
         self.name = form.get('username', '')
         self.password = generate_password_hash(form.get('password', ''))
         self.email = form.get('email', '')
-        self.picture = 'static/images/users/pictures/user_default.jpg'
+        self.picture = 'static/images/users_pictures/user_default.jpg'
         self.create_time = time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(int(time.time())))
 
     def add(self):
@@ -143,7 +144,7 @@ class User(db.Model, UserMixin):
 
     def generate_confirmation_token(self, expiration=3600):
         s = Serializer(current_app.Config['SECRIT_KEY'], expiration)
-        return s.dumps({'email':self.email})
+        return s.dumps({'email': self.email})
 
     def confirm(selfself, token):
         s = Serializer(current_app.Config['SECRET_KEY'])
@@ -162,22 +163,23 @@ class User(db.Model, UserMixin):
         self.picture = filename
         db.session.commit()
 
+
 @login_manager.user_loader
-def load_user(user_id):  #flask-login扩展加载用户的回调函数
+def load_user(user_id):  # flask-login扩展加载用户的回调函数
     return User.query.get(int(user_id))
 
 
-class Questions(db.Model): 
+class Questions(db.Model):
     '''
     菜谱的留言信息
     '''
-    __tablename__ ='questions'
+    __tablename__ = 'questions'
     id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.Text(100)) #留言内容
-    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id')) #留言的菜谱id
-    author = db.Column(db.String(30)) #留言作者
-    create_time = db.Column(db.String(20)) #留言时间
-    
+    content = db.Column(db.Text(100))  # 留言内容
+    recipe_id = db.Column(db.Integer, db.ForeignKey('recipes.id'))  # 留言的菜谱id
+    author = db.Column(db.String(30))  # 留言作者
+    create_time = db.Column(db.String(20))  # 留言时间
+
     def __init__(self, content, recipe_id, author):
         self.content = content
         self.recipe_id = recipe_id

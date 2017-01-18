@@ -1,3 +1,5 @@
+#!/usr/bin/env python3.5
+# coding:utf-8
 from flask import render_template
 from flask import request
 from flask import redirect
@@ -8,18 +10,18 @@ from flask_login import login_user, logout_user, login_required, current_user
 from functools import wraps
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from . import auth
-from ..models import User
+from ..models import User, Recipe
 from ..recipe.views import allowed_file, upload
-from ..log import Log
 import os
 
-#def current_user():
+
+# def current_user():
 #    username = session.get('username', '')
 #    u = User.query.filter_by(name=username).first()
 #    return u
 
 
-#def login_require(f):
+# def login_require(f):
 #    @wraps(f)
 #    def functions(*args, **kwargs):
 #        if current_user() is None:
@@ -100,7 +102,7 @@ def pwd_update():
     token = form.get('token')
     pwd = form.get('password')
     s = Serializer(current_app.config['SECRET_KEY'], expires_in=3600)
-    token_data = s.loads(token) # 对token解码成对应的值
+    token_data = s.loads(token)  # 对token解码成对应的值
     email = token_data['email']
     user = User.query.filter_by(email=email).first()
     if user and pwd:
@@ -111,9 +113,11 @@ def pwd_update():
 
 
 @auth.route('/auth_user_information', methods=['GET'])
-@login_required
 def user_information():
-    return render_template('user_information.html')
+    username = request.args.get('username')
+    user = User.query.filter_by(name=username).first()
+    recipe = Recipe.query.filter_by(author=username).all()
+    return render_template('user_information.html', user=user, recipe=recipe)
 
 
 @auth.route('/auth_user_picture_update_view', methods=['GET'])
@@ -132,27 +136,27 @@ def user_picture_update():
     uploads_dir = './app/static/images/users_pictures/'
     static_images_dir = 'static/images/users_pictures/'
     if f and file_formate:
-        if current_user.picture.rsplit('/', 1)[1] == 'user_default.jpg':# 判断用户的头像是否更改过
+        if current_user.picture.rsplit('/', 1)[1] == 'user_default.jpg':  # 判断用户的头像是否更改过
             filename = upload(f, file_formate, uploads_dir, static_images_dir)
             current_user.picture_update(filename)
         else:
-            Log.log(os.getcwd())
             os.remove('app/' + current_user.picture)
             filename = upload(f, file_formate, uploads_dir, static_images_dir)
             current_user.picture_update(filename)
-    return redirect(url_for('auth.user_information'))
+    return redirect(url_for('auth.user_information', username=current_user.name))
 
 
 def send_mail(reciver_mail):
     import smtplib
     from email.mime.text import MIMEText
     from email.header import Header
-    s = Serializer(current_app.config['SECRET_KEY'], expires_in = 3600)
-    token = s.dumps({'email':reciver_mail})
+    s = Serializer(current_app.config['SECRET_KEY'], expires_in=3600)
+    token = s.dumps({'email': reciver_mail})
 
     sender = 'chengchiongwah@gmail.com'
     subject = '密码修改邮件'
-    mail_content = '<html><body><a href="' + url_for('auth.token_check', token=token, _external=True) + '">修改密码链接</a></body></html>'
+    mail_content = '<html><body><a href="' + url_for('auth.token_check', token=token,
+                                                     _external=True) + '">修改密码链接</a></body></html>'
     smtpserver = 'smtp.gmail.com:587'
     username = 'chengchiongwah@gmail.com'
     password = 'gmgmgmgm2013'

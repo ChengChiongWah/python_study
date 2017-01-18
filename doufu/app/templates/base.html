@@ -41,7 +41,7 @@
             <li role="presentation"><a href="#">关于</a></li>
             {% if current_user.is_authenticated %}
             <li role="presentation">
-                <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information")}}>{{current_user.name}}</a>
+                <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information", username=current_user.name)}}>{{current_user.name}}</a>
             </li>
             <li role="presentation">
                 <a href={{url_for("auth.logout")}}> 退出</a>
@@ -74,7 +74,7 @@
 <div class="container">
     <!-- FOOTER -->
     <footer>
-	<hr class="featurette-divider">
+        <hr class="featurette-divider">
         <p class="pull-right"><a href="#">Back to top</a></p>
         <p>&copy; 2014 Company, Inc. &middot; <a href={{url_for("main.contact_us")}}>联系我们</a> &middot;</p>
     </footer>

@@ -27,13 +27,14 @@
     <div class="col-md-12">
         <div class="col-md-9">
             {% for q in questionsList %}
-            <div class="col-md-2"><img class="featurette-image img-responsive" data-src="holder.js/200x200/auto" alt="Generic placeholder image" src={{q.picture}}></div>
+            <div class="col-md-2"><img class="featurette-image img-responsive" data-src="holder.js/200x200/auto"
+                                       alt="Generic placeholder image" src={{q.picture}}></div>
             <div class="col-md-10">
-	        <div>{{q.name}}的留言：</div>
-		<div class="col-md-12"></div>
-		<div class="col-md-12">{{q.content}}</div>
-	    </div>
-	    <div class="col-md-12"></div>
+                <div>{{q.name}}的留言：</div>
+                <div class="col-md-12"></div>
+                <div class="col-md-12">{{q.content}}</div>
+            </div>
+            <div class="col-md-12"></div>
             {% endfor %}
         </div>
         <div class="col-md-3">
