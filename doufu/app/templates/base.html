@@ -39,6 +39,7 @@
         <ul class="nav nav-pills pull-right" role="tablist">
             <li role="presentation"><a href={{url_for("main.index")}}>首页</a></li>
             <li role="presentation"><a href="#">关于</a></li>
+            <li role="presentation"><a href={{url_for("main.debugs")}}>提交Bug</a></li>
             {% if current_user.is_authenticated %}
             <li role="presentation">
                 <a role="menuitem" tabindex="-1" href={{url_for("auth.user_information", username=current_user.name)}}>{{current_user.name}}</a>
@@ -76,7 +77,7 @@
     <footer>
         <hr class="featurette-divider">
         <p class="pull-right"><a href="#">Back to top</a></p>
-        <p>&copy; 2014 Company, Inc. &middot; <a href={{url_for("main.contact_us")}}>联系我们</a> &middot;</p>
+        <p>&copy; 2017 Company, Inc. &middot; <a href={{url_for("main.contact_us")}}>联系我们</a> &middot;</p>
     </footer>
 </div>
 {% endblock %}

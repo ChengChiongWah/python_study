@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    {{ super() }}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+{{ super() }}
+
+<div class="container">
+    <div class="col-md-7">
+        <p style="color:#000;font-size:28px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">
+            发现Bug</p>
+        <form class="form-inline" role="form" enctype="multipart/form-data"
+              action={{url_for("main.debugs_add")}} method="post">
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+            <div class="col-md-12">
+                <textarea name="debug_content" class="form-control" placeholder="Bug在这里！！" style="resize:none" rows="9"
+                          cols="58"></textarea>
+            </div>
+            <div class="col-md-6">
+                <input type="submit" value="提交Bug">
+            </div>
+        </form>
+    </div>
+    <div class="col-md-7">
+        <hr class="featurette-divider">
+        {% if current_user.name=='admin' %}
+            {% for d in debugs %}
+                <p>{{ d.debug_content }}<a href={{url_for("main.debugs_confirm", id=d.id)}}>确认显示Bug </a><a href={{url_for("main.debugs_delete", id=d.id)}}> |删除</a></p>
+            {% endfor %}
+        {% else %}
+            {% for d in debugs %}
+                {% if d.debug_content and d.confirmed %}
+                    <p>{{ d.debug_content }}</p>
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+</body>
+</html>

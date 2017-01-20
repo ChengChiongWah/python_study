@@ -189,3 +189,28 @@ class Questions(db.Model):
     def add(self):
         db.session.add(self)
         db.session.commit()
+
+
+class Debug(db.Model):
+   __tablename__ = 'debug'
+   id = db.Column(db.Integer, primary_key=True)
+   debug_content = db.Column(db.Text(150))
+   confirmed = db.Column(db.Boolean, default=False)
+   create_time = db.Column(db.String(20))
+
+   def __init__(self, debug_content):
+       self.debug_content = debug_content
+       self.create_time = formatetime()
+
+   def add(self):
+       db.session.add(self)
+       db.session.commit()
+
+   def debug_confirmed_update(self, signal):
+       self.confirmed = signal
+       db.session.commit()
+
+   def debug_delete(self):
+       db.session.delete(self)
+       db.session.commit()
+ 

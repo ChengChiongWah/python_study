@@ -17,7 +17,7 @@
     </div>
     <div class="col-md-4">
         <p>
-            {% if current_user.name == recipes.author %}
+            {% if current_user.name==recipes.author or current_user.name=='admin' %}
             <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}}
                style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱</a>
             <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}}
@@ -129,7 +129,7 @@
         <div class="col-md-8"></div>
         <div class="col-md-4">
             <p>
-                {% if current_user.name == recipes.author %}
+                {% if current_user.name == recipes.author or current_user.name == 'admin' %}
                 <a href={{url_for("recipe.recipe_edit", recipe_id=recipes.id)}}
                    style="color:rgb(178, 68, 34);font-size:14px;font-family:CustomFont,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif">修改菜谱</a>
                 <a href={{url_for("recipe.recipe_delete", recipe_id=recipes.id)}}

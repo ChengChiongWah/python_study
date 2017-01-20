@@ -28,7 +28,6 @@ def upload(f, file_formate, uploads_dir, static_images_dir):
     '''
 
     if allowed_file(f.filename):
-        Log.log(f.filename)
         filename = secure_filename(f.filename)
         path = uploads_dir + filename
         f.save(path)
