@@ -155,15 +155,14 @@ def send_mail(reciver_mail):
 
     sender = 'chengchiongwah@gmail.com'
     subject = '密码修改邮件'
-    mail_content = '<html><body><a href="' + url_for('auth.token_check', token=token,
-                                                     _external=True) + '">修改密码链接</a></body></html>'
+    mail_content = '<html><body><a href="http://45.32.88.103//token_check?token={}">修改密码链接</a></body></html>'.format(token)
     smtpserver = 'smtp.gmail.com:587'
-    username = 'chengchiongwah@gmail.com'
-    password = 'gmgmgmgm2013'
+    username = 'chengtestmail@gmail.com'
+    password = 'cttctt2013'
 
     msg = MIMEText(mail_content, 'html', 'utf-8')
     msg['Subject'] = Header(subject, 'utf-8')
-    msg['From'] = 'zhengch<chengchiongwah@gmail.com>'
+    msg['From'] = 'zhengch<chengtestmail@gmail.com>'
     msg['To'] = reciver_mail
     server = smtplib.SMTP(smtpserver)
     server.starttls()

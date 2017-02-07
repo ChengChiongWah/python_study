@@ -32,6 +32,7 @@
     <div class="header">
         <ul class="nav nav-pills pull-right" role="tablist">
             <li role="presentation"><a href={{url_for("main.index")}}>首页</a></li>
+            <li role="presentation"><a href={{url_for("main.videos")}}>视频</a></li>
             <li role="presentation"><a href="#">关于</a></li>
             <li role="presentation"><a href={{url_for("main.debugs")}}>提交Bug</a></li>
             {% if current_user.is_authenticated %}

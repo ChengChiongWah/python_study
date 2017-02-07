@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    {{ super() }}
+    {% endblock %}
+</head>
+<body>
+{% block body %}
+{{ super() }}
+
+<div class="container">
+    <div align="center" class="row embed-responsive embed-responsive-16by9">
+        <video autoplay loop class="embed-responsive-item">
+            <source src="./static/videos/舌尖上的中国_第三集（转化的灵感）.mp4" type="video/mp4">
+        </video>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+{{ super() }}
+{% endblock %}
+</body>
+</html>

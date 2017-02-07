@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # coding:utf-8
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, request
 from flask_login import current_user
 from . import main
 from ..models import Recipe, Debug
@@ -21,9 +21,13 @@ def index():
         page = int(request.args.get('page'))
         pagination = Recipe.query.paginate(page, 5, False)
         pageitems = pagination.items
-    Log.log(page_number)
     return render_template('index.html', pageitems=pageitems, pagination=pagination, page=page, res=res,
                            page_number=page_number)
+
+
+@main.route('/videos', methods=['GET'])
+def videos():
+    return render_template('videos.html')
 
 
 @main.route('/debgu_information', methods=['GET'])
