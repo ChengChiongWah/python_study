@@ -2,18 +2,171 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0f344eff-2683-4069-b714-66386458c83d" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/hsdf.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/hsdf_step1.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/hsdf_step2.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/hsdf_step3.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/hsdf_step4.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/hsdf_step5.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/hsdf_step6.jpg" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doufu/sqlite.db" afterPath="$PROJECT_DIR$/doufu/sqlite.db" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doufu/app/models.py" afterPath="$PROJECT_DIR$/doufu/app/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doufu/app/recipe/views.py" afterPath="$PROJECT_DIR$/doufu/app/recipe/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doufu/config.py" afterPath="$PROJECT_DIR$/doufu/config.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/.idea/codeStyleSettings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/.idea/doufu.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/auth/.views.py.swp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/auth/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/auth/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/log.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/main/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/main/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/models.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/recipe/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/recipe/views.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/css/bootstrap.min.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/css/jumbotron-narrow.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/css/signin.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/doufu.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_bcddf.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_step_1_bcddf1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_step_2_bcddf2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_step_3_bcddf3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_step_4_bcddf4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_step_5_bcddf5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_step_6_bcddf6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_25_step_7_bcddf7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_26_jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_27_jzgdft.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_27_step_1_jzgdft1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_1_xhdf1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_2_xhdf2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_3_xhdf3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_4_xhdf4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_5_xhdf5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_6_xhdf6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_7_xhdf7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_8_xhdf8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_step_9_xhdf9.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_29_xhdf.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_jcdf.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_1_jcdf_step1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_2_jcdf_step2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_3_jcdf_step3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_4_jcdf_step4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_5_jcdf_step5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_6_jcdf_step6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_7_jcdf_step7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_32_step_8_jcdf_step8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_hsdf.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_step_1_hsdf_step1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_step_2_hsdf_step2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_step_3_hsdf_step3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_step_4_hsdf_step4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_step_5_hsdf_step5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_step_6_hsdf_step6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_38_step_7_hsdf.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_jcdf.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_1_jcdf_step1.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_2_jcdf_step2.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_3_jcdf_step3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_4_jcdf_step4.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_5_jcdf_step5.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_6_jcdf_step6.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_7_jcdf_step7.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/recipe_39_step_8_jcdf_step8.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/users_pictures/ElfenSterben_picture_jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/users_pictures/admin_picture_index.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/users_pictures/user_default.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/users_pictures/user_picture_jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/users_pictures/叉烧包_picture_jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/images/users_pictures/白切鸡_picture_jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/bootstrap.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/collapse.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/docs.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/ie-emulation-modes-warning.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/ie10-viewport-bug-workaround.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/jquery.min.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/tab.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/static/js/transition.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/base.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/contact_us.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/debugs_information.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/forget.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/login.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/pwd_update.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/recipe.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/recipe_edit.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/recipe_information.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/recipe_questions.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/recipe_questions_add.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/register.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/resume_page.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/user_information.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/user_picture_update.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/app/templates/videos.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/config.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/gunicorn.sh" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/logs.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/manage.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/README" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/alembic.ini" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/env.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/script.py.mako" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/0222fb38e0bd_change_the_user_s_picture_column.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/05ad71511e69_add_user_s_picture_column.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/077fd923c549_change_the_integer_to_int.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/12648e5aa177_change_the_steps_technique_50_150.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/1df5c15ee948_update_step_on_clumn_string_50_as_sting_.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/233889b9c607_add_recipe_author_column.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/2eb70c8d9b63_change_the_integer_to_int.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/3319bf358b5a_change_the_steps_technique_50_150.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/4505dce67adb_change_the_integer_to_int.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/5d87a5b7f933_update_step_on_clumn_string_50_as_sting_.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/792977edaf72_add_user_s_picture_column.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/90b085e26ad5_create_table_question.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/9c72232f8f14_init.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/a8b790294542_delete_author_column_in_recipe_table.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/b72297d14fec_add_user_s_picture_column.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/c9d1ec0bce60_add_debug_table.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/cfd53030abff_change_the_user_s_picture_column.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/dcfe1af606ff_del_recipe_author_column.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/migrations/versions/f672fa517a27_add_foreign_key_for_questions.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/requirements.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/sqlite.db" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/doufu/wsgi.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业10.py" afterPath="$PROJECT_DIR$/course10.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/.idea/misc.xml" afterPath="$PROJECT_DIR$/course13_1/.idea/misc.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/.idea/modules.xml" afterPath="$PROJECT_DIR$/course13_1/.idea/modules.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/.idea/web作业13_1.iml" afterPath="$PROJECT_DIR$/course13_1/.idea/web作业13_1.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/.idea/workspace.xml" afterPath="$PROJECT_DIR$/course13_1/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/logs.txt" afterPath="$PROJECT_DIR$/course13_1/logs.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/main.py" afterPath="$PROJECT_DIR$/course13_1/main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/messages.py" afterPath="$PROJECT_DIR$/course13_1/messages.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/model.py" afterPath="$PROJECT_DIR$/course13_1/model.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/sqlite.db" afterPath="$PROJECT_DIR$/course13_1/sqlite.db" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/templates/messages.html" afterPath="$PROJECT_DIR$/course13_1/templates/messages.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_1/templates/messages_edit.html" afterPath="$PROJECT_DIR$/course13_1/templates/messages_edit.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/.idea/misc.xml" afterPath="$PROJECT_DIR$/course13_2/.idea/misc.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/.idea/modules.xml" afterPath="$PROJECT_DIR$/course13_2/.idea/modules.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/.idea/web作业13_2.iml" afterPath="$PROJECT_DIR$/course13_2/.idea/web作业13_2.iml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/.idea/workspace.xml" afterPath="$PROJECT_DIR$/course13_2/.idea/workspace.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/main.py" afterPath="$PROJECT_DIR$/course13_2/main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/model.py" afterPath="$PROJECT_DIR$/course13_2/model.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/routes_user.py" afterPath="$PROJECT_DIR$/course13_2/routes_user.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/sqlite.db" afterPath="$PROJECT_DIR$/course13_2/sqlite.db" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_2/templates/login.html" afterPath="$PROJECT_DIR$/course13_2/templates/login.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_3/admin.py" afterPath="$PROJECT_DIR$/course13_3/admin.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_3/logs.txt" afterPath="$PROJECT_DIR$/course13_3/logs.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_3/main.py" afterPath="$PROJECT_DIR$/course13_3/main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_3/model.py" afterPath="$PROJECT_DIR$/course13_3/model.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业13_3/templates/user.html" afterPath="$PROJECT_DIR$/course13_3/templates/user.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业17/main.py" afterPath="$PROJECT_DIR$/course17/main.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业17/model.py" afterPath="$PROJECT_DIR$/course17/model.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业17/sqlite.db" afterPath="$PROJECT_DIR$/course17/sqlite.db" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业17/templates/index.html" afterPath="$PROJECT_DIR$/course17/templates/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业17/templates/login/comments.html" afterPath="$PROJECT_DIR$/course17/templates/login/comments.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业17/templates/login/weibo.html" afterPath="$PROJECT_DIR$/course17/templates/login/weibo.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业17/user.py" afterPath="$PROJECT_DIR$/course17/user.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业2.py" afterPath="$PROJECT_DIR$/course2.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业3.py" afterPath="$PROJECT_DIR$/course3.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业4.py" afterPath="$PROJECT_DIR$/course4.py" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/web作业8.py" afterPath="$PROJECT_DIR$/course8.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/笔记.py" afterPath="$PROJECT_DIR$/笔记.py" />
     </list>
     <ignored path="python_study.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -32,7 +185,28 @@
     <favorites_list name="python_study" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf>
+      <file leaf-file-name="知识检查清单.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/知识检查清单.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="494">
+              <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="笔记.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/笔记.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="757" column="3" selection-start-line="757" selection-start-column="3" selection-end-line="757" selection-end-column="3" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -66,20 +240,20 @@
         <option value="$PROJECT_DIR$/doufu/app/__init__.py" />
         <option value="$PROJECT_DIR$/doufu/app/templates/register.html" />
         <option value="$PROJECT_DIR$/doufu/manage.py" />
-        <option value="$PROJECT_DIR$/笔记.py" />
         <option value="$PROJECT_DIR$/doufu/app/auth/views.py" />
         <option value="$PROJECT_DIR$/doufu/config.py" />
         <option value="$PROJECT_DIR$/doufu/app/templates/index.html" />
         <option value="$PROJECT_DIR$/doufu/app/models.py" />
         <option value="$PROJECT_DIR$/doufu/app/recipe/views.py" />
+        <option value="$PROJECT_DIR$/笔记.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="100" />
-    <option name="y" value="58" />
-    <option name="width" value="1300" />
-    <option name="height" value="780" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1456" />
+    <option name="height" value="792" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -106,6 +280,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -124,130 +299,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doufu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doufu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doufu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="templates" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doufu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="recipe" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doufu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="python_study" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doufu" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="auth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -477,26 +531,26 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="100" y="58" width="1300" height="780" extended-state="0" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1456" height="792" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16121495" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16111112" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1477612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1477612" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -514,7 +568,7 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://C:/Users/Administrator/Desktop/django/manage.py</url>
+          <url>file://$PROJECT_DIR$/../../../Administrator/Desktop/django/manage.py</url>
           <line>1</line>
         </line-breakpoint>
       </breakpoints>
@@ -523,92 +577,19 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../Python视频/web18上课板书/爬虫/zhihu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-684">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/web20.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1585">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/templates/user/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="10" column="33" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/templates/user/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/web20.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/app.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/config.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/templates/user/index.html" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web20上课板书/1装饰器和过滤器和统一验证/templates/user/edit.html" />
     <entry file="file://$PROJECT_DIR$/doufu/manager.py" />
     <entry file="file://$PROJECT_DIR$/doufu/templates/recipe.html" />
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/todo_edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="15" column="0" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/todo_index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="12" column="9" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/user/edit.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
-          <caret line="8" column="31" selection-start-line="8" selection-start-column="31" selection-end-line="8" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/routes/todo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="26" selection-start-line="11" selection-start-column="26" selection-end-line="11" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/models/todo.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/config.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/todo_edit.html" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/todo_index.html" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/user/edit.html" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/routes/todo.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/models/todo.py" />
     <entry file="file://$PROJECT_DIR$/doufu/models.py" />
     <entry file="file://$PROJECT_DIR$/doufu/main/views.py" />
     <entry file="file://$PROJECT_DIR$/doufu/templates/recipe_information.html" />
@@ -616,20 +597,8 @@
     <entry file="file://$PROJECT_DIR$/doufu/templates/login.html" />
     <entry file="file://$PROJECT_DIR$/doufu/templates/index.html" />
     <entry file="file://$PROJECT_DIR$/doufu/recipe/views.py" />
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/routes/user.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/user/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/routes/user.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/templates/user/index.html" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -637,219 +606,50 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/main/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/auth/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="19" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/templates/base.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="40" column="63" selection-start-line="40" selection-start-column="63" selection-end-line="40" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../wah/app/auth/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../wah/app/main/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="19" column="24" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python34/Lib/site-packages/werkzeug/security.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="203" column="4" selection-start-line="203" selection-start-column="4" selection-end-line="203" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../wah/app/auth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="382">
-          <caret line="36" column="42" selection-start-line="36" selection-start-column="42" selection-end-line="36" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://C:/Python34/Lib/site-packages/flask_login/utils.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="136" column="0" selection-start-line="136" selection-start-column="0" selection-end-line="136" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="741">
-          <caret line="39" column="17" selection-start-line="39" selection-start-column="17" selection-end-line="39" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../wah/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1406">
-          <caret line="135" column="24" selection-start-line="135" selection-start-column="24" selection-end-line="135" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/flasky/manage.py">
+    <entry file="file://$PROJECT_DIR$/doufu/app/main/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/auth/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/templates/base.html" />
+    <entry file="file://$PROJECT_DIR$/../wah/app/auth/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../wah/app/main/views.py" />
+    <entry file="file://C:/Python34/Lib/site-packages/werkzeug/security.py" />
+    <entry file="file://$PROJECT_DIR$/../wah/app/auth/views.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/templates/register.html" />
+    <entry file="file://C:/Python34/Lib/site-packages/flask_login/utils.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/templates/login.html" />
+    <entry file="file://$PROJECT_DIR$/../wah/app/models.py" />
+    <entry file="file://$PROJECT_DIR$/../flasky/manage.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="26" column="7" selection-start-line="26" selection-start-column="7" selection-end-line="26" selection-end-column="7" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/wsgi.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/app.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-152">
-          <caret line="22" column="38" selection-start-line="22" selection-start-column="38" selection-end-line="22" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/templates/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="142">
-          <caret line="73" column="44" selection-start-line="73" selection-start-column="44" selection-end-line="73" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/auth/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="121" column="24" selection-start-line="121" selection-start-column="24" selection-end-line="121" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../Python视频/web15.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/python_study/doufu/app/recipe/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2440">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#33#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/main/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="9" column="50" selection-start-line="9" selection-start-column="50" selection-end-line="9" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/templates/recipe.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/python_study/doufu/recipe/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/recipe/views.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
-          <folding>
-            <element signature="e#990#1362#0" expanded="false" />
-            <element signature="e#1407#2106#0" expanded="false" />
-            <element signature="e#2145#2526#0" expanded="false" />
-            <element signature="e#2568#3336#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/app/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="251">
-          <caret line="54" column="24" selection-start-line="54" selection-start-column="24" selection-end-line="54" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#29#0" expanded="true" />
-            <element signature="e#2080#2908#0" expanded="false" />
-            <element signature="e#3940#5213#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/config.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="9" column="52" selection-start-line="9" selection-start-column="52" selection-end-line="9" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/doufu/manage.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/doufu/app/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/wsgi.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web19板书/app.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/templates/index.html" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/auth/views.py" />
+    <entry file="file://$PROJECT_DIR$/../Python视频/web15.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/recipe/views.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/main/views.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/templates/recipe.html" />
+    <entry file="file://$PROJECT_DIR$/doufu/recipe/views.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/recipe/views.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/app/models.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/config.py" />
+    <entry file="file://$PROJECT_DIR$/doufu/manage.py" />
     <entry file="file://$PROJECT_DIR$/笔记.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2185">
-          <caret line="762" column="30" selection-start-line="762" selection-start-column="30" selection-end-line="762" selection-end-column="30" />
+        <state relative-caret-position="112">
+          <caret line="757" column="3" selection-start-line="757" selection-start-column="3" selection-end-line="757" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/知识检查清单.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="494">
+          <caret line="26" column="12" selection-start-line="26" selection-start-column="12" selection-end-line="26" selection-end-column="12" />
           <folding />
         </state>
       </provider>
